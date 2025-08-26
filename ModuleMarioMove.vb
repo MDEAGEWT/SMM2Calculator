@@ -3027,6 +3027,11 @@ Friend Module ModuleMarioMove
         Next
         Return cmd
     End Function
+
+    'I ATTEMPTED TO CHANGE EVERY CHINESE STRING TO AN ENGLISH VALUE BUT THIS CODE ONLY WORKS WITH CHINESE PROMPTS
+    'SO COMMANDS ARE ONLY GOING TO STILL HAVING ONLY CHINESE AND ENGLISH FROM "COMMANDTEXTS.TXT" INSTEAD OF .INI
+    'ONLY TEMPLATE.INI HAS [LIST_Commands] SECTION BECAUSE OF THAT
+    'I ALSO NOTICED SOME VARIATIONS BETWEEN "COMMANDTEXTS.TXT" AND THESE PROMTS
     Public Sub MarioMove(Cmd As String, ByRef X As Single, ByRef Spd As Single, Frame As Integer, ByRef Y As Single, ByRef Spy As Single, ByRef IsJump As Boolean)
 
         Select Case GetCnCmd(Cmd, True) '.Replace("D", "").Replace("+", "")
@@ -3303,4 +3308,284 @@ Friend Module ModuleMarioMove
                 MSDuck(X, Spd, False, False, 999, Y, Spy, IsJump)
         End Select
     End Sub
+
+    'YUP, I'M GOING TO LET AS COMMENT THE WHOLE SECTION OF CODE I TRIED TO CHANGE PROMTS WITHOUT BEING SUCCESSFUL
+    'JUST... IN CASE... WHO KNOWS IF COULD BE HELPUL IN THE FUTURE...
+
+    'Public Sub MarioMove(Cmd As String, ByRef X As Single, ByRef Spd As Single, Frame As Integer, ByRef Y As Single, ByRef Spy As Single, ByRef IsJump As Boolean)
+    '    Dim cmdKey As String = LocalizationManager.GetCommandKey(GetCnCmd(Cmd, True)) '.Replace("D", "").Replace("+", "")
+    '    Select Case cmdKey
+    '        Case "WindLeftStand"
+    '            WAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "WindAccRightJump"    '加速右跳
+    '            WJump(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "WindAccLeftJump"    '加速左跳
+    '            WJump(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "WindRightJump"    '右跳
+    '            WJump(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "WindLeftJump"    '左跳
+    '            WJump(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "AccRightJump"    '加速右跳
+    '            MJump(X, Spd, True, True, Frame, Y, Spy, IsJump, False)
+    '        Case "AccLeftJump"    '加速左跳
+    '            MJump(X, Spd, False, True, Frame, Y, Spy, IsJump, False)
+    '        Case "AccRight"   '加速右跳
+    '            MAJump(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "AccLeft" '加速左跳
+    '            MAJump(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "RightJump"    '右跳
+    '            MJump(X, Spd, True, False, Frame, Y, Spy, IsJump, False)
+    '        Case "LeftJump"   '左跳
+    '            MJump(X, Spd, False, False, Frame, Y, Spy, IsJump, False)
+    '        Case "Right"   '右跳
+    '            MAJump(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "Left"  '左跳
+    '            MAJump(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "LeftWallKick"
+    '            MWallJump(X, Spd, True, False, Frame, Y, Spy, IsJump, False)
+    '        Case "RightWallKick"
+    '            MWallJump(X, Spd, False, False, Frame, Y, Spy, IsJump, False)
+    '        Case "AccRightSpin"    '加速右跳
+    '            SpinJump(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "AccLeftSpin"   '加速左跳
+    '            SpinJump(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "RightSpin"    '右跳
+    '            SpinJump(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "LeftSpin"    '左跳
+    '            SpinJump(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "Spin"    '匀速滞空跳
+    '            SpinAir(X, Spd, 0, Y, Spy, IsJump)
+
+    '        Case "AccRightSpinJump"    '加速右跳
+    '            MSpinJump(X, Spd, True, True, Frame, Y, Spy, IsJump, False)
+    '        Case "AccLeftSpinJump"    '加速左跳
+    '            MSpinJump(X, Spd, False, True, Frame, Y, Spy, IsJump, False)
+    '        Case "RightSpinJump"    '右跳
+    '            MSpinJump(X, Spd, True, False, Frame, Y, Spy, IsJump, False)
+    '        Case "LeftSpinJump"    '左跳
+    '            MSpinJump(X, Spd, False, False, Frame, Y, Spy, IsJump, False)
+
+    '        Case "FloatJump"    '匀速滞空跳
+    '            MAAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "Drop"    '匀速落体跳
+    '            MAir(X, Spd, Frame, Y, Spy, IsJump, 0)
+    '        Case "DropStand"    '匀速落体跳
+    '            MAir(X, Spd, Frame, Y, Spy, IsJump, 0)
+    '        Case "DropFront"    '匀速落体跳
+    '            MAir(X, Spd, Frame, Y, Spy, IsJump, 1)
+    '        Case "DropBack"    '匀速落体跳
+    '            MAir(X, Spd, Frame, Y, Spy, IsJump, -1)
+
+    '        Case "Jump" '原地跳
+    '            Jump(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "DonutJump" '原地跳
+    '            DonutJump(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "SpinJump" '原地跳
+    '            MXJump(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "BufferJump"
+    '            BJump(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "TrampolineJump" '弹簧跳
+    '            TJump(X, Spd, Y, Spy, IsJump)
+    '        Case "LowGFloatJump"    '低重力匀速跳
+    '            LAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "LowGDrop" '低重力落体
+    '            LAAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "LowGJump"    '低重力匀速跳
+    '            LAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "LowGBufferJump"    '低重力匀速跳
+    '            LBAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "WindRightRun"    '风地面右跑
+    '            WRun(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "WindLeftRun"    '风地面左跑
+    '            WRun(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "WindRightWalk"    '风地面右走
+    '            WRun(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "WindLeftWalk"    '风地面左走
+    '            WRun(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "RightRun"    '地面右跑
+    '            MRun(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "LeftRun"    '地面左跑
+    '            MRun(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "RightWalk"    '地面右走
+    '            MRun(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "LeftWalk"    '地面左走
+    '            MRun(X, Spd, False, False, Frame, Y, Spy, IsJump)
+
+    '        Case "RSteepSlopeRightRun"    '地面右跑
+    '            MDSlopeRun(X, Spd, True, True, Frame, Y, Spy, True)
+    '        Case "RSteepSlopeRightRun"    '地面左跑
+    '            MDSlopeRun(X, Spd, False, True, Frame, Y, Spy, True)
+    '        Case "RSteepSlopeRightWalk"    '地面右走
+    '            MDSlopeRun(X, Spd, True, False, Frame, Y, Spy, True)
+    '        Case "RSteepSlopeLeftWalk"    '地面左走
+    '            MDSlopeRun(X, Spd, False, False, Frame, Y, Spy, True)
+
+    '        Case "LSteepSlopeRightRun"    '地面右跑
+    '            MDSlopeRun(X, Spd, True, True, Frame, Y, Spy, False)
+    '        Case "LSteepSlopeLeftRun"    '地面左跑
+    '            MDSlopeRun(X, Spd, False, True, Frame, Y, Spy, False)
+    '        Case "LSteepSlopeRightWalk"    '地面右走
+    '            MDSlopeRun(X, Spd, True, False, Frame, Y, Spy, False)
+    '        Case "LSteepSlopeLeftWalk"    '地面左走
+    '            MDSlopeRun(X, Spd, False, False, Frame, Y, Spy, False)
+
+    '        Case "RGentleSlopeRightRun"    '地面右跑
+    '            MHSlopeRun(X, Spd, True, True, Frame, Y, Spy, True)
+    '        Case "RGentleSlopeLeftRun"    '地面左跑
+    '            MHSlopeRun(X, Spd, False, True, Frame, Y, Spy, True)
+    '        Case "RGentleSlopeRightWalk"    '地面右走
+    '            MHSlopeRun(X, Spd, True, False, Frame, Y, Spy, True)
+    '        Case "RGentleSlopeLeftWalk"    '地面左走
+    '            MHSlopeRun(X, Spd, False, False, Frame, Y, Spy, True)
+
+    '        Case "LGentleSlopeRightRun"    '地面右跑
+    '            MHSlopeRun(X, Spd, True, True, Frame, Y, Spy, False)
+    '        Case "LGentleSlopeLeftRun"    '地面左跑
+    '            MHSlopeRun(X, Spd, False, True, Frame, Y, Spy, False)
+    '        Case "LGentleSlopeRightWalk"    '地面右走
+    '            MHSlopeRun(X, Spd, True, False, Frame, Y, Spy, False)
+    '        Case "LGentleSlopeLeftWalk"    '地面左走
+    '            MHSlopeRun(X, Spd, False, False, Frame, Y, Spy, False)
+
+    '        Case "LavaRightWalk"    '地面右走
+    '            MFireRun(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "LavaLeftWalk"    '地面左走
+    '            MFireRun(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "LavaStand"    '地面站立
+    '            MFireDuck(X, Spd, Frame, Y, Spy)
+    '        Case "LavaStandToStop"    '地面站立
+    '            MFireDuck(X, Spd, 999, Y, Spy)
+    '                '鞋走路 USA大跳
+
+    '        Case "Stand"    '地面站立
+    '            MDuck(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "FrontDuck"    '地面正蹲
+    '            MDuck(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "BackDuck"    '地面反蹲
+    '            MDuck(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "StandToStop"    '地面站立
+    '            MDuck(X, Spd, True, True, 999, Y, Spy, IsJump)
+    '        Case "FrontDuckToStop"    '地面正蹲
+    '            MDuck(X, Spd, False, True, 999, Y, Spy, IsJump)
+    '        Case "BackDuckToStop"    '地面反蹲
+    '            MDuck(X, Spd, False, False, 999, Y, Spy, IsJump)
+    '        Case "IceStand"    '地面站立
+    '            IDuck(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "IceFrontDuck"    '地面正蹲
+    '            IDuck(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "IceBackDuck"    '地面反蹲
+    '            IDuck(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "LowGRightJump"    '低重力右跳
+    '            LJump(X, Spd, True, False, Frame, Y, Spy, IsJump, False)
+    '        Case "LowGLeftJump"    '低重力左跳
+    '            LJump(X, Spd, False, False, Frame, Y, Spy, IsJump, False)
+    '        Case "LowGRight"    '低重力右跳
+    '            LAJump(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "LowGLeft"    '低重力左跳
+    '            LAJump(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "LowGAccRightJump"    '低重力右跳
+    '            LJump(X, Spd, True, True, Frame, Y, Spy, IsJump, False)
+    '        Case "LowGAccLeftJump"    '低重力左跳
+    '            LJump(X, Spd, False, True, Frame, Y, Spy, IsJump, False)
+    '        Case "LowGAccRight"    '低重力右跳
+    '            LAJump(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "LowGAccLeft"    '低重力左跳
+    '            LAJump(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "GroundPound" '坐莲
+    '            ZAAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "FloatGroundPound" '坐莲
+    '            ZAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "LowGGroundPound" '坐莲
+    '            LZAAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "LowGFloatGroundPound" '坐莲
+    '            LZAir(X, Spd, Frame, Y, Spy, IsJump)
+    '        Case "IceRightRun"    '冰面右跑
+    '            IRun(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "IceRightWalk"    '冰面右跑
+    '            IRun(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "IceLeftRun"    '冰面右跑
+    '            IRun(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "IceLeftWalk"    '冰面右跑
+    '            IRun(X, Spd, False, False, Frame, Y, Spy, IsJump)
+
+    '        Case "AccRightBufferJump"    '加速右跳
+    '            MJump(X, Spd, True, True, Frame, Y, Spy, IsJump, True)
+    '        Case "AccLeftBufferJump"    '加速左跳
+    '            MJump(X, Spd, False, True, Frame, Y, Spy, IsJump, True)
+    '        Case "RightBufferJump"    '右跳
+    '            MJump(X, Spd, True, False, Frame, Y, Spy, IsJump, True)
+    '        Case "LeftBufferJump"    '左跳
+    '            MJump(X, Spd, False, False, Frame, Y, Spy, IsJump, True)
+    '        Case "LowGAccRightBufferJump"    '低重力右跳
+    '            LJump(X, Spd, True, True, Frame, Y, Spy, IsJump, True)
+    '        Case "LowGAccLeftBufferJump"    '低重力左跳
+    '            LJump(X, Spd, False, True, Frame, Y, Spy, IsJump, True)
+    '        Case "LowGRightBufferJump"    '低重力右跳
+    '            LJump(X, Spd, True, False, Frame, Y, Spy, IsJump, True)
+    '        Case "LowGLeftBufferJump"    '低重力左跳
+    '            LJump(X, Spd, False, False, Frame, Y, Spy, IsJump, True)
+
+    '        Case "RightSwim"    '右跳
+    '            WtJump(X, Spd, True, True, Frame, Y, Spy, True, IsJump)
+    '        Case "LeftSwim"    '左跳
+    '            WtJump(X, Spd, False, True, Frame, Y, Spy, True, IsJump)
+    '        Case "WaterRight"    '右
+    '            WtJump(X, Spd, True, True, Frame, Y, Spy, False, IsJump)
+    '        Case "WaterLeft"    '左
+    '            WtJump(X, Spd, False, True, Frame, Y, Spy, False, IsJump)
+    '        Case "WaterRightWalk"    '地面右走
+    '            WtRun(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "WaterLeftWalk"    '地面左走
+    '            WtRun(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "Swim"
+    '            WtAir(X, Spd, False, True, Frame, Y, Spy, True, IsJump)
+    '        Case "WaterDrop"
+    '            WtAir(X, Spd, False, True, Frame, Y, Spy, False, IsJump)
+    '        Case "WaterStand"    '地面站立
+    '            WtDuck(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "WaterIceRight"    '地面右走
+    '            WtIceRun(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "WaterIceLeft"    '地面左走
+    '            WtIceRun(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "WaterIceStand"    '地面站立
+    '            WtIceDuck(X, Spd, True, True, Frame, Y, Spy, IsJump)
+
+    '        Case "StarAccRightJump"    '加速右跳
+    '            MSJump(X, Spd, True, True, Frame, Y, Spy, IsJump, False)
+    '        Case "StarAccLeftJump"    '加速左跳
+    '            MSJump(X, Spd, False, True, Frame, Y, Spy, IsJump, False)
+    '        Case "StarAccRight"    '加速右跳
+    '            MSAJump(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "StarAccLeft"    '加速左跳
+    '            MSAJump(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "StarRightJump"    '右跳
+    '            MSJump(X, Spd, True, False, Frame, Y, Spy, IsJump, False)
+    '        Case "StarLeftJump"    '左跳
+    '            MSJump(X, Spd, False, False, Frame, Y, Spy, IsJump, False)
+    '        Case "StarRight"    '右跳
+    '            MSAJump(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "StarLeft"    '左跳
+    '            MSAJump(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "StarRightRun"    '地面右跑
+    '            MSRun(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "StarLeftRun"    '地面左跑
+    '            MSRun(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "StarRightWalk"    '地面右走
+    '            MSRun(X, Spd, True, False, Frame, Y, Spy, IsJump)
+    '        Case "StarLeftWalk"    '地面左走
+    '            MSRun(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "StarStand"    '地面站立
+    '            MSDuck(X, Spd, True, True, Frame, Y, Spy, IsJump)
+    '        Case "StarFrontDuck"    '地面正蹲
+    '            MSDuck(X, Spd, False, True, Frame, Y, Spy, IsJump)
+    '        Case "StarBackDuck"    '地面反蹲
+    '            MSDuck(X, Spd, False, False, Frame, Y, Spy, IsJump)
+    '        Case "StarStandToStop"    '地面站立
+    '            MSDuck(X, Spd, True, True, 999, Y, Spy, IsJump)
+    '        Case "StarFrontDuckToStop"    '地面正蹲
+    '            MSDuck(X, Spd, False, True, 999, Y, Spy, IsJump)
+    '        Case "StarBackDuckToStop"    '地面反蹲
+    '            MSDuck(X, Spd, False, False, 999, Y, Spy, IsJump)
+    '    End Select
+    'End Sub
 End Module

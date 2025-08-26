@@ -17,11 +17,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Font\**" />
     <Compile Remove="旧版本\**" />
-    <EmbeddedResource Remove="Font\**" />
     <EmbeddedResource Remove="旧版本\**" />
-    <None Remove="Font\**" />
     <None Remove="旧版本\**" />
   </ItemGroup>
 
@@ -89,6 +86,21 @@
     <None Update="5.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Assets.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Languages\Chinese.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Languages\Spanish.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Languages\English.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Lyt_Edit_PaletteSound--Lyt_E_P_SE_Boo.png">
       <Pack>True</Pack>

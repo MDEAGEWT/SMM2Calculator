@@ -35,7 +35,7 @@ Partial Class Form1
         CkMove = New CheckBox()
         BtnCls = New Button()
         CkLoc = New CheckBox()
-        Button6 = New Button()
+        BUTTON_Operate = New Button()
         TR4 = New TextBox()
         BtnSrc = New Button()
         TR3 = New TextBox()
@@ -46,24 +46,24 @@ Partial Class Form1
         TSP = New CheckBox()
         TD = New TextBox()
         TS4 = New CheckBox()
-        CBJumpAcc = New ComboBox()
+        COMBOBOX_JumpAcc = New ComboBox()
         TY4 = New CheckBox()
         TS3 = New TextBox()
         TX4 = New CheckBox()
-        Label6 = New Label()
+        LABEL_Hover = New Label()
         TS2 = New TextBox()
         TS1 = New TextBox()
         TxtAir = New TextBox()
         TY3 = New TextBox()
         TxtStrat = New TextBox()
         TY2 = New TextBox()
-        Label5 = New Label()
+        LABEL_StrideLength = New Label()
         TxtStep = New TextBox()
         TX3 = New TextBox()
         TX2 = New TextBox()
         LblState = New Label()
         TX1 = New TextBox()
-        CBStrat = New ComboBox()
+        COMBOBOX_Strat = New ComboBox()
         LblCal = New Label()
         MaterialCheckbox1 = New CheckBox()
         MaterialCheckbox2 = New CheckBox()
@@ -73,29 +73,29 @@ Partial Class Form1
         Timer1 = New Timer(components)
         Timer2 = New Timer(components)
         TFPS = New TextBox()
-        Label8 = New Label()
+        LABEL_FPS = New Label()
         TxtFormLoc = New TextBox()
-        Label9 = New Label()
+        LABEL_Position = New Label()
         TxtOpc = New TextBox()
-        Label10 = New Label()
+        LABEL_Transparency = New Label()
         TDL = New TextBox()
-        Label11 = New Label()
-        ComboBox3 = New ComboBox()
-        ComboBox4 = New ComboBox()
-        ComboBox5 = New ComboBox()
-        ComboBox1 = New ComboBox()
-        ComboBox6 = New ComboBox()
-        CheckBox7 = New CheckBox()
+        LABEL_FrameDelay = New Label()
+        COMBOBOX_Theme = New ComboBox()
+        COMBOBOX_Style = New ComboBox()
+        COMBOBOX_SemiSolid = New ComboBox()
+        COMBOBOX_Character = New ComboBox()
+        COMBOBOX_Ground = New ComboBox()
+        CHECK_Night = New CheckBox()
         BtnEmu = New Button()
         BtnScr = New Button()
         BtnPlay = New Button()
         BtnGif = New Button()
         BtnMont = New Button()
         BtnM01 = New Button()
-        Label27 = New Label()
+        LABEL_StepLength = New Label()
         BtnM1 = New Button()
-        Label26 = New Label()
-        Label1 = New Label()
+        LABEL_Dis = New Label()
+        LABEL_StartPointY = New Label()
         BtnP1 = New Button()
         TYH = New NumericUpDown()
         BtnP01 = New Button()
@@ -107,33 +107,33 @@ Partial Class Form1
         Label12 = New Label()
         TSY1 = New TextBox()
         TB = New NumericUpDown()
-        Label7 = New Label()
-        Label2 = New Label()
-        Label24 = New Label()
+        LABEL_Height = New Label()
+        LABEL_Width = New Label()
+        LABEL_StartPointX = New Label()
         TYW = New NumericUpDown()
         NumH = New NumericUpDown()
         NumW = New NumericUpDown()
         TSPX1 = New TextBox()
-        CBItem = New ComboBox()
+        COMBOBOX_Item = New ComboBox()
         Label17 = New Label()
         Label16 = New Label()
         Label15 = New Label()
         Label20 = New Label()
         CkMario = New CheckBox()
-        Label21 = New Label()
+        LABEL_AC = New Label()
         Label18 = New Label()
         PBar = New ProgressBar()
         Label19 = New Label()
         CkBlk = New CheckBox()
         LBox = New ListBox()
-        Label4 = New Label()
-        Label22 = New Label()
-        Label23 = New Label()
+        LABEL_FrameRate = New Label()
+        LABEL_FaultTolerance = New Label()
+        LABEL_Location = New Label()
         PB = New Cyotek.Windows.Forms.ImageBox()
         DataGridView1 = New DataGridView()
         Panel1 = New Panel()
-        Button1 = New Button()
-        Label3 = New Label()
+        BUTTON_En = New Button()
+        LABEL_Zoom = New Label()
         NumZoom = New NumericUpDown()
         BReadMem = New Button()
         CkMulti = New CheckBox()
@@ -141,7 +141,7 @@ Partial Class Form1
         BAddHis = New Button()
         CB1F = New CheckBox()
         TSY3 = New TextBox()
-        Label30 = New Label()
+        LABEL_SearchDepth = New Label()
         Label29 = New Label()
         NIns = New NumericUpDown()
         CkWU = New CheckBox()
@@ -156,11 +156,13 @@ Partial Class Form1
         BEmu = New Button()
         BtnTile2 = New Button()
         Panel2 = New Panel()
+        LABEL_Strat = New Label()
         Panel3 = New Panel()
         BtnGenJump = New Button()
         LHis = New ListBox()
         TimerEmu = New Timer(components)
         PItem = New Cyotek.Windows.Forms.ImageBox()
+        COMBOBOX_LanguageSettings = New ComboBox()
         CType(TYH, ComponentModel.ISupportInitialize).BeginInit()
         CType(TB, ComponentModel.ISupportInitialize).BeginInit()
         CType(TYW, ComponentModel.ISupportInitialize).BeginInit()
@@ -179,12 +181,12 @@ Partial Class Form1
         BtnPng.BackColor = Color.White
         BtnPng.Enabled = False
         BtnPng.FlatStyle = FlatStyle.Flat
-        BtnPng.Font = New Font("Microsoft Sans Serif", 9F)
-        BtnPng.Location = New Point(226, 85)
+        BtnPng.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BtnPng.Location = New Point(264, 45)
         BtnPng.Name = "BtnPng"
-        BtnPng.Size = New Size(50, 25)
-        BtnPng.TabIndex = 50
-        BtnPng.Text = "投屏B"
+        BtnPng.Size = New Size(43, 19)
+        BtnPng.TabIndex = 82
+        BtnPng.Text = "<BtnPng>"
         BtnPng.UseVisualStyleBackColor = False
         ' 
         ' CkTrace
@@ -192,12 +194,12 @@ Partial Class Form1
         CkTrace.AutoSize = True
         CkTrace.Checked = True
         CkTrace.CheckState = CheckState.Checked
-        CkTrace.Font = New Font("Microsoft YaHei UI", 9F)
-        CkTrace.Location = New Point(280, 122)
+        CkTrace.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkTrace.Location = New Point(291, 185)
         CkTrace.Name = "CkTrace"
-        CkTrace.Size = New Size(51, 21)
-        CkTrace.TabIndex = 36
-        CkTrace.Text = "轨迹"
+        CkTrace.Size = New Size(61, 20)
+        CkTrace.TabIndex = 25
+        CkTrace.Text = "<Traj>"
         CkTrace.TextImageRelation = TextImageRelation.ImageBeforeText
         CkTrace.UseVisualStyleBackColor = True
         ' 
@@ -206,12 +208,12 @@ Partial Class Form1
         CkHitbox.AutoSize = True
         CkHitbox.Checked = True
         CkHitbox.CheckState = CheckState.Checked
-        CkHitbox.Font = New Font("Microsoft YaHei UI", 9F)
-        CkHitbox.Location = New Point(170, 122)
+        CkHitbox.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkHitbox.Location = New Point(291, 153)
         CkHitbox.Name = "CkHitbox"
-        CkHitbox.Size = New Size(51, 21)
-        CkHitbox.TabIndex = 35
-        CkHitbox.Text = "判定"
+        CkHitbox.Size = New Size(78, 20)
+        CkHitbox.TabIndex = 23
+        CkHitbox.Text = "<Hitbox>"
         CkHitbox.TextImageRelation = TextImageRelation.ImageBeforeText
         CkHitbox.UseVisualStyleBackColor = True
         ' 
@@ -220,12 +222,12 @@ Partial Class Form1
         BtnFIns.BackColor = SystemColors.Control
         BtnFIns.BackgroundImageLayout = ImageLayout.Zoom
         BtnFIns.FlatStyle = FlatStyle.Flat
-        BtnFIns.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnFIns.Location = New Point(226, 491)
+        BtnFIns.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnFIns.Location = New Point(205, 359)
         BtnFIns.Name = "BtnFIns"
-        BtnFIns.Size = New Size(60, 30)
-        BtnFIns.TabIndex = 47
-        BtnFIns.Text = "搜索"
+        BtnFIns.Size = New Size(72, 23)
+        BtnFIns.TabIndex = 60
+        BtnFIns.Text = "<Search>"
         BtnFIns.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnFIns.UseVisualStyleBackColor = False
         ' 
@@ -233,48 +235,48 @@ Partial Class Form1
         ' 
         CkCtrl.AutoSize = True
         CkCtrl.Enabled = False
-        CkCtrl.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        CkCtrl.Location = New Point(281, 57)
+        CkCtrl.Font = New Font("Microsoft Sans Serif", 8.25F)
+        CkCtrl.Location = New Point(311, 23)
         CkCtrl.Name = "CkCtrl"
-        CkCtrl.Size = New Size(51, 22)
-        CkCtrl.TabIndex = 34
-        CkCtrl.Text = "操作"
+        CkCtrl.Size = New Size(66, 17)
+        CkCtrl.TabIndex = 78
+        CkCtrl.Text = "<CkCtrl>"
         CkCtrl.UseVisualStyleBackColor = True
         ' 
         ' BtnSave
         ' 
         BtnSave.BackColor = SystemColors.Control
         BtnSave.FlatStyle = FlatStyle.Flat
-        BtnSave.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnSave.Location = New Point(259, 226)
+        BtnSave.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnSave.Location = New Point(297, 106)
         BtnSave.Name = "BtnSave"
-        BtnSave.Size = New Size(67, 25)
-        BtnSave.TabIndex = 46
-        BtnSave.Text = "保存"
+        BtnSave.Size = New Size(57, 25)
+        BtnSave.TabIndex = 66
+        BtnSave.Text = "<Save>"
         BtnSave.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnSave.UseVisualStyleBackColor = False
         ' 
         ' CkFrame
         ' 
         CkFrame.AutoSize = True
-        CkFrame.Font = New Font("Microsoft YaHei UI", 9F)
-        CkFrame.Location = New Point(115, 122)
+        CkFrame.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkFrame.Location = New Point(291, 137)
         CkFrame.Name = "CkFrame"
-        CkFrame.Size = New Size(51, 21)
-        CkFrame.TabIndex = 33
-        CkFrame.Text = "帧数"
+        CkFrame.Size = New Size(74, 20)
+        CkFrame.TabIndex = 22
+        CkFrame.Text = "<Frame>"
         CkFrame.TextImageRelation = TextImageRelation.ImageBeforeText
         CkFrame.UseVisualStyleBackColor = True
         ' 
         ' CkDuck
         ' 
         CkDuck.AutoSize = True
-        CkDuck.Font = New Font("Microsoft YaHei UI", 9F)
-        CkDuck.Location = New Point(276, 6)
+        CkDuck.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkDuck.Location = New Point(236, 4)
         CkDuck.Name = "CkDuck"
-        CkDuck.Size = New Size(51, 21)
-        CkDuck.TabIndex = 31
-        CkDuck.Text = "下蹲"
+        CkDuck.Size = New Size(80, 20)
+        CkDuck.TabIndex = 4
+        CkDuck.Text = "<Crouch>"
         CkDuck.TextImageRelation = TextImageRelation.ImageBeforeText
         CkDuck.UseVisualStyleBackColor = True
         ' 
@@ -283,12 +285,12 @@ Partial Class Form1
         CkMove.AutoSize = True
         CkMove.Checked = True
         CkMove.CheckState = CheckState.Checked
-        CkMove.Font = New Font("Microsoft YaHei UI", 9F)
-        CkMove.Location = New Point(60, 122)
+        CkMove.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkMove.Location = New Point(291, 120)
         CkMove.Name = "CkMove"
-        CkMove.Size = New Size(51, 21)
-        CkMove.TabIndex = 32
-        CkMove.Text = "指令"
+        CkMove.Size = New Size(66, 20)
+        CkMove.TabIndex = 21
+        CkMove.Text = "<Cmd>"
         CkMove.TextImageRelation = TextImageRelation.ImageBeforeText
         CkMove.UseVisualStyleBackColor = True
         ' 
@@ -296,48 +298,48 @@ Partial Class Form1
         ' 
         BtnCls.BackColor = SystemColors.Control
         BtnCls.FlatStyle = FlatStyle.Flat
-        BtnCls.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnCls.Location = New Point(5, 395)
+        BtnCls.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnCls.Location = New Point(4, 283)
         BtnCls.Name = "BtnCls"
-        BtnCls.Size = New Size(60, 30)
-        BtnCls.TabIndex = 30
-        BtnCls.Text = "清屏"
+        BtnCls.Size = New Size(51, 23)
+        BtnCls.TabIndex = 45
+        BtnCls.Text = "<Clear>"
         BtnCls.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnCls.UseVisualStyleBackColor = False
         ' 
         ' CkLoc
         ' 
         CkLoc.AutoSize = True
-        CkLoc.Font = New Font("Microsoft YaHei UI", 9F)
-        CkLoc.Location = New Point(5, 122)
+        CkLoc.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkLoc.Location = New Point(291, 104)
         CkLoc.Name = "CkLoc"
-        CkLoc.Size = New Size(51, 21)
-        CkLoc.TabIndex = 31
-        CkLoc.Text = "坐标"
+        CkLoc.Size = New Size(74, 20)
+        CkLoc.TabIndex = 20
+        CkLoc.Text = "<Coord>"
         CkLoc.TextImageRelation = TextImageRelation.ImageBeforeText
         CkLoc.UseVisualStyleBackColor = True
         ' 
-        ' Button6
+        ' BUTTON_Operate
         ' 
-        Button6.BackColor = Color.White
-        Button6.Enabled = False
-        Button6.FlatStyle = FlatStyle.Flat
-        Button6.Font = New Font("Microsoft Sans Serif", 9F)
-        Button6.Location = New Point(280, 85)
-        Button6.Name = "Button6"
-        Button6.Size = New Size(50, 25)
-        Button6.TabIndex = 29
-        Button6.Text = "操作"
-        Button6.UseVisualStyleBackColor = False
+        BUTTON_Operate.BackColor = Color.White
+        BUTTON_Operate.Enabled = False
+        BUTTON_Operate.FlatStyle = FlatStyle.Flat
+        BUTTON_Operate.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BUTTON_Operate.Location = New Point(310, 45)
+        BUTTON_Operate.Name = "BUTTON_Operate"
+        BUTTON_Operate.Size = New Size(43, 19)
+        BUTTON_Operate.TabIndex = 83
+        BUTTON_Operate.Text = "<Operate>"
+        BUTTON_Operate.UseVisualStyleBackColor = False
         ' 
         ' TR4
         ' 
         TR4.BorderStyle = BorderStyle.FixedSingle
-        TR4.Font = New Font("Microsoft YaHei UI", 9F)
-        TR4.Location = New Point(115, 496)
+        TR4.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TR4.Location = New Point(99, 364)
         TR4.Name = "TR4"
-        TR4.Size = New Size(50, 23)
-        TR4.TabIndex = 44
+        TR4.Size = New Size(43, 21)
+        TR4.TabIndex = 58
         TR4.Text = "10"
         TR4.TextAlign = HorizontalAlignment.Center
         ' 
@@ -345,23 +347,23 @@ Partial Class Form1
         ' 
         BtnSrc.BackColor = SystemColors.Control
         BtnSrc.FlatStyle = FlatStyle.Flat
-        BtnSrc.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnSrc.Location = New Point(5, 335)
+        BtnSrc.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnSrc.Location = New Point(4, 238)
         BtnSrc.Name = "BtnSrc"
-        BtnSrc.Size = New Size(60, 55)
-        BtnSrc.TabIndex = 28
-        BtnSrc.Text = "搜索"
+        BtnSrc.Size = New Size(126, 23)
+        BtnSrc.TabIndex = 34
+        BtnSrc.Text = "<Search>"
         BtnSrc.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnSrc.UseVisualStyleBackColor = False
         ' 
         ' TR3
         ' 
         TR3.BorderStyle = BorderStyle.FixedSingle
-        TR3.Font = New Font("Microsoft YaHei UI", 9F)
-        TR3.Location = New Point(60, 496)
+        TR3.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TR3.Location = New Point(51, 364)
         TR3.Name = "TR3"
-        TR3.Size = New Size(50, 23)
-        TR3.TabIndex = 43
+        TR3.Size = New Size(43, 21)
+        TR3.TabIndex = 57
         TR3.Text = "0.1"
         TR3.TextAlign = HorizontalAlignment.Center
         ' 
@@ -370,47 +372,47 @@ Partial Class Form1
         BtnCal.BackColor = SystemColors.Control
         BtnCal.BackgroundImageLayout = ImageLayout.Zoom
         BtnCal.FlatStyle = FlatStyle.Flat
-        BtnCal.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnCal.Location = New Point(5, 300)
+        BtnCal.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnCal.Location = New Point(4, 211)
         BtnCal.Name = "BtnCal"
-        BtnCal.Size = New Size(60, 30)
-        BtnCal.TabIndex = 27
-        BtnCal.Text = "计算"
+        BtnCal.Size = New Size(126, 23)
+        BtnCal.TabIndex = 26
+        BtnCal.Text = "<Calculate>"
         BtnCal.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnCal.UseVisualStyleBackColor = False
         ' 
         ' TR2
         ' 
         TR2.BorderStyle = BorderStyle.FixedSingle
-        TR2.Font = New Font("Microsoft YaHei UI", 9F)
-        TR2.Location = New Point(5, 496)
+        TR2.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TR2.Location = New Point(4, 364)
         TR2.Name = "TR2"
-        TR2.Size = New Size(50, 23)
-        TR2.TabIndex = 42
+        TR2.Size = New Size(43, 21)
+        TR2.TabIndex = 56
         TR2.Text = "0"
         TR2.TextAlign = HorizontalAlignment.Center
         ' 
         ' T1
         ' 
         T1.BorderStyle = BorderStyle.FixedSingle
-        T1.Font = New Font("Microsoft YaHei UI", 9F)
-        T1.Location = New Point(5, 105)
+        T1.Font = New Font("Microsoft YaHei UI", 8.25F)
+        T1.Location = New Point(4, 53)
         T1.Multiline = True
         T1.Name = "T1"
         T1.ScrollBars = ScrollBars.Vertical
-        T1.Size = New Size(324, 114)
-        T1.TabIndex = 41
+        T1.Size = New Size(350, 35)
+        T1.TabIndex = 63
         T1.Text = "1" & vbCrLf & "2" & vbCrLf & "3" & vbCrLf & "4" & vbCrLf & "5" & vbCrLf & "6"
         ' 
         ' T2
         ' 
         T2.BorderStyle = BorderStyle.FixedSingle
-        T2.Font = New Font("Microsoft YaHei UI", 9F)
-        T2.Location = New Point(5, 185)
+        T2.Font = New Font("Microsoft YaHei UI", 8.25F)
+        T2.Location = New Point(4, 125)
         T2.Multiline = True
         T2.Name = "T2"
-        T2.Size = New Size(325, 60)
-        T2.TabIndex = 27
+        T2.Size = New Size(279, 46)
+        T2.TabIndex = 18
         T2.TabStop = False
         ' 
         ' TSP
@@ -419,22 +421,22 @@ Partial Class Form1
         TSP.BackColor = Color.White
         TSP.Checked = True
         TSP.CheckState = CheckState.Checked
-        TSP.Font = New Font("Microsoft YaHei UI", 9F)
-        TSP.Location = New Point(216, 370)
+        TSP.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TSP.Location = New Point(129, 264)
         TSP.Name = "TSP"
-        TSP.Size = New Size(51, 21)
-        TSP.TabIndex = 30
-        TSP.Text = "判定"
+        TSP.Size = New Size(78, 20)
+        TSP.TabIndex = 43
+        TSP.Text = "<Hitbox>"
         TSP.UseVisualStyleBackColor = False
         ' 
         ' TD
         ' 
         TD.BorderStyle = BorderStyle.FixedSingle
-        TD.Font = New Font("Microsoft YaHei UI", 9F)
-        TD.Location = New Point(276, 64)
+        TD.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TD.Location = New Point(237, 49)
         TD.Name = "TD"
-        TD.Size = New Size(50, 23)
-        TD.TabIndex = 36
+        TD.Size = New Size(43, 21)
+        TD.TabIndex = 12
         TD.Text = "0"
         TD.TextAlign = HorizontalAlignment.Center
         ' 
@@ -442,49 +444,49 @@ Partial Class Form1
         ' 
         TS4.AutoSize = True
         TS4.BackColor = Color.White
-        TS4.Font = New Font("Microsoft YaHei UI", 9F)
-        TS4.Location = New Point(141, 370)
+        TS4.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TS4.Location = New Point(65, 264)
         TS4.Name = "TS4"
-        TS4.Size = New Size(40, 21)
-        TS4.TabIndex = 29
+        TS4.Size = New Size(38, 20)
+        TS4.TabIndex = 41
         TS4.Text = "Sx"
         TS4.UseVisualStyleBackColor = False
         ' 
-        ' CBJumpAcc
+        ' COMBOBOX_JumpAcc
         ' 
-        CBJumpAcc.BackColor = SystemColors.Control
-        CBJumpAcc.DropDownStyle = ComboBoxStyle.DropDownList
-        CBJumpAcc.Enabled = False
-        CBJumpAcc.FlatStyle = FlatStyle.Flat
-        CBJumpAcc.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        CBJumpAcc.FormattingEnabled = True
-        CBJumpAcc.Items.AddRange(New Object() {"3.868", "3.808", "3.748", "3.568", "3.588", "3.528", "3.468", "3.288"})
-        CBJumpAcc.Location = New Point(264, 116)
-        CBJumpAcc.Name = "CBJumpAcc"
-        CBJumpAcc.Size = New Size(67, 26)
-        CBJumpAcc.TabIndex = 27
-        CBJumpAcc.Visible = False
+        COMBOBOX_JumpAcc.BackColor = SystemColors.Control
+        COMBOBOX_JumpAcc.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_JumpAcc.Enabled = False
+        COMBOBOX_JumpAcc.FlatStyle = FlatStyle.Flat
+        COMBOBOX_JumpAcc.Font = New Font("Microsoft Sans Serif", 8.25F)
+        COMBOBOX_JumpAcc.FormattingEnabled = True
+        COMBOBOX_JumpAcc.Items.AddRange(New Object() {"3.868", "3.808", "3.748", "3.568", "3.588", "3.528", "3.468", "3.288"})
+        COMBOBOX_JumpAcc.Location = New Point(257, 68)
+        COMBOBOX_JumpAcc.Name = "COMBOBOX_JumpAcc"
+        COMBOBOX_JumpAcc.Size = New Size(97, 21)
+        COMBOBOX_JumpAcc.TabIndex = 86
+        COMBOBOX_JumpAcc.Visible = False
         ' 
         ' TY4
         ' 
         TY4.AutoSize = True
         TY4.BackColor = Color.White
-        TY4.Font = New Font("Microsoft YaHei UI", 9F)
-        TY4.Location = New Point(106, 370)
+        TY4.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TY4.Location = New Point(35, 264)
         TY4.Name = "TY4"
-        TY4.Size = New Size(34, 21)
-        TY4.TabIndex = 28
+        TY4.Size = New Size(33, 20)
+        TY4.TabIndex = 40
         TY4.Text = "Y"
         TY4.UseVisualStyleBackColor = False
         ' 
         ' TS3
         ' 
         TS3.BorderStyle = BorderStyle.FixedSingle
-        TS3.Font = New Font("Microsoft YaHei UI", 9F)
-        TS3.Location = New Point(201, 64)
+        TS3.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TS3.Location = New Point(172, 49)
         TS3.Name = "TS3"
-        TS3.Size = New Size(50, 23)
-        TS3.TabIndex = 35
+        TS3.Size = New Size(43, 21)
+        TS3.TabIndex = 11
         TS3.Text = "0.001"
         TS3.TextAlign = HorizontalAlignment.Center
         ' 
@@ -492,45 +494,45 @@ Partial Class Form1
         ' 
         TX4.AutoSize = True
         TX4.BackColor = Color.White
-        TX4.Font = New Font("Microsoft YaHei UI", 9F)
-        TX4.Location = New Point(71, 370)
+        TX4.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TX4.Location = New Point(5, 264)
         TX4.Name = "TX4"
-        TX4.Size = New Size(35, 21)
-        TX4.TabIndex = 27
+        TX4.Size = New Size(33, 20)
+        TX4.TabIndex = 39
         TX4.Text = "X"
         TX4.UseVisualStyleBackColor = False
         ' 
-        ' Label6
+        ' LABEL_Hover
         ' 
-        Label6.AutoSize = True
-        Label6.Enabled = False
-        Label6.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        Label6.Location = New Point(117, 119)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(32, 18)
-        Label6.TabIndex = 40
-        Label6.Text = "滞空"
-        Label6.Visible = False
+        LABEL_Hover.AutoSize = True
+        LABEL_Hover.Enabled = False
+        LABEL_Hover.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_Hover.Location = New Point(131, 71)
+        LABEL_Hover.Name = "LABEL_Hover"
+        LABEL_Hover.Size = New Size(48, 13)
+        LABEL_Hover.TabIndex = 40
+        LABEL_Hover.Text = "<Hover>"
+        LABEL_Hover.Visible = False
         ' 
         ' TS2
         ' 
         TS2.BorderStyle = BorderStyle.FixedSingle
-        TS2.Font = New Font("Microsoft YaHei UI", 9F)
-        TS2.Location = New Point(113, 64)
+        TS2.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TS2.Location = New Point(97, 49)
         TS2.Name = "TS2"
-        TS2.Size = New Size(50, 23)
-        TS2.TabIndex = 34
+        TS2.Size = New Size(43, 21)
+        TS2.TabIndex = 10
         TS2.Text = "0"
         TS2.TextAlign = HorizontalAlignment.Center
         ' 
         ' TS1
         ' 
         TS1.BorderStyle = BorderStyle.FixedSingle
-        TS1.Font = New Font("Microsoft YaHei UI", 9F)
-        TS1.Location = New Point(31, 64)
+        TS1.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TS1.Location = New Point(27, 49)
         TS1.Name = "TS1"
-        TS1.Size = New Size(50, 23)
-        TS1.TabIndex = 33
+        TS1.Size = New Size(43, 21)
+        TS1.TabIndex = 9
         TS1.Text = "0"
         TS1.TextAlign = HorizontalAlignment.Center
         ' 
@@ -538,11 +540,11 @@ Partial Class Form1
         ' 
         TxtAir.BorderStyle = BorderStyle.FixedSingle
         TxtAir.Enabled = False
-        TxtAir.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        TxtAir.Location = New Point(153, 116)
+        TxtAir.Font = New Font("Microsoft Sans Serif", 8.25F)
+        TxtAir.Location = New Point(162, 68)
         TxtAir.Name = "TxtAir"
-        TxtAir.Size = New Size(104, 25)
-        TxtAir.TabIndex = 39
+        TxtAir.Size = New Size(89, 20)
+        TxtAir.TabIndex = 85
         TxtAir.Text = "0.00-0.00"
         TxtAir.TextAlign = HorizontalAlignment.Center
         TxtAir.Visible = False
@@ -550,52 +552,52 @@ Partial Class Form1
         ' TY3
         ' 
         TY3.BorderStyle = BorderStyle.FixedSingle
-        TY3.Font = New Font("Microsoft YaHei UI", 9F)
-        TY3.Location = New Point(201, 34)
+        TY3.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TY3.Location = New Point(172, 26)
         TY3.Name = "TY3"
-        TY3.Size = New Size(50, 23)
-        TY3.TabIndex = 32
+        TY3.Size = New Size(43, 21)
+        TY3.TabIndex = 7
         TY3.Text = "0.001"
         TY3.TextAlign = HorizontalAlignment.Center
         ' 
         ' TxtStrat
         ' 
         TxtStrat.BorderStyle = BorderStyle.FixedSingle
-        TxtStrat.Font = New Font("Microsoft YaHei UI", 9F)
-        TxtStrat.Location = New Point(132, 226)
+        TxtStrat.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TxtStrat.Location = New Point(172, 106)
         TxtStrat.Name = "TxtStrat"
-        TxtStrat.Size = New Size(121, 23)
-        TxtStrat.TabIndex = 27
+        TxtStrat.Size = New Size(120, 21)
+        TxtStrat.TabIndex = 65
         ' 
         ' TY2
         ' 
         TY2.BorderStyle = BorderStyle.FixedSingle
-        TY2.Font = New Font("Microsoft YaHei UI", 9F)
-        TY2.Location = New Point(113, 34)
+        TY2.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TY2.Location = New Point(97, 26)
         TY2.Name = "TY2"
-        TY2.Size = New Size(50, 23)
-        TY2.TabIndex = 31
+        TY2.Size = New Size(43, 21)
+        TY2.TabIndex = 6
         TY2.Text = "0"
         TY2.TextAlign = HorizontalAlignment.Center
         ' 
-        ' Label5
+        ' LABEL_StrideLength
         ' 
-        Label5.AutoSize = True
-        Label5.Font = New Font("Microsoft YaHei UI", 9F)
-        Label5.Location = New Point(136, 401)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(32, 17)
-        Label5.TabIndex = 38
-        Label5.Text = "步幅"
+        LABEL_StrideLength.AutoSize = True
+        LABEL_StrideLength.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_StrideLength.Location = New Point(117, 288)
+        LABEL_StrideLength.Name = "LABEL_StrideLength"
+        LABEL_StrideLength.Size = New Size(46, 16)
+        LABEL_StrideLength.TabIndex = 38
+        LABEL_StrideLength.Text = "<Step>"
         ' 
         ' TxtStep
         ' 
         TxtStep.BorderStyle = BorderStyle.FixedSingle
-        TxtStep.Font = New Font("Microsoft YaHei UI", 9F)
-        TxtStep.Location = New Point(170, 399)
+        TxtStep.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TxtStep.Location = New Point(146, 286)
         TxtStep.Name = "TxtStep"
-        TxtStep.Size = New Size(52, 23)
-        TxtStep.TabIndex = 27
+        TxtStep.Size = New Size(45, 21)
+        TxtStep.TabIndex = 47
         TxtStep.Text = "0.00"
         TxtStep.TextAlign = HorizontalAlignment.Center
         ' 
@@ -603,11 +605,11 @@ Partial Class Form1
         ' 
         TX3.BackColor = SystemColors.Window
         TX3.BorderStyle = BorderStyle.FixedSingle
-        TX3.Font = New Font("Microsoft YaHei UI", 9F)
-        TX3.Location = New Point(201, 4)
+        TX3.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TX3.Location = New Point(172, 3)
         TX3.Name = "TX3"
-        TX3.Size = New Size(50, 23)
-        TX3.TabIndex = 29
+        TX3.Size = New Size(43, 21)
+        TX3.TabIndex = 3
         TX3.Text = "0.001"
         TX3.TextAlign = HorizontalAlignment.Center
         ' 
@@ -615,57 +617,57 @@ Partial Class Form1
         ' 
         TX2.BackColor = SystemColors.Window
         TX2.BorderStyle = BorderStyle.FixedSingle
-        TX2.Font = New Font("Microsoft YaHei UI", 9F)
-        TX2.Location = New Point(113, 4)
+        TX2.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TX2.Location = New Point(97, 3)
         TX2.Name = "TX2"
-        TX2.Size = New Size(50, 23)
-        TX2.TabIndex = 28
+        TX2.Size = New Size(43, 21)
+        TX2.TabIndex = 2
         TX2.Text = "0"
         TX2.TextAlign = HorizontalAlignment.Center
         ' 
         ' LblState
         ' 
         LblState.AutoSize = True
-        LblState.Font = New Font("Microsoft YaHei UI", 9F)
-        LblState.Location = New Point(5, 5)
+        LblState.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LblState.Location = New Point(4, 3)
         LblState.Name = "LblState"
-        LblState.Size = New Size(54, 17)
+        LblState.Size = New Size(65, 16)
         LblState.TabIndex = 35
-        LblState.Text = "LblState"
+        LblState.Text = "<LblState>"
         ' 
         ' TX1
         ' 
         TX1.BackColor = SystemColors.Window
         TX1.BorderStyle = BorderStyle.FixedSingle
-        TX1.Font = New Font("Microsoft YaHei UI", 9F)
-        TX1.Location = New Point(31, 4)
+        TX1.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TX1.Location = New Point(27, 3)
         TX1.Name = "TX1"
-        TX1.Size = New Size(50, 23)
-        TX1.TabIndex = 27
+        TX1.Size = New Size(43, 21)
+        TX1.TabIndex = 1
         TX1.Text = "0"
         TX1.TextAlign = HorizontalAlignment.Center
         ' 
-        ' CBStrat
+        ' COMBOBOX_Strat
         ' 
-        CBStrat.BackColor = SystemColors.Control
-        CBStrat.DropDownStyle = ComboBoxStyle.DropDownList
-        CBStrat.FlatStyle = FlatStyle.Flat
-        CBStrat.Font = New Font("Microsoft YaHei UI", 9F)
-        CBStrat.FormattingEnabled = True
-        CBStrat.Location = New Point(3, 225)
-        CBStrat.Name = "CBStrat"
-        CBStrat.Size = New Size(124, 25)
-        CBStrat.TabIndex = 22
+        COMBOBOX_Strat.BackColor = SystemColors.Control
+        COMBOBOX_Strat.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_Strat.FlatStyle = FlatStyle.Flat
+        COMBOBOX_Strat.Font = New Font("Microsoft YaHei UI", 8.25F)
+        COMBOBOX_Strat.FormattingEnabled = True
+        COMBOBOX_Strat.Location = New Point(4, 106)
+        COMBOBOX_Strat.Name = "COMBOBOX_Strat"
+        COMBOBOX_Strat.Size = New Size(150, 24)
+        COMBOBOX_Strat.TabIndex = 64
         ' 
         ' LblCal
         ' 
         LblCal.AutoSize = True
-        LblCal.Font = New Font("Microsoft YaHei UI", 9F)
-        LblCal.Location = New Point(5, 524)
+        LblCal.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LblCal.Location = New Point(4, 391)
         LblCal.Name = "LblCal"
-        LblCal.Size = New Size(43, 17)
+        LblCal.Size = New Size(55, 16)
         LblCal.TabIndex = 34
-        LblCal.Text = "LblCal"
+        LblCal.Text = "<LblCal>"
         ' 
         ' MaterialCheckbox1
         ' 
@@ -732,174 +734,169 @@ Partial Class Form1
         ' TFPS
         ' 
         TFPS.BorderStyle = BorderStyle.FixedSingle
-        TFPS.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        TFPS.Location = New Point(5, 55)
+        TFPS.Font = New Font("Microsoft Sans Serif", 8.25F)
+        TFPS.Location = New Point(87, 22)
         TFPS.Name = "TFPS"
-        TFPS.Size = New Size(50, 25)
-        TFPS.TabIndex = 51
+        TFPS.Size = New Size(43, 20)
+        TFPS.TabIndex = 73
         TFPS.Text = "60"
         TFPS.TextAlign = HorizontalAlignment.Center
         ' 
-        ' Label8
+        ' LABEL_FPS
         ' 
-        Label8.AutoSize = True
-        Label8.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        Label8.Location = New Point(5, 35)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(29, 18)
-        Label8.TabIndex = 52
-        Label8.Text = "FPS"
+        LABEL_FPS.AutoSize = True
+        LABEL_FPS.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_FPS.Location = New Point(87, 7)
+        LABEL_FPS.Name = "LABEL_FPS"
+        LABEL_FPS.Size = New Size(27, 13)
+        LABEL_FPS.TabIndex = 52
+        LABEL_FPS.Text = "FPS"
         ' 
         ' TxtFormLoc
         ' 
         TxtFormLoc.BorderStyle = BorderStyle.FixedSingle
-        TxtFormLoc.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        TxtFormLoc.Location = New Point(60, 55)
+        TxtFormLoc.Font = New Font("Microsoft Sans Serif", 8.25F)
+        TxtFormLoc.Location = New Point(130, 22)
         TxtFormLoc.Name = "TxtFormLoc"
-        TxtFormLoc.Size = New Size(50, 25)
-        TxtFormLoc.TabIndex = 53
+        TxtFormLoc.Size = New Size(43, 20)
+        TxtFormLoc.TabIndex = 74
         TxtFormLoc.Text = "0"
         TxtFormLoc.TextAlign = HorizontalAlignment.Center
         ' 
-        ' Label9
+        ' LABEL_Position
         ' 
-        Label9.AutoSize = True
-        Label9.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        Label9.Location = New Point(60, 35)
-        Label9.Name = "Label9"
-        Label9.Size = New Size(32, 18)
-        Label9.TabIndex = 54
-        Label9.Text = "位置"
+        LABEL_Position.AutoSize = True
+        LABEL_Position.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_Position.Location = New Point(130, 7)
+        LABEL_Position.Name = "LABEL_Position"
+        LABEL_Position.Size = New Size(56, 13)
+        LABEL_Position.TabIndex = 54
+        LABEL_Position.Text = "<Position>"
         ' 
         ' TxtOpc
         ' 
         TxtOpc.BorderStyle = BorderStyle.FixedSingle
-        TxtOpc.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        TxtOpc.Location = New Point(115, 55)
+        TxtOpc.Font = New Font("Microsoft Sans Serif", 8.25F)
+        TxtOpc.Location = New Point(173, 22)
         TxtOpc.Name = "TxtOpc"
-        TxtOpc.Size = New Size(50, 25)
-        TxtOpc.TabIndex = 55
+        TxtOpc.Size = New Size(43, 20)
+        TxtOpc.TabIndex = 75
         TxtOpc.Text = "30"
         TxtOpc.TextAlign = HorizontalAlignment.Center
         ' 
-        ' Label10
+        ' LABEL_Transparency
         ' 
-        Label10.AutoSize = True
-        Label10.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        Label10.Location = New Point(115, 35)
-        Label10.Name = "Label10"
-        Label10.Size = New Size(44, 18)
-        Label10.TabIndex = 56
-        Label10.Text = "透明度"
+        LABEL_Transparency.AutoSize = True
+        LABEL_Transparency.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_Transparency.Location = New Point(173, 7)
+        LABEL_Transparency.Name = "LABEL_Transparency"
+        LABEL_Transparency.Size = New Size(84, 13)
+        LABEL_Transparency.TabIndex = 56
+        LABEL_Transparency.Text = "<Transparency>"
         ' 
         ' TDL
         ' 
         TDL.BorderStyle = BorderStyle.FixedSingle
-        TDL.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        TDL.Location = New Point(170, 55)
+        TDL.Font = New Font("Microsoft Sans Serif", 8.25F)
+        TDL.Location = New Point(216, 22)
         TDL.Name = "TDL"
-        TDL.Size = New Size(50, 25)
-        TDL.TabIndex = 57
+        TDL.Size = New Size(43, 20)
+        TDL.TabIndex = 76
         TDL.Text = "100"
         TDL.TextAlign = HorizontalAlignment.Center
         ' 
-        ' Label11
+        ' LABEL_FrameDelay
         ' 
-        Label11.AutoSize = True
-        Label11.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        Label11.Location = New Point(170, 35)
-        Label11.Name = "Label11"
-        Label11.Size = New Size(44, 18)
-        Label11.TabIndex = 58
-        Label11.Text = "帧延迟"
+        LABEL_FrameDelay.AutoSize = True
+        LABEL_FrameDelay.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_FrameDelay.Location = New Point(216, 7)
+        LABEL_FrameDelay.Name = "LABEL_FrameDelay"
+        LABEL_FrameDelay.Size = New Size(75, 13)
+        LABEL_FrameDelay.TabIndex = 58
+        LABEL_FrameDelay.Text = "<FrameDelay>"
         ' 
-        ' ComboBox3
+        ' COMBOBOX_Theme
         ' 
-        ComboBox3.BackColor = SystemColors.Control
-        ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox3.FlatStyle = FlatStyle.Flat
-        ComboBox3.Font = New Font("Microsoft YaHei UI", 9F)
-        ComboBox3.FormattingEnabled = True
-        ComboBox3.Items.AddRange(New Object() {"M1", "M3", "MW"})
-        ComboBox3.Location = New Point(5, 5)
-        ComboBox3.Name = "ComboBox3"
-        ComboBox3.Size = New Size(50, 25)
-        ComboBox3.TabIndex = 59
+        COMBOBOX_Theme.BackColor = SystemColors.Control
+        COMBOBOX_Theme.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_Theme.FlatStyle = FlatStyle.Flat
+        COMBOBOX_Theme.Font = New Font("Microsoft Sans Serif", 8.25F)
+        COMBOBOX_Theme.FormattingEnabled = True
+        COMBOBOX_Theme.Location = New Point(4, 3)
+        COMBOBOX_Theme.Name = "COMBOBOX_Theme"
+        COMBOBOX_Theme.Size = New Size(77, 21)
+        COMBOBOX_Theme.TabIndex = 67
         ' 
-        ' ComboBox4
+        ' COMBOBOX_Style
         ' 
-        ComboBox4.BackColor = SystemColors.Control
-        ComboBox4.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox4.FlatStyle = FlatStyle.Flat
-        ComboBox4.Font = New Font("Microsoft YaHei UI", 9F)
-        ComboBox4.FormattingEnabled = True
-        ComboBox4.Items.AddRange(New Object() {"Plain", "Underground", "Castle", "Airship", "Water", "Hauntedhouse", "Snow", "Desert", "Athletic", "Woods"})
-        ComboBox4.Location = New Point(60, 5)
-        ComboBox4.Name = "ComboBox4"
-        ComboBox4.Size = New Size(50, 25)
-        ComboBox4.TabIndex = 60
+        COMBOBOX_Style.BackColor = SystemColors.Control
+        COMBOBOX_Style.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_Style.FlatStyle = FlatStyle.Flat
+        COMBOBOX_Style.Font = New Font("Microsoft Sans Serif", 8.25F)
+        COMBOBOX_Style.FormattingEnabled = True
+        COMBOBOX_Style.Location = New Point(4, 25)
+        COMBOBOX_Style.Name = "COMBOBOX_Style"
+        COMBOBOX_Style.Size = New Size(76, 21)
+        COMBOBOX_Style.TabIndex = 68
         ' 
-        ' ComboBox5
+        ' COMBOBOX_SemiSolid
         ' 
-        ComboBox5.BackColor = SystemColors.Control
-        ComboBox5.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox5.FlatStyle = FlatStyle.Flat
-        ComboBox5.Font = New Font("Microsoft YaHei UI", 9F)
-        ComboBox5.FormattingEnabled = True
-        ComboBox5.Items.AddRange(New Object() {"平台1", "平台2", "平台3", "蘑菇平台", "无"})
-        ComboBox5.Location = New Point(115, 5)
-        ComboBox5.Name = "ComboBox5"
-        ComboBox5.Size = New Size(50, 25)
-        ComboBox5.TabIndex = 61
+        COMBOBOX_SemiSolid.BackColor = SystemColors.Control
+        COMBOBOX_SemiSolid.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_SemiSolid.FlatStyle = FlatStyle.Flat
+        COMBOBOX_SemiSolid.Font = New Font("Microsoft Sans Serif", 8.25F)
+        COMBOBOX_SemiSolid.FormattingEnabled = True
+        COMBOBOX_SemiSolid.Location = New Point(4, 47)
+        COMBOBOX_SemiSolid.Name = "COMBOBOX_SemiSolid"
+        COMBOBOX_SemiSolid.Size = New Size(76, 21)
+        COMBOBOX_SemiSolid.TabIndex = 69
         ' 
-        ' ComboBox1
+        ' COMBOBOX_Character
         ' 
-        ComboBox1.BackColor = SystemColors.Control
-        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox1.FlatStyle = FlatStyle.Flat
-        ComboBox1.Font = New Font("Microsoft YaHei UI", 9F)
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Items.AddRange(New Object() {"MarioMdl", "MarioMdl_2", "MarioMdl_3", "MarioMdl_4"})
-        ComboBox1.Location = New Point(170, 5)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(50, 25)
-        ComboBox1.TabIndex = 62
+        COMBOBOX_Character.BackColor = SystemColors.Control
+        COMBOBOX_Character.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_Character.FlatStyle = FlatStyle.Flat
+        COMBOBOX_Character.Font = New Font("Microsoft Sans Serif", 8.25F)
+        COMBOBOX_Character.FormattingEnabled = True
+        COMBOBOX_Character.Location = New Point(4, 69)
+        COMBOBOX_Character.Name = "COMBOBOX_Character"
+        COMBOBOX_Character.Size = New Size(76, 21)
+        COMBOBOX_Character.TabIndex = 70
         ' 
-        ' ComboBox6
+        ' COMBOBOX_Ground
         ' 
-        ComboBox6.BackColor = SystemColors.Control
-        ComboBox6.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox6.FlatStyle = FlatStyle.Flat
-        ComboBox6.Font = New Font("Microsoft YaHei UI", 9F)
-        ComboBox6.FormattingEnabled = True
-        ComboBox6.Items.AddRange(New Object() {"地面", "硬砖", "云", "软砖", "问号砖", "蘑菇平台", "平台1", "平台2", "平台3", "冰块", "开关砖", "城堡桥", "桥", "竖向管道", "横向管道"})
-        ComboBox6.Location = New Point(225, 5)
-        ComboBox6.Name = "ComboBox6"
-        ComboBox6.Size = New Size(50, 25)
-        ComboBox6.TabIndex = 63
+        COMBOBOX_Ground.BackColor = SystemColors.Control
+        COMBOBOX_Ground.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_Ground.FlatStyle = FlatStyle.Flat
+        COMBOBOX_Ground.Font = New Font("Microsoft Sans Serif", 8.25F)
+        COMBOBOX_Ground.FormattingEnabled = True
+        COMBOBOX_Ground.Location = New Point(4, 91)
+        COMBOBOX_Ground.Name = "COMBOBOX_Ground"
+        COMBOBOX_Ground.Size = New Size(76, 21)
+        COMBOBOX_Ground.TabIndex = 71
         ' 
-        ' CheckBox7
+        ' CHECK_Night
         ' 
-        CheckBox7.AutoSize = True
-        CheckBox7.Font = New Font("Microsoft YaHei UI", 9F)
-        CheckBox7.Location = New Point(281, 7)
-        CheckBox7.Name = "CheckBox7"
-        CheckBox7.Size = New Size(51, 21)
-        CheckBox7.TabIndex = 64
-        CheckBox7.Text = "夜晚"
-        CheckBox7.UseVisualStyleBackColor = True
+        CHECK_Night.AutoSize = True
+        CHECK_Night.Font = New Font("Microsoft Sans Serif", 8.25F)
+        CHECK_Night.Location = New Point(4, 111)
+        CHECK_Night.Name = "CHECK_Night"
+        CHECK_Night.Size = New Size(63, 17)
+        CHECK_Night.TabIndex = 72
+        CHECK_Night.Text = "<Night>"
+        CHECK_Night.UseVisualStyleBackColor = True
         ' 
         ' BtnEmu
         ' 
         BtnEmu.BackColor = Color.White
         BtnEmu.Enabled = False
         BtnEmu.FlatStyle = FlatStyle.Flat
-        BtnEmu.Font = New Font("Microsoft Sans Serif", 9F)
-        BtnEmu.Location = New Point(5, 85)
+        BtnEmu.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BtnEmu.Location = New Point(87, 45)
         BtnEmu.Name = "BtnEmu"
-        BtnEmu.Size = New Size(50, 25)
-        BtnEmu.TabIndex = 66
-        BtnEmu.Text = "模拟"
+        BtnEmu.Size = New Size(43, 25)
+        BtnEmu.TabIndex = 79
+        BtnEmu.Text = "<BtnEmu>"
         BtnEmu.UseVisualStyleBackColor = False
         ' 
         ' BtnScr
@@ -907,12 +904,12 @@ Partial Class Form1
         BtnScr.BackColor = Color.White
         BtnScr.Enabled = False
         BtnScr.FlatStyle = FlatStyle.Flat
-        BtnScr.Font = New Font("Microsoft Sans Serif", 9F)
-        BtnScr.Location = New Point(60, 85)
+        BtnScr.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BtnScr.Location = New Point(130, 45)
         BtnScr.Name = "BtnScr"
-        BtnScr.Size = New Size(50, 25)
-        BtnScr.TabIndex = 67
-        BtnScr.Text = "投屏A"
+        BtnScr.Size = New Size(43, 25)
+        BtnScr.TabIndex = 80
+        BtnScr.Text = "<BtnScr>"
         BtnScr.UseVisualStyleBackColor = False
         ' 
         ' BtnPlay
@@ -920,23 +917,23 @@ Partial Class Form1
         BtnPlay.BackColor = Color.White
         BtnPlay.Enabled = False
         BtnPlay.FlatStyle = FlatStyle.Flat
-        BtnPlay.Font = New Font("Microsoft Sans Serif", 9F)
-        BtnPlay.Location = New Point(115, 85)
+        BtnPlay.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BtnPlay.Location = New Point(173, 45)
         BtnPlay.Name = "BtnPlay"
-        BtnPlay.Size = New Size(50, 25)
-        BtnPlay.TabIndex = 68
-        BtnPlay.Text = "播放"
+        BtnPlay.Size = New Size(43, 25)
+        BtnPlay.TabIndex = 81
+        BtnPlay.Text = "<BtnPlay>"
         BtnPlay.UseVisualStyleBackColor = False
         ' 
         ' BtnGif
         ' 
         BtnGif.BackColor = Color.White
         BtnGif.FlatStyle = FlatStyle.Flat
-        BtnGif.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnGif.Location = New Point(245, 337)
+        BtnGif.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnGif.Location = New Point(281, 238)
         BtnGif.Name = "BtnGif"
-        BtnGif.Size = New Size(40, 25)
-        BtnGif.TabIndex = 69
+        BtnGif.Size = New Size(34, 25)
+        BtnGif.TabIndex = 37
         BtnGif.Text = "GIF"
         BtnGif.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnGif.UseVisualStyleBackColor = False
@@ -946,12 +943,12 @@ Partial Class Form1
         BtnMont.BackColor = SystemColors.Control
         BtnMont.Enabled = False
         BtnMont.FlatStyle = FlatStyle.Flat
-        BtnMont.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        BtnMont.Location = New Point(225, 49)
+        BtnMont.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BtnMont.Location = New Point(263, 17)
         BtnMont.Name = "BtnMont"
-        BtnMont.Size = New Size(50, 30)
-        BtnMont.TabIndex = 97
-        BtnMont.Text = "深度"
+        BtnMont.Size = New Size(43, 23)
+        BtnMont.TabIndex = 77
+        BtnMont.Text = "<BtnMont>"
         BtnMont.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnMont.UseVisualStyleBackColor = False
         BtnMont.Visible = False
@@ -960,82 +957,82 @@ Partial Class Form1
         ' 
         BtnM01.BackColor = Color.White
         BtnM01.FlatStyle = FlatStyle.Flat
-        BtnM01.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnM01.Location = New Point(210, 300)
+        BtnM01.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnM01.Location = New Point(251, 211)
         BtnM01.Name = "BtnM01"
-        BtnM01.Size = New Size(30, 30)
-        BtnM01.TabIndex = 82
+        BtnM01.Size = New Size(26, 23)
+        BtnM01.TabIndex = 30
         BtnM01.Text = "<"
         BtnM01.UseVisualStyleBackColor = False
         ' 
-        ' Label27
+        ' LABEL_StepLength
         ' 
-        Label27.AutoSize = True
-        Label27.BackColor = Color.White
-        Label27.Font = New Font("Microsoft YaHei UI", 9F)
-        Label27.Location = New Point(158, 341)
-        Label27.Name = "Label27"
-        Label27.Size = New Size(32, 17)
-        Label27.TabIndex = 96
-        Label27.Text = "步长"
+        LABEL_StepLength.AutoSize = True
+        LABEL_StepLength.BackColor = Color.White
+        LABEL_StepLength.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_StepLength.Location = New Point(206, 242)
+        LABEL_StepLength.Name = "LABEL_StepLength"
+        LABEL_StepLength.Size = New Size(46, 16)
+        LABEL_StepLength.TabIndex = 96
+        LABEL_StepLength.Text = "<Step>"
         ' 
         ' BtnM1
         ' 
         BtnM1.BackColor = Color.White
         BtnM1.FlatStyle = FlatStyle.Flat
-        BtnM1.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnM1.Location = New Point(240, 300)
+        BtnM1.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnM1.Location = New Point(277, 211)
         BtnM1.Name = "BtnM1"
-        BtnM1.Size = New Size(30, 30)
-        BtnM1.TabIndex = 83
+        BtnM1.Size = New Size(26, 23)
+        BtnM1.TabIndex = 31
         BtnM1.Text = "←"
         BtnM1.UseVisualStyleBackColor = False
         ' 
-        ' Label26
+        ' LABEL_Dis
         ' 
-        Label26.AutoSize = True
-        Label26.BackColor = Color.White
-        Label26.Font = New Font("Microsoft YaHei UI", 9F)
-        Label26.Location = New Point(71, 341)
-        Label26.Name = "Label26"
-        Label26.Size = New Size(32, 17)
-        Label26.TabIndex = 95
-        Label26.Text = "距离"
+        LABEL_Dis.AutoSize = True
+        LABEL_Dis.BackColor = Color.White
+        LABEL_Dis.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_Dis.Location = New Point(129, 242)
+        LABEL_Dis.Name = "LABEL_Dis"
+        LABEL_Dis.Size = New Size(56, 16)
+        LABEL_Dis.TabIndex = 95
+        LABEL_Dis.Text = "<Range>"
         ' 
-        ' Label1
+        ' LABEL_StartPointY
         ' 
-        Label1.AutoSize = True
-        Label1.BackColor = Color.White
-        Label1.Font = New Font("Microsoft YaHei UI", 9F)
-        Label1.Location = New Point(60, 428)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(39, 17)
-        Label1.TabIndex = 91
-        Label1.Text = "起点Y"
+        LABEL_StartPointY.AutoSize = True
+        LABEL_StartPointY.BackColor = Color.White
+        LABEL_StartPointY.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_StartPointY.Location = New Point(63, 307)
+        LABEL_StartPointY.Name = "LABEL_StartPointY"
+        LABEL_StartPointY.Size = New Size(67, 16)
+        LABEL_StartPointY.TabIndex = 91
+        LABEL_StartPointY.Text = "<GHeight>"
         ' 
         ' BtnP1
         ' 
         BtnP1.BackColor = Color.White
         BtnP1.FlatStyle = FlatStyle.Flat
-        BtnP1.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnP1.Location = New Point(270, 300)
+        BtnP1.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnP1.Location = New Point(302, 211)
         BtnP1.Name = "BtnP1"
-        BtnP1.Size = New Size(30, 30)
-        BtnP1.TabIndex = 84
+        BtnP1.Size = New Size(26, 23)
+        BtnP1.TabIndex = 32
         BtnP1.Text = "→"
         BtnP1.UseVisualStyleBackColor = False
         ' 
         ' TYH
         ' 
         TYH.BackColor = Color.White
-        TYH.Font = New Font("Microsoft YaHei UI", 9F)
+        TYH.Font = New Font("Microsoft YaHei UI", 8.25F)
         TYH.Increment = New Decimal(New Integer() {16, 0, 0, 0})
-        TYH.Location = New Point(60, 448)
+        TYH.Location = New Point(60, 323)
         TYH.Maximum = New Decimal(New Integer() {1600, 0, 0, 0})
         TYH.Name = "TYH"
         TYH.ReadOnly = True
-        TYH.Size = New Size(50, 23)
-        TYH.TabIndex = 89
+        TYH.Size = New Size(50, 21)
+        TYH.TabIndex = 51
         TYH.TextAlign = HorizontalAlignment.Center
         TYH.Value = New Decimal(New Integer() {32, 0, 0, 0})
         ' 
@@ -1043,11 +1040,11 @@ Partial Class Form1
         ' 
         BtnP01.BackColor = Color.White
         BtnP01.FlatStyle = FlatStyle.Flat
-        BtnP01.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnP01.Location = New Point(300, 300)
+        BtnP01.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnP01.Location = New Point(328, 211)
         BtnP01.Name = "BtnP01"
-        BtnP01.Size = New Size(30, 30)
-        BtnP01.TabIndex = 85
+        BtnP01.Size = New Size(26, 23)
+        BtnP01.TabIndex = 33
         BtnP01.Text = ">"
         BtnP01.UseVisualStyleBackColor = False
         ' 
@@ -1055,10 +1052,10 @@ Partial Class Form1
         ' 
         Label14.AutoSize = True
         Label14.BackColor = Color.White
-        Label14.Font = New Font("Microsoft YaHei UI", 9F)
-        Label14.Location = New Point(168, 7)
+        Label14.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label14.Location = New Point(144, 5)
         Label14.Name = "Label14"
-        Label14.Size = New Size(23, 17)
+        Label14.Size = New Size(21, 16)
         Label14.TabIndex = 43
         Label14.Text = "△X"
         ' 
@@ -1066,22 +1063,22 @@ Partial Class Form1
         ' 
         TSPX2.BackColor = Color.White
         TSPX2.BorderStyle = BorderStyle.FixedSingle
-        TSPX2.Font = New Font("Microsoft YaHei UI", 9F)
-        TSPX2.Location = New Point(191, 339)
+        TSPX2.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TSPX2.Location = New Point(235, 240)
         TSPX2.Name = "TSPX2"
-        TSPX2.Size = New Size(50, 23)
-        TSPX2.TabIndex = 77
+        TSPX2.Size = New Size(43, 21)
+        TSPX2.TabIndex = 36
         TSPX2.Text = "0.05"
         TSPX2.TextAlign = HorizontalAlignment.Center
         ' 
         ' TY1
         ' 
         TY1.BorderStyle = BorderStyle.FixedSingle
-        TY1.Font = New Font("Microsoft YaHei UI", 9F)
-        TY1.Location = New Point(31, 34)
+        TY1.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TY1.Location = New Point(27, 26)
         TY1.Name = "TY1"
-        TY1.Size = New Size(50, 23)
-        TY1.TabIndex = 90
+        TY1.Size = New Size(43, 21)
+        TY1.TabIndex = 5
         TY1.Text = "32"
         TY1.TextAlign = HorizontalAlignment.Center
         ' 
@@ -1089,10 +1086,10 @@ Partial Class Form1
         ' 
         Label25.AutoSize = True
         Label25.BackColor = Color.White
-        Label25.Font = New Font("Microsoft YaHei UI", 9F)
-        Label25.Location = New Point(5, 97)
+        Label25.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label25.Location = New Point(4, 75)
         Label25.Name = "Label25"
-        Label25.Size = New Size(25, 17)
+        Label25.Size = New Size(23, 16)
         Label25.TabIndex = 77
         Label25.Text = "Sy₀"
         ' 
@@ -1100,10 +1097,10 @@ Partial Class Form1
         ' 
         Label13.AutoSize = True
         Label13.BackColor = Color.White
-        Label13.Font = New Font("Microsoft YaHei UI", 9F)
-        Label13.Location = New Point(86, 7)
+        Label13.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label13.Location = New Point(74, 5)
         Label13.Name = "Label13"
-        Label13.Size = New Size(20, 17)
+        Label13.Size = New Size(18, 16)
         Label13.TabIndex = 42
         Label13.Text = "X₁"
         ' 
@@ -1111,108 +1108,108 @@ Partial Class Form1
         ' 
         Label12.AutoSize = True
         Label12.BackColor = Color.White
-        Label12.Font = New Font("Microsoft YaHei UI", 9F)
-        Label12.Location = New Point(5, 7)
+        Label12.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label12.Location = New Point(4, 5)
         Label12.Name = "Label12"
-        Label12.Size = New Size(20, 17)
+        Label12.Size = New Size(18, 16)
         Label12.TabIndex = 41
         Label12.Text = "X₀"
         ' 
         ' TSY1
         ' 
         TSY1.BorderStyle = BorderStyle.FixedSingle
-        TSY1.Font = New Font("Microsoft YaHei UI", 9F)
-        TSY1.Location = New Point(31, 94)
+        TSY1.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TSY1.Location = New Point(27, 72)
         TSY1.Name = "TSY1"
-        TSY1.Size = New Size(50, 23)
-        TSY1.TabIndex = 76
+        TSY1.Size = New Size(43, 21)
+        TSY1.TabIndex = 13
         TSY1.Text = "0"
         TSY1.TextAlign = HorizontalAlignment.Center
         ' 
         ' TB
         ' 
         TB.BackColor = Color.White
-        TB.Font = New Font("Microsoft YaHei UI", 9F)
+        TB.Font = New Font("Microsoft YaHei UI", 8.25F)
         TB.Increment = New Decimal(New Integer() {16, 0, 0, 0})
-        TB.Location = New Point(225, 448)
+        TB.Location = New Point(225, 323)
         TB.Maximum = New Decimal(New Integer() {1600, 0, 0, 0})
         TB.Name = "TB"
         TB.ReadOnly = True
-        TB.Size = New Size(50, 23)
-        TB.TabIndex = 84
+        TB.Size = New Size(50, 21)
+        TB.TabIndex = 54
         TB.TextAlign = HorizontalAlignment.Center
         TB.Value = New Decimal(New Integer() {84, 0, 0, 0})
         ' 
-        ' Label7
+        ' LABEL_Height
         ' 
-        Label7.AutoSize = True
-        Label7.BackColor = Color.White
-        Label7.Font = New Font("Microsoft YaHei UI", 9F)
-        Label7.Location = New Point(170, 428)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(20, 17)
-        Label7.TabIndex = 78
-        Label7.Text = "高"
+        LABEL_Height.AutoSize = True
+        LABEL_Height.BackColor = Color.White
+        LABEL_Height.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_Height.Location = New Point(173, 307)
+        LABEL_Height.Name = "LABEL_Height"
+        LABEL_Height.Size = New Size(59, 16)
+        LABEL_Height.TabIndex = 78
+        LABEL_Height.Text = "<Height>"
         ' 
-        ' Label2
+        ' LABEL_Width
         ' 
-        Label2.AutoSize = True
-        Label2.BackColor = Color.White
-        Label2.Font = New Font("Microsoft YaHei UI", 9F)
-        Label2.Location = New Point(115, 428)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(20, 17)
-        Label2.TabIndex = 77
-        Label2.Text = "宽"
+        LABEL_Width.AutoSize = True
+        LABEL_Width.BackColor = Color.White
+        LABEL_Width.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_Width.Location = New Point(118, 307)
+        LABEL_Width.Name = "LABEL_Width"
+        LABEL_Width.Size = New Size(55, 16)
+        LABEL_Width.TabIndex = 77
+        LABEL_Width.Text = "<Width>"
         ' 
-        ' Label24
+        ' LABEL_StartPointX
         ' 
-        Label24.AutoSize = True
-        Label24.BackColor = Color.White
-        Label24.Font = New Font("Microsoft YaHei UI", 9F)
-        Label24.Location = New Point(5, 428)
-        Label24.Name = "Label24"
-        Label24.Size = New Size(40, 17)
-        Label24.TabIndex = 87
-        Label24.Text = "起点X"
+        LABEL_StartPointX.AutoSize = True
+        LABEL_StartPointX.BackColor = Color.White
+        LABEL_StartPointX.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_StartPointX.Location = New Point(8, 307)
+        LABEL_StartPointX.Name = "LABEL_StartPointX"
+        LABEL_StartPointX.Size = New Size(63, 16)
+        LABEL_StartPointX.TabIndex = 87
+        LABEL_StartPointX.Text = "<GWidth>"
         ' 
         ' TYW
         ' 
         TYW.BackColor = Color.White
-        TYW.Font = New Font("Microsoft YaHei UI", 9F)
+        TYW.Font = New Font("Microsoft YaHei UI", 8.25F)
         TYW.Increment = New Decimal(New Integer() {16, 0, 0, 0})
-        TYW.Location = New Point(5, 448)
+        TYW.Location = New Point(5, 323)
         TYW.Maximum = New Decimal(New Integer() {1600, 0, 0, 0})
         TYW.Name = "TYW"
         TYW.ReadOnly = True
-        TYW.Size = New Size(50, 23)
-        TYW.TabIndex = 86
+        TYW.Size = New Size(50, 21)
+        TYW.TabIndex = 50
         TYW.TextAlign = HorizontalAlignment.Center
         TYW.Value = New Decimal(New Integer() {160, 0, 0, 0})
         ' 
         ' NumH
         ' 
         NumH.BackColor = Color.White
-        NumH.Font = New Font("Microsoft YaHei UI", 9F)
-        NumH.Location = New Point(170, 448)
+        NumH.Font = New Font("Microsoft YaHei UI", 8.25F)
+        NumH.Location = New Point(170, 323)
         NumH.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         NumH.Name = "NumH"
         NumH.ReadOnly = True
-        NumH.Size = New Size(50, 23)
-        NumH.TabIndex = 74
+        NumH.Size = New Size(50, 21)
+        NumH.TabIndex = 53
         NumH.TextAlign = HorizontalAlignment.Center
         NumH.Value = New Decimal(New Integer() {8, 0, 0, 0})
         ' 
         ' NumW
         ' 
         NumW.BackColor = Color.White
-        NumW.Font = New Font("Microsoft YaHei UI", 9F)
-        NumW.Location = New Point(115, 448)
+        NumW.Font = New Font("Microsoft YaHei UI", 8.25F)
+        NumW.Location = New Point(115, 323)
         NumW.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         NumW.Name = "NumW"
         NumW.ReadOnly = True
-        NumW.Size = New Size(50, 23)
-        NumW.TabIndex = 73
+        NumW.Size = New Size(50, 21)
+        NumW.TabIndex = 52
         NumW.TextAlign = HorizontalAlignment.Center
         NumW.Value = New Decimal(New Integer() {10, 0, 0, 0})
         ' 
@@ -1220,35 +1217,34 @@ Partial Class Form1
         ' 
         TSPX1.BackColor = Color.White
         TSPX1.BorderStyle = BorderStyle.FixedSingle
-        TSPX1.Font = New Font("Microsoft YaHei UI", 9F)
-        TSPX1.Location = New Point(105, 339)
+        TSPX1.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TSPX1.Location = New Point(161, 240)
         TSPX1.Name = "TSPX1"
-        TSPX1.Size = New Size(50, 23)
-        TSPX1.TabIndex = 76
+        TSPX1.Size = New Size(43, 21)
+        TSPX1.TabIndex = 35
         TSPX1.Text = "0"
         TSPX1.TextAlign = HorizontalAlignment.Center
         ' 
-        ' CBItem
+        ' COMBOBOX_Item
         ' 
-        CBItem.BackColor = SystemColors.Control
-        CBItem.DropDownStyle = ComboBoxStyle.DropDownList
-        CBItem.FlatStyle = FlatStyle.Flat
-        CBItem.Font = New Font("Microsoft YaHei UI", 9F)
-        CBItem.FormattingEnabled = True
-        CBItem.Items.AddRange(New Object() {"刺", "绿花", "倒绿花", "黑花", "大绿花", "倒大绿花"})
-        CBItem.Location = New Point(235, 398)
-        CBItem.Name = "CBItem"
-        CBItem.Size = New Size(60, 25)
-        CBItem.TabIndex = 81
+        COMBOBOX_Item.BackColor = SystemColors.Control
+        COMBOBOX_Item.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_Item.FlatStyle = FlatStyle.Flat
+        COMBOBOX_Item.Font = New Font("Microsoft YaHei UI", 8.25F)
+        COMBOBOX_Item.FormattingEnabled = True
+        COMBOBOX_Item.Location = New Point(251, 266)
+        COMBOBOX_Item.Name = "COMBOBOX_Item"
+        COMBOBOX_Item.Size = New Size(103, 24)
+        COMBOBOX_Item.TabIndex = 44
         ' 
         ' Label17
         ' 
         Label17.AutoSize = True
         Label17.BackColor = Color.White
-        Label17.Font = New Font("Microsoft YaHei UI", 9F)
-        Label17.Location = New Point(5, 37)
+        Label17.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label17.Location = New Point(4, 29)
         Label17.Name = "Label17"
-        Label17.Size = New Size(19, 17)
+        Label17.Size = New Size(18, 16)
         Label17.TabIndex = 44
         Label17.Text = "Y₀"
         ' 
@@ -1256,10 +1252,10 @@ Partial Class Form1
         ' 
         Label16.AutoSize = True
         Label16.BackColor = Color.White
-        Label16.Font = New Font("Microsoft YaHei UI", 9F)
-        Label16.Location = New Point(86, 37)
+        Label16.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label16.Location = New Point(74, 29)
         Label16.Name = "Label16"
-        Label16.Size = New Size(19, 17)
+        Label16.Size = New Size(18, 16)
         Label16.TabIndex = 45
         Label16.Text = "Y₁"
         ' 
@@ -1267,10 +1263,10 @@ Partial Class Form1
         ' 
         Label15.AutoSize = True
         Label15.BackColor = Color.White
-        Label15.Font = New Font("Microsoft YaHei UI", 9F)
-        Label15.Location = New Point(168, 37)
+        Label15.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label15.Location = New Point(144, 29)
         Label15.Name = "Label15"
-        Label15.Size = New Size(22, 17)
+        Label15.Size = New Size(21, 16)
         Label15.TabIndex = 46
         Label15.Text = "△Y"
         ' 
@@ -1278,10 +1274,10 @@ Partial Class Form1
         ' 
         Label20.AutoSize = True
         Label20.BackColor = Color.White
-        Label20.Font = New Font("Microsoft YaHei UI", 9F)
-        Label20.Location = New Point(5, 67)
+        Label20.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label20.Location = New Point(4, 51)
         Label20.Name = "Label20"
-        Label20.Size = New Size(25, 17)
+        Label20.Size = New Size(23, 16)
         Label20.TabIndex = 47
         Label20.Text = "Sx₀"
         ' 
@@ -1290,43 +1286,43 @@ Partial Class Form1
         CkMario.AutoSize = True
         CkMario.Checked = True
         CkMario.CheckState = CheckState.Checked
-        CkMario.Font = New Font("Microsoft YaHei UI", 9F)
-        CkMario.Location = New Point(225, 122)
+        CkMario.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkMario.Location = New Point(291, 169)
         CkMario.Name = "CkMario"
-        CkMario.Size = New Size(51, 21)
-        CkMario.TabIndex = 84
-        CkMario.Text = "贴图"
+        CkMario.Size = New Size(74, 20)
+        CkMario.TabIndex = 24
+        CkMario.Text = "<Image>"
         CkMario.TextImageRelation = TextImageRelation.ImageBeforeText
         CkMario.UseVisualStyleBackColor = True
         ' 
-        ' Label21
+        ' LABEL_AC
         ' 
-        Label21.AutoSize = True
-        Label21.BackColor = Color.White
-        Label21.Font = New Font("Microsoft YaHei UI", 9F)
-        Label21.Location = New Point(256, 67)
-        Label21.Name = "Label21"
-        Label21.Size = New Size(22, 17)
-        Label21.TabIndex = 50
-        Label21.Text = "Ac"
+        LABEL_AC.AutoSize = True
+        LABEL_AC.BackColor = Color.White
+        LABEL_AC.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_AC.Location = New Point(218, 51)
+        LABEL_AC.Name = "LABEL_AC"
+        LABEL_AC.Size = New Size(37, 16)
+        LABEL_AC.TabIndex = 50
+        LABEL_AC.Text = "<Ac>"
         ' 
         ' Label18
         ' 
         Label18.AutoSize = True
         Label18.BackColor = Color.White
-        Label18.Font = New Font("Microsoft YaHei UI", 9F)
-        Label18.Location = New Point(168, 67)
+        Label18.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label18.Location = New Point(144, 51)
         Label18.Name = "Label18"
-        Label18.Size = New Size(28, 17)
+        Label18.Size = New Size(26, 16)
         Label18.TabIndex = 49
         Label18.Text = "△Sx"
         ' 
         ' PBar
         ' 
         PBar.ForeColor = Color.OrangeRed
-        PBar.Location = New Point(5, 284)
+        PBar.Location = New Point(4, 202)
         PBar.Name = "PBar"
-        PBar.Size = New Size(325, 10)
+        PBar.Size = New Size(279, 8)
         PBar.Step = 1
         PBar.TabIndex = 72
         ' 
@@ -1334,10 +1330,10 @@ Partial Class Form1
         ' 
         Label19.AutoSize = True
         Label19.BackColor = Color.White
-        Label19.Font = New Font("Microsoft YaHei UI", 9F)
-        Label19.Location = New Point(86, 67)
+        Label19.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label19.Location = New Point(74, 51)
         Label19.Name = "Label19"
-        Label19.Size = New Size(25, 17)
+        Label19.Size = New Size(23, 16)
         Label19.TabIndex = 48
         Label19.Text = "Sx₁"
         ' 
@@ -1345,62 +1341,61 @@ Partial Class Form1
         ' 
         CkBlk.AutoSize = True
         CkBlk.BackColor = Color.White
-        CkBlk.Font = New Font("Microsoft YaHei UI", 9F)
-        CkBlk.Location = New Point(225, 426)
+        CkBlk.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkBlk.Location = New Point(224, 306)
         CkBlk.Name = "CkBlk"
-        CkBlk.Size = New Size(51, 21)
+        CkBlk.Size = New Size(68, 20)
         CkBlk.TabIndex = 82
-        CkBlk.Text = "限高"
+        CkBlk.Text = "<Limit>"
         CkBlk.UseVisualStyleBackColor = False
         ' 
         ' LBox
         ' 
         LBox.BorderStyle = BorderStyle.FixedSingle
-        LBox.Font = New Font("Microsoft YaHei UI", 9F)
+        LBox.Font = New Font("Microsoft YaHei UI", 8.25F)
         LBox.FormattingEnabled = True
-        LBox.ItemHeight = 17
-        LBox.Location = New Point(5, 25)
+        LBox.Location = New Point(4, 17)
         LBox.Name = "LBox"
-        LBox.Size = New Size(325, 70)
-        LBox.TabIndex = 73
+        LBox.Size = New Size(350, 34)
+        LBox.TabIndex = 62
         ' 
-        ' Label4
+        ' LABEL_FrameRate
         ' 
-        Label4.AutoSize = True
-        Label4.Font = New Font("Microsoft YaHei UI", 9F)
-        Label4.Location = New Point(115, 476)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(32, 17)
-        Label4.TabIndex = 52
-        Label4.Text = "帧数"
+        LABEL_FrameRate.AutoSize = True
+        LABEL_FrameRate.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_FrameRate.Location = New Point(99, 348)
+        LABEL_FrameRate.Name = "LABEL_FrameRate"
+        LABEL_FrameRate.Size = New Size(55, 16)
+        LABEL_FrameRate.TabIndex = 52
+        LABEL_FrameRate.Text = "<Frame>"
         ' 
-        ' Label22
+        ' LABEL_FaultTolerance
         ' 
-        Label22.AutoSize = True
-        Label22.Font = New Font("Microsoft YaHei UI", 9F)
-        Label22.Location = New Point(60, 476)
-        Label22.Name = "Label22"
-        Label22.Size = New Size(32, 17)
-        Label22.TabIndex = 51
-        Label22.Text = "容错"
+        LABEL_FaultTolerance.AutoSize = True
+        LABEL_FaultTolerance.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_FaultTolerance.Location = New Point(51, 348)
+        LABEL_FaultTolerance.Name = "LABEL_FaultTolerance"
+        LABEL_FaultTolerance.Size = New Size(56, 16)
+        LABEL_FaultTolerance.TabIndex = 51
+        LABEL_FaultTolerance.Text = "<Range>"
         ' 
-        ' Label23
+        ' LABEL_Location
         ' 
-        Label23.AutoSize = True
-        Label23.Font = New Font("Microsoft YaHei UI", 9F)
-        Label23.Location = New Point(5, 476)
-        Label23.Name = "Label23"
-        Label23.Size = New Size(32, 17)
-        Label23.TabIndex = 50
-        Label23.Text = "位置"
+        LABEL_Location.AutoSize = True
+        LABEL_Location.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_Location.Location = New Point(4, 348)
+        LABEL_Location.Name = "LABEL_Location"
+        LABEL_Location.Size = New Size(56, 16)
+        LABEL_Location.TabIndex = 50
+        LABEL_Location.Text = "<Target>"
         ' 
         ' PB
         ' 
         PB.BorderStyle = BorderStyle.None
         PB.GridCellSize = 16
-        PB.Location = New Point(348, 5)
+        PB.Location = New Point(364, 4)
         PB.Name = "PB"
-        PB.Size = New Size(198, 122)
+        PB.Size = New Size(170, 94)
         PB.TabIndex = 74
         ' 
         ' DataGridView1
@@ -1411,12 +1406,12 @@ Partial Class Form1
         DataGridView1.BackgroundColor = Color.Snow
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.EditMode = DataGridViewEditMode.EditOnEnter
-        DataGridView1.Location = New Point(1188, 5)
+        DataGridView1.Location = New Point(1018, 3)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
         DataGridView1.ScrollBars = ScrollBars.Vertical
         DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridView1.Size = New Size(44, 29)
+        DataGridView1.Size = New Size(38, 23)
         DataGridView1.TabIndex = 75
         DataGridView1.Visible = False
         ' 
@@ -1425,38 +1420,38 @@ Partial Class Form1
         Panel1.BorderStyle = BorderStyle.FixedSingle
         Panel1.Controls.Add(TSPX2)
         Panel1.Controls.Add(TSPX1)
-        Panel1.Controls.Add(Button1)
+        Panel1.Controls.Add(BUTTON_En)
         Panel1.Controls.Add(CkTrace)
         Panel1.Controls.Add(CkMario)
-        Panel1.Controls.Add(Label3)
+        Panel1.Controls.Add(LABEL_Zoom)
         Panel1.Controls.Add(NumZoom)
         Panel1.Controls.Add(BReadMem)
         Panel1.Controls.Add(BtnGif)
         Panel1.Controls.Add(CkMulti)
-        Panel1.Controls.Add(Label5)
+        Panel1.Controls.Add(LABEL_StrideLength)
         Panel1.Controls.Add(BtnTile)
         Panel1.Controls.Add(TxtStep)
         Panel1.Controls.Add(BAddHis)
         Panel1.Controls.Add(CB1F)
-        Panel1.Controls.Add(CBItem)
+        Panel1.Controls.Add(COMBOBOX_Item)
         Panel1.Controls.Add(TSP)
         Panel1.Controls.Add(TSY3)
-        Panel1.Controls.Add(Label30)
+        Panel1.Controls.Add(LABEL_SearchDepth)
         Panel1.Controls.Add(Label29)
         Panel1.Controls.Add(NIns)
         Panel1.Controls.Add(CkWU)
         Panel1.Controls.Add(Label28)
-        Panel1.Controls.Add(Label4)
+        Panel1.Controls.Add(LABEL_FrameRate)
         Panel1.Controls.Add(BtnUndo)
         Panel1.Controls.Add(LblCal)
         Panel1.Controls.Add(TSY2)
-        Panel1.Controls.Add(Label22)
+        Panel1.Controls.Add(LABEL_FaultTolerance)
         Panel1.Controls.Add(Label12)
         Panel1.Controls.Add(BCmdR)
         Panel1.Controls.Add(BtnFIns)
         Panel1.Controls.Add(CkMove)
         Panel1.Controls.Add(TSY4)
-        Panel1.Controls.Add(Label23)
+        Panel1.Controls.Add(LABEL_Location)
         Panel1.Controls.Add(TR4)
         Panel1.Controls.Add(T21)
         Panel1.Controls.Add(CkHitbox)
@@ -1467,7 +1462,7 @@ Partial Class Form1
         Panel1.Controls.Add(CkFrame)
         Panel1.Controls.Add(T20)
         Panel1.Controls.Add(CkLoc)
-        Panel1.Controls.Add(Label24)
+        Panel1.Controls.Add(LABEL_StartPointX)
         Panel1.Controls.Add(Label14)
         Panel1.Controls.Add(TS1)
         Panel1.Controls.Add(NumW)
@@ -1485,7 +1480,7 @@ Partial Class Form1
         Panel1.Controls.Add(TSY1)
         Panel1.Controls.Add(BtnP01)
         Panel1.Controls.Add(TD)
-        Panel1.Controls.Add(Label21)
+        Panel1.Controls.Add(LABEL_AC)
         Panel1.Controls.Add(TY4)
         Panel1.Controls.Add(TX1)
         Panel1.Controls.Add(NumH)
@@ -1506,52 +1501,52 @@ Partial Class Form1
         Panel1.Controls.Add(TB)
         Panel1.Controls.Add(BtnCls)
         Panel1.Controls.Add(TYH)
-        Panel1.Controls.Add(Label7)
-        Panel1.Controls.Add(Label1)
-        Panel1.Controls.Add(Label26)
-        Panel1.Controls.Add(Label2)
-        Panel1.Controls.Add(Label27)
+        Panel1.Controls.Add(LABEL_Height)
+        Panel1.Controls.Add(LABEL_StartPointY)
+        Panel1.Controls.Add(LABEL_Dis)
+        Panel1.Controls.Add(LABEL_Width)
+        Panel1.Controls.Add(LABEL_StepLength)
         Panel1.Controls.Add(CkBlk)
-        Panel1.Location = New Point(5, 5)
+        Panel1.Location = New Point(3, 3)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(337, 550)
-        Panel1.TabIndex = 76
+        Panel1.Size = New Size(360, 410)
+        Panel1.TabIndex = 0
         ' 
-        ' Button1
+        ' BUTTON_En
         ' 
-        Button1.BackColor = SystemColors.Control
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Microsoft YaHei UI", 9F)
-        Button1.Location = New Point(290, 337)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(40, 25)
-        Button1.TabIndex = 106
-        Button1.Text = "En"
-        Button1.TextImageRelation = TextImageRelation.ImageBeforeText
-        Button1.UseVisualStyleBackColor = False
+        BUTTON_En.BackColor = SystemColors.Control
+        BUTTON_En.FlatStyle = FlatStyle.Flat
+        BUTTON_En.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BUTTON_En.Location = New Point(320, 238)
+        BUTTON_En.Name = "BUTTON_En"
+        BUTTON_En.Size = New Size(34, 25)
+        BUTTON_En.TabIndex = 38
+        BUTTON_En.Text = "En"
+        BUTTON_En.TextImageRelation = TextImageRelation.ImageBeforeText
+        BUTTON_En.UseVisualStyleBackColor = False
         ' 
-        ' Label3
+        ' LABEL_Zoom
         ' 
-        Label3.AutoSize = True
-        Label3.BackColor = Color.White
-        Label3.Font = New Font("Microsoft YaHei UI", 9F)
-        Label3.Location = New Point(280, 428)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(32, 17)
-        Label3.TabIndex = 110
-        Label3.Text = "缩放"
+        LABEL_Zoom.AutoSize = True
+        LABEL_Zoom.BackColor = Color.White
+        LABEL_Zoom.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_Zoom.Location = New Point(284, 307)
+        LABEL_Zoom.Name = "LABEL_Zoom"
+        LABEL_Zoom.Size = New Size(54, 16)
+        LABEL_Zoom.TabIndex = 110
+        LABEL_Zoom.Text = "<Zoom>"
         ' 
         ' NumZoom
         ' 
         NumZoom.BackColor = Color.White
-        NumZoom.Font = New Font("Microsoft YaHei UI", 9F)
-        NumZoom.Location = New Point(281, 448)
+        NumZoom.Font = New Font("Microsoft YaHei UI", 8.25F)
+        NumZoom.Location = New Point(281, 323)
         NumZoom.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
         NumZoom.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         NumZoom.Name = "NumZoom"
         NumZoom.ReadOnly = True
-        NumZoom.Size = New Size(50, 23)
-        NumZoom.TabIndex = 109
+        NumZoom.Size = New Size(50, 21)
+        NumZoom.TabIndex = 55
         NumZoom.TextAlign = HorizontalAlignment.Center
         NumZoom.Value = New Decimal(New Integer() {5, 0, 0, 0})
         ' 
@@ -1559,11 +1554,11 @@ Partial Class Form1
         ' 
         BReadMem.BackColor = SystemColors.Control
         BReadMem.FlatStyle = FlatStyle.Flat
-        BReadMem.Font = New Font("Microsoft YaHei UI", 9F)
-        BReadMem.Location = New Point(270, 366)
+        BReadMem.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BReadMem.Location = New Point(195, 278)
         BReadMem.Name = "BReadMem"
-        BReadMem.Size = New Size(60, 25)
-        BReadMem.TabIndex = 105
+        BReadMem.Size = New Size(51, 25)
+        BReadMem.TabIndex = 48
         BReadMem.Text = "!Addr"
         BReadMem.TextImageRelation = TextImageRelation.ImageBeforeText
         BReadMem.UseVisualStyleBackColor = False
@@ -1571,12 +1566,12 @@ Partial Class Form1
         ' CkMulti
         ' 
         CkMulti.AutoSize = True
-        CkMulti.Font = New Font("Microsoft YaHei UI", 9F)
-        CkMulti.Location = New Point(276, 96)
+        CkMulti.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkMulti.Location = New Point(236, 75)
         CkMulti.Name = "CkMulti"
-        CkMulti.Size = New Size(51, 21)
-        CkMulti.TabIndex = 108
-        CkMulti.Text = "对比"
+        CkMulti.Size = New Size(69, 20)
+        CkMulti.TabIndex = 16
+        CkMulti.Text = "<Refer>"
         CkMulti.TextImageRelation = TextImageRelation.ImageBeforeText
         CkMulti.UseVisualStyleBackColor = True
         ' 
@@ -1584,23 +1579,23 @@ Partial Class Form1
         ' 
         BtnTile.BackColor = Color.White
         BtnTile.FlatStyle = FlatStyle.Flat
-        BtnTile.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnTile.Location = New Point(301, 395)
+        BtnTile.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnTile.Location = New Point(328, 295)
         BtnTile.Name = "BtnTile"
-        BtnTile.Size = New Size(30, 30)
-        BtnTile.TabIndex = 80
+        BtnTile.Size = New Size(26, 23)
+        BtnTile.TabIndex = 49
         BtnTile.UseVisualStyleBackColor = False
         ' 
         ' BAddHis
         ' 
         BAddHis.BackColor = SystemColors.Control
         BAddHis.FlatStyle = FlatStyle.Flat
-        BAddHis.Font = New Font("Microsoft YaHei UI", 9F)
-        BAddHis.Location = New Point(170, 300)
+        BAddHis.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BAddHis.Location = New Point(222, 211)
         BAddHis.Name = "BAddHis"
-        BAddHis.Size = New Size(30, 30)
-        BAddHis.TabIndex = 107
-        BAddHis.Text = "存"
+        BAddHis.Size = New Size(26, 23)
+        BAddHis.TabIndex = 29
+        BAddHis.Text = "<S>"
         BAddHis.TextImageRelation = TextImageRelation.ImageBeforeText
         BAddHis.UseVisualStyleBackColor = False
         ' 
@@ -1608,57 +1603,57 @@ Partial Class Form1
         ' 
         CB1F.AutoSize = True
         CB1F.BackColor = Color.White
-        CB1F.Font = New Font("Microsoft YaHei UI", 9F)
-        CB1F.Location = New Point(292, 497)
+        CB1F.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CB1F.Location = New Point(284, 364)
         CB1F.Name = "CB1F"
-        CB1F.Size = New Size(40, 21)
-        CB1F.TabIndex = 81
-        CB1F.Text = "1F"
+        CB1F.Size = New Size(54, 20)
+        CB1F.TabIndex = 61
+        CB1F.Text = "<1F>"
         CB1F.UseVisualStyleBackColor = False
         ' 
         ' TSY3
         ' 
         TSY3.BorderStyle = BorderStyle.FixedSingle
-        TSY3.Font = New Font("Microsoft YaHei UI", 9F)
-        TSY3.Location = New Point(201, 93)
+        TSY3.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TSY3.Location = New Point(172, 71)
         TSY3.Name = "TSY3"
-        TSY3.Size = New Size(50, 23)
-        TSY3.TabIndex = 101
+        TSY3.Size = New Size(43, 21)
+        TSY3.TabIndex = 15
         TSY3.Text = "0.001"
         TSY3.TextAlign = HorizontalAlignment.Center
         ' 
-        ' Label30
+        ' LABEL_SearchDepth
         ' 
-        Label30.AutoSize = True
-        Label30.BackColor = Color.White
-        Label30.Font = New Font("Microsoft YaHei UI", 9F)
-        Label30.Location = New Point(170, 476)
-        Label30.Name = "Label30"
-        Label30.Size = New Size(56, 17)
-        Label30.TabIndex = 80
-        Label30.Text = "搜索深度"
+        LABEL_SearchDepth.AutoSize = True
+        LABEL_SearchDepth.BackColor = Color.White
+        LABEL_SearchDepth.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_SearchDepth.Location = New Point(146, 348)
+        LABEL_SearchDepth.Name = "LABEL_SearchDepth"
+        LABEL_SearchDepth.Size = New Size(50, 16)
+        LABEL_SearchDepth.TabIndex = 80
+        LABEL_SearchDepth.Text = "<Deep>"
         ' 
         ' Label29
         ' 
         Label29.AutoSize = True
         Label29.BackColor = Color.White
-        Label29.Font = New Font("Microsoft YaHei UI", 9F)
-        Label29.Location = New Point(168, 96)
+        Label29.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label29.Location = New Point(144, 74)
         Label29.Name = "Label29"
-        Label29.Size = New Size(28, 17)
+        Label29.Size = New Size(26, 16)
         Label29.TabIndex = 102
         Label29.Text = "△Sy"
         ' 
         ' NIns
         ' 
         NIns.BackColor = Color.White
-        NIns.Font = New Font("Microsoft YaHei UI", 9F)
-        NIns.Location = New Point(170, 496)
+        NIns.Font = New Font("Microsoft YaHei UI", 8.25F)
+        NIns.Location = New Point(146, 363)
         NIns.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         NIns.Name = "NIns"
         NIns.ReadOnly = True
-        NIns.Size = New Size(50, 23)
-        NIns.TabIndex = 79
+        NIns.Size = New Size(50, 21)
+        NIns.TabIndex = 59
         NIns.TextAlign = HorizontalAlignment.Center
         NIns.Value = New Decimal(New Integer() {2, 0, 0, 0})
         ' 
@@ -1666,22 +1661,22 @@ Partial Class Form1
         ' 
         CkWU.AutoSize = True
         CkWU.BackColor = Color.White
-        CkWU.Font = New Font("Microsoft YaHei UI", 9F)
-        CkWU.Location = New Point(276, 36)
+        CkWU.Font = New Font("Microsoft YaHei UI", 8.25F)
+        CkWU.Location = New Point(236, 28)
         CkWU.Name = "CkWU"
-        CkWU.Size = New Size(53, 21)
-        CkWU.TabIndex = 100
-        CkWU.Text = "W/U"
+        CkWU.Size = New Size(66, 20)
+        CkWU.TabIndex = 8
+        CkWU.Text = "<W/U>"
         CkWU.UseVisualStyleBackColor = False
         ' 
         ' Label28
         ' 
         Label28.AutoSize = True
         Label28.BackColor = Color.White
-        Label28.Font = New Font("Microsoft YaHei UI", 9F)
-        Label28.Location = New Point(87, 97)
+        Label28.Font = New Font("Microsoft YaHei UI", 8.25F)
+        Label28.Location = New Point(75, 75)
         Label28.Name = "Label28"
-        Label28.Size = New Size(25, 17)
+        Label28.Size = New Size(23, 16)
         Label28.TabIndex = 99
         Label28.Text = "Sy₁"
         ' 
@@ -1689,23 +1684,23 @@ Partial Class Form1
         ' 
         BtnUndo.BackColor = SystemColors.Control
         BtnUndo.FlatStyle = FlatStyle.Flat
-        BtnUndo.Font = New Font("Microsoft YaHei UI", 9F)
-        BtnUndo.Location = New Point(70, 395)
+        BtnUndo.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BtnUndo.Location = New Point(60, 283)
         BtnUndo.Name = "BtnUndo"
-        BtnUndo.Size = New Size(60, 30)
-        BtnUndo.TabIndex = 81
-        BtnUndo.Text = "撤销"
+        BtnUndo.Size = New Size(51, 23)
+        BtnUndo.TabIndex = 46
+        BtnUndo.Text = "<Undo>"
         BtnUndo.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnUndo.UseVisualStyleBackColor = False
         ' 
         ' TSY2
         ' 
         TSY2.BorderStyle = BorderStyle.FixedSingle
-        TSY2.Font = New Font("Microsoft YaHei UI", 9F)
-        TSY2.Location = New Point(113, 94)
+        TSY2.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TSY2.Location = New Point(97, 72)
         TSY2.Name = "TSY2"
-        TSY2.Size = New Size(50, 23)
-        TSY2.TabIndex = 98
+        TSY2.Size = New Size(43, 21)
+        TSY2.TabIndex = 14
         TSY2.Text = "0"
         TSY2.TextAlign = HorizontalAlignment.Center
         ' 
@@ -1714,12 +1709,12 @@ Partial Class Form1
         BCmdR.BackColor = SystemColors.Control
         BCmdR.BackgroundImageLayout = ImageLayout.Zoom
         BCmdR.FlatStyle = FlatStyle.Flat
-        BCmdR.Font = New Font("Microsoft YaHei UI", 9F)
-        BCmdR.Location = New Point(135, 300)
+        BCmdR.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BCmdR.Location = New Point(192, 211)
         BCmdR.Name = "BCmdR"
-        BCmdR.Size = New Size(30, 30)
-        BCmdR.TabIndex = 106
-        BCmdR.Text = "反"
+        BCmdR.Size = New Size(26, 23)
+        BCmdR.TabIndex = 28
+        BCmdR.Text = "<R>"
         BCmdR.TextImageRelation = TextImageRelation.ImageBeforeText
         BCmdR.UseVisualStyleBackColor = False
         ' 
@@ -1727,47 +1722,47 @@ Partial Class Form1
         ' 
         TSY4.AutoSize = True
         TSY4.BackColor = Color.White
-        TSY4.Font = New Font("Microsoft YaHei UI", 9F)
-        TSY4.Location = New Point(177, 370)
+        TSY4.Font = New Font("Microsoft YaHei UI", 8.25F)
+        TSY4.Location = New Point(96, 264)
         TSY4.Name = "TSY4"
-        TSY4.Size = New Size(40, 21)
-        TSY4.TabIndex = 103
+        TSY4.Size = New Size(38, 20)
+        TSY4.TabIndex = 42
         TSY4.Text = "Sy"
         TSY4.UseVisualStyleBackColor = False
         ' 
         ' T21
         ' 
         T21.BorderStyle = BorderStyle.FixedSingle
-        T21.Font = New Font("Microsoft YaHei UI", 9F)
-        T21.Location = New Point(5, 244)
+        T21.Font = New Font("Microsoft YaHei UI", 8.25F)
+        T21.Location = New Point(4, 170)
         T21.Multiline = True
         T21.Name = "T21"
-        T21.Size = New Size(325, 40)
-        T21.TabIndex = 80
+        T21.Size = New Size(279, 31)
+        T21.TabIndex = 19
         T21.TabStop = False
         ' 
         ' BTas
         ' 
         BTas.BackColor = SystemColors.Control
         BTas.FlatStyle = FlatStyle.Flat
-        BTas.Font = New Font("Microsoft YaHei UI", 9F)
-        BTas.Location = New Point(70, 300)
+        BTas.Font = New Font("Microsoft YaHei UI", 8.25F)
+        BTas.Location = New Point(136, 211)
         BTas.Name = "BTas"
-        BTas.Size = New Size(60, 30)
-        BTas.TabIndex = 104
-        BTas.Text = "TAS"
+        BTas.Size = New Size(51, 23)
+        BTas.TabIndex = 27
+        BTas.Text = "<TAS>"
         BTas.TextImageRelation = TextImageRelation.ImageBeforeText
         BTas.UseVisualStyleBackColor = False
         ' 
         ' T20
         ' 
         T20.BorderStyle = BorderStyle.FixedSingle
-        T20.Font = New Font("Microsoft YaHei UI", 9F)
-        T20.Location = New Point(5, 146)
+        T20.Font = New Font("Microsoft YaHei UI", 8.25F)
+        T20.Location = New Point(4, 96)
         T20.Multiline = True
         T20.Name = "T20"
-        T20.Size = New Size(325, 40)
-        T20.TabIndex = 79
+        T20.Size = New Size(279, 31)
+        T20.TabIndex = 17
         T20.TabStop = False
         ' 
         ' BEmu
@@ -1775,12 +1770,12 @@ Partial Class Form1
         BEmu.BackColor = SystemColors.Control
         BEmu.Enabled = False
         BEmu.FlatStyle = FlatStyle.Flat
-        BEmu.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        BEmu.Location = New Point(220, 147)
+        BEmu.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BEmu.Location = New Point(259, 93)
         BEmu.Name = "BEmu"
-        BEmu.Size = New Size(50, 30)
-        BEmu.TabIndex = 106
-        BEmu.Text = "Emu"
+        BEmu.Size = New Size(43, 23)
+        BEmu.TabIndex = 87
+        BEmu.Text = "<Emu>"
         BEmu.TextImageRelation = TextImageRelation.ImageBeforeText
         BEmu.UseVisualStyleBackColor = False
         ' 
@@ -1789,27 +1784,38 @@ Partial Class Form1
         BtnTile2.BackColor = SystemColors.Control
         BtnTile2.Enabled = False
         BtnTile2.FlatStyle = FlatStyle.Flat
-        BtnTile2.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        BtnTile2.Location = New Point(5, 116)
+        BtnTile2.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BtnTile2.Location = New Point(99, 76)
         BtnTile2.Name = "BtnTile2"
-        BtnTile2.Size = New Size(30, 30)
-        BtnTile2.TabIndex = 82
+        BtnTile2.Size = New Size(26, 23)
+        BtnTile2.TabIndex = 84
         BtnTile2.UseVisualStyleBackColor = False
         BtnTile2.Visible = False
         ' 
         ' Panel2
         ' 
         Panel2.BorderStyle = BorderStyle.FixedSingle
+        Panel2.Controls.Add(LABEL_Strat)
         Panel2.Controls.Add(LBox)
         Panel2.Controls.Add(LblState)
         Panel2.Controls.Add(T1)
-        Panel2.Controls.Add(CBStrat)
+        Panel2.Controls.Add(COMBOBOX_Strat)
         Panel2.Controls.Add(BtnSave)
         Panel2.Controls.Add(TxtStrat)
-        Panel2.Location = New Point(5, 558)
+        Panel2.Location = New Point(3, 416)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(337, 262)
-        Panel2.TabIndex = 77
+        Panel2.Size = New Size(360, 135)
+        Panel2.TabIndex = 1
+        ' 
+        ' LABEL_Strat
+        ' 
+        LABEL_Strat.AutoSize = True
+        LABEL_Strat.Font = New Font("Microsoft YaHei UI", 8.25F)
+        LABEL_Strat.Location = New Point(4, 91)
+        LABEL_Strat.Name = "LABEL_Strat"
+        LABEL_Strat.Size = New Size(47, 16)
+        LABEL_Strat.TabIndex = 111
+        LABEL_Strat.Text = "<Strat>"
         ' 
         ' Panel3
         ' 
@@ -1817,46 +1823,46 @@ Partial Class Form1
         Panel3.Controls.Add(BtnTile2)
         Panel3.Controls.Add(BtnGenJump)
         Panel3.Controls.Add(BEmu)
-        Panel3.Controls.Add(ComboBox3)
-        Panel3.Controls.Add(ComboBox4)
+        Panel3.Controls.Add(COMBOBOX_Theme)
+        Panel3.Controls.Add(COMBOBOX_Style)
         Panel3.Controls.Add(BtnPng)
         Panel3.Controls.Add(BtnMont)
-        Panel3.Controls.Add(ComboBox5)
+        Panel3.Controls.Add(COMBOBOX_SemiSolid)
         Panel3.Controls.Add(TxtAir)
         Panel3.Controls.Add(TFPS)
-        Panel3.Controls.Add(ComboBox1)
-        Panel3.Controls.Add(CBJumpAcc)
-        Panel3.Controls.Add(Label6)
+        Panel3.Controls.Add(COMBOBOX_Character)
+        Panel3.Controls.Add(COMBOBOX_JumpAcc)
+        Panel3.Controls.Add(LABEL_Hover)
         Panel3.Controls.Add(TxtFormLoc)
-        Panel3.Controls.Add(Label11)
+        Panel3.Controls.Add(LABEL_FrameDelay)
         Panel3.Controls.Add(CkCtrl)
         Panel3.Controls.Add(TxtOpc)
-        Panel3.Controls.Add(ComboBox6)
-        Panel3.Controls.Add(Button6)
+        Panel3.Controls.Add(COMBOBOX_Ground)
+        Panel3.Controls.Add(BUTTON_Operate)
         Panel3.Controls.Add(BtnPlay)
-        Panel3.Controls.Add(Label10)
-        Panel3.Controls.Add(CheckBox7)
+        Panel3.Controls.Add(LABEL_Transparency)
+        Panel3.Controls.Add(CHECK_Night)
         Panel3.Controls.Add(TDL)
         Panel3.Controls.Add(BtnScr)
-        Panel3.Controls.Add(Label9)
-        Panel3.Controls.Add(Label8)
+        Panel3.Controls.Add(LABEL_Position)
+        Panel3.Controls.Add(LABEL_FPS)
         Panel3.Controls.Add(BtnEmu)
-        Panel3.Location = New Point(5, 826)
+        Panel3.Location = New Point(3, 554)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(337, 38)
-        Panel3.TabIndex = 78
+        Panel3.Size = New Size(360, 132)
+        Panel3.TabIndex = 2
         ' 
         ' BtnGenJump
         ' 
         BtnGenJump.BackColor = SystemColors.Control
         BtnGenJump.Enabled = False
         BtnGenJump.FlatStyle = FlatStyle.Flat
-        BtnGenJump.Font = New Font("Fusion Pixel 12px Proportional ", 9F)
-        BtnGenJump.Location = New Point(276, 148)
+        BtnGenJump.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BtnGenJump.Location = New Point(307, 94)
         BtnGenJump.Name = "BtnGenJump"
-        BtnGenJump.Size = New Size(50, 30)
-        BtnGenJump.TabIndex = 98
-        BtnGenJump.Text = "滞空"
+        BtnGenJump.Size = New Size(43, 23)
+        BtnGenJump.TabIndex = 88
+        BtnGenJump.Text = "<BtnGenJump>"
         BtnGenJump.TextImageRelation = TextImageRelation.ImageBeforeText
         BtnGenJump.UseVisualStyleBackColor = False
         BtnGenJump.Visible = False
@@ -1866,10 +1872,10 @@ Partial Class Form1
         LHis.Font = New Font("Microsoft YaHei UI", 9F)
         LHis.FormattingEnabled = True
         LHis.ItemHeight = 17
-        LHis.Location = New Point(348, 775)
+        LHis.Location = New Point(398, 546)
         LHis.Name = "LHis"
-        LHis.Size = New Size(240, 89)
-        LHis.TabIndex = 79
+        LHis.Size = New Size(206, 55)
+        LHis.TabIndex = 89
         LHis.Visible = False
         ' 
         ' TimerEmu
@@ -1880,18 +1886,31 @@ Partial Class Form1
         ' 
         PItem.BorderStyle = BorderStyle.FixedSingle
         PItem.GridCellSize = 16
-        PItem.Location = New Point(348, 401)
+        PItem.Location = New Point(364, 306)
         PItem.Name = "PItem"
-        PItem.Size = New Size(280, 280)
+        PItem.Size = New Size(240, 214)
         PItem.TabIndex = 81
         PItem.Visible = False
         ' 
+        ' COMBOBOX_LanguageSettings
+        ' 
+        COMBOBOX_LanguageSettings.BackColor = SystemColors.Control
+        COMBOBOX_LanguageSettings.DropDownStyle = ComboBoxStyle.DropDownList
+        COMBOBOX_LanguageSettings.FlatStyle = FlatStyle.Flat
+        COMBOBOX_LanguageSettings.Font = New Font("Microsoft YaHei UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        COMBOBOX_LanguageSettings.FormattingEnabled = True
+        COMBOBOX_LanguageSettings.Location = New Point(550, 3)
+        COMBOBOX_LanguageSettings.Name = "COMBOBOX_LanguageSettings"
+        COMBOBOX_LanguageSettings.Size = New Size(120, 24)
+        COMBOBOX_LanguageSettings.TabIndex = 90
+        ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 17F)
+        AutoScaleDimensions = New SizeF(6F, 13F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1244, 871)
+        ClientSize = New Size(1064, 691)
+        Controls.Add(COMBOBOX_LanguageSettings)
         Controls.Add(PItem)
         Controls.Add(LHis)
         Controls.Add(Panel3)
@@ -1899,10 +1918,11 @@ Partial Class Form1
         Controls.Add(Panel1)
         Controls.Add(PB)
         Controls.Add(DataGridView1)
+        Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Form1"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "SMM2 Calculator v24.4"
+        Text = "<_TITLE>"
         CType(TYH, ComponentModel.ISupportInitialize).EndInit()
         CType(TB, ComponentModel.ISupportInitialize).EndInit()
         CType(TYW, ComponentModel.ISupportInitialize).EndInit()
@@ -1927,14 +1947,14 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer2 As Timer
     Friend WithEvents LblCal As Label
-    Friend WithEvents CBStrat As ComboBox
+    Friend WithEvents COMBOBOX_Strat As ComboBox
     Friend WithEvents LblState As Label
     Friend WithEvents TxtStrat As TextBox
     Friend WithEvents TxtStep As TextBox
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
+    Friend WithEvents LABEL_StrideLength As Label
+    Friend WithEvents LABEL_Hover As Label
     Friend WithEvents TxtAir As TextBox
-    Friend WithEvents CBJumpAcc As ComboBox
+    Friend WithEvents COMBOBOX_JumpAcc As ComboBox
     Friend WithEvents TD As TextBox
     Friend WithEvents TS3 As TextBox
     Friend WithEvents TS2 As TextBox
@@ -1955,7 +1975,7 @@ Partial Class Form1
     Friend WithEvents T1 As TextBox
     Friend WithEvents BtnCal As Button
     Friend WithEvents BtnSrc As Button
-    Friend WithEvents Button6 As Button
+    Friend WithEvents BUTTON_Operate As Button
     Friend WithEvents BtnCls As Button
     Friend WithEvents BtnSave As Button
     Friend WithEvents CkDuck As CheckBox
@@ -1968,19 +1988,19 @@ Partial Class Form1
     Friend WithEvents CkCtrl As CheckBox
     Friend WithEvents BtnPng As Button
     Friend WithEvents TFPS As TextBox
-    Friend WithEvents Label8 As Label
+    Friend WithEvents LABEL_FPS As Label
     Friend WithEvents TxtFormLoc As TextBox
-    Friend WithEvents Label9 As Label
+    Friend WithEvents LABEL_Position As Label
     Friend WithEvents TxtOpc As TextBox
-    Friend WithEvents Label10 As Label
+    Friend WithEvents LABEL_Transparency As Label
     Friend WithEvents TDL As TextBox
-    Friend WithEvents Label11 As Label
-    Friend WithEvents ComboBox3 As ComboBox
-    Friend WithEvents ComboBox4 As ComboBox
-    Friend WithEvents ComboBox5 As ComboBox
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents ComboBox6 As ComboBox
-    Friend WithEvents CheckBox7 As CheckBox
+    Friend WithEvents LABEL_FrameDelay As Label
+    Friend WithEvents COMBOBOX_Theme As ComboBox
+    Friend WithEvents COMBOBOX_Style As ComboBox
+    Friend WithEvents COMBOBOX_SemiSolid As ComboBox
+    Friend WithEvents COMBOBOX_Character As ComboBox
+    Friend WithEvents COMBOBOX_Ground As ComboBox
+    Friend WithEvents CHECK_Night As CheckBox
     Friend WithEvents BtnEmu As Button
     Friend WithEvents BtnScr As Button
     Friend WithEvents BtnPlay As Button
@@ -1988,7 +2008,7 @@ Partial Class Form1
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents Label21 As Label
+    Friend WithEvents LABEL_AC As Label
     Friend WithEvents Label18 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents Label20 As Label
@@ -1996,16 +2016,16 @@ Partial Class Form1
     Friend WithEvents Label16 As Label
     Friend WithEvents Label17 As Label
     Friend WithEvents PBar As ProgressBar
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label22 As Label
-    Friend WithEvents Label23 As Label
+    Friend WithEvents LABEL_FrameRate As Label
+    Friend WithEvents LABEL_FaultTolerance As Label
+    Friend WithEvents LABEL_Location As Label
     Friend WithEvents LBox As ListBox
     Friend WithEvents PB As Cyotek.Windows.Forms.ImageBox
     Friend WithEvents NumH As NumericUpDown
     Friend WithEvents NumW As NumericUpDown
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents CBItem As ComboBox
+    Friend WithEvents LABEL_Height As Label
+    Friend WithEvents LABEL_Width As Label
+    Friend WithEvents COMBOBOX_Item As ComboBox
     Friend WithEvents CkBlk As CheckBox
     Friend WithEvents BtnP01 As Button
     Friend WithEvents BtnP1 As Button
@@ -2015,7 +2035,7 @@ Partial Class Form1
     Friend WithEvents TYW As NumericUpDown
     Friend WithEvents CkMario As CheckBox
     Friend WithEvents TB As NumericUpDown
-    Friend WithEvents Label24 As Label
+    Friend WithEvents LABEL_StartPointX As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents TSY1 As TextBox
     Friend WithEvents TSPX As CheckBox
@@ -2023,9 +2043,9 @@ Partial Class Form1
     Friend WithEvents TSPX2 As TextBox
     Friend WithEvents TY1 As TextBox
     Friend WithEvents TYH As NumericUpDown
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label27 As Label
-    Friend WithEvents Label26 As Label
+    Friend WithEvents LABEL_StartPointY As Label
+    Friend WithEvents LABEL_StepLength As Label
+    Friend WithEvents LABEL_Dis As Label
     Friend WithEvents BtnMont As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
@@ -2038,7 +2058,7 @@ Partial Class Form1
     Friend WithEvents Label29 As Label
     Friend WithEvents BTas As Button
     Friend WithEvents BReadMem As Button
-    Friend WithEvents Label30 As Label
+    Friend WithEvents LABEL_SearchDepth As Label
     Friend WithEvents NIns As NumericUpDown
     Friend WithEvents T20 As TextBox
     Friend WithEvents T21 As TextBox
@@ -2054,7 +2074,9 @@ Partial Class Form1
     Friend WithEvents BtnTile As Button
     Friend WithEvents PItem As Cyotek.Windows.Forms.ImageBox
     Friend WithEvents BtnTile2 As Button
-    Friend WithEvents Label3 As Label
+    Friend WithEvents LABEL_Zoom As Label
     Friend WithEvents NumZoom As NumericUpDown
-    Friend WithEvents Button1 As Button
+    Friend WithEvents BUTTON_En As Button
+    Friend WithEvents COMBOBOX_LanguageSettings As ComboBox
+    Friend WithEvents LABEL_Strat As Label
 End Class

@@ -1032,14 +1032,14 @@ Err:
         StratData.Columns.Add("t21")
         If File.Exists(Application.StartupPath & "\Data.xml") Then
             RefStrat = False
-            CBStrat.Items.Clear()
+            COMBOBOX_Strat.Items.Clear()
             StratData.ReadXml(Application.StartupPath & "\Data.xml")
             For i As Integer = 0 To StratData.Rows.Count - 1
-                CBStrat.Items.Add(StratData.Rows(i).Item(0))
+                COMBOBOX_Strat.Items.Add(StratData.Rows(i).Item(0))
             Next
             RefStrat = True
-            If CBStrat.Items.Count > 0 Then
-                CBStrat.SelectedIndex = 0
+            If COMBOBOX_Strat.Items.Count > 0 Then
+                COMBOBOX_Strat.SelectedIndex = 0
             End If
         End If
     End Sub
@@ -1080,7 +1080,7 @@ Err:
             Next
         End If
     End Sub
-    Private Sub BtnSaveTexts_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub BtnSaveTexts_Click(sender As Object, e As EventArgs) Handles BUTTON_En.Click
         'SaveControlTextsToFile("ControlTexts.txt")
         ChangeControlTexts("ControlTexts.txt")
     End Sub
@@ -1130,8 +1130,60 @@ Err:
         Next
     End Sub
 
+    Private Sub COMBOBOX_LanguageSettings_SelectedIndexChanged(sender As Object, e As EventArgs) Handles COMBOBOX_LanguageSettings.SelectedIndexChanged
+        Dim selected As String = COMBOBOX_LanguageSettings.SelectedItem.ToString()
+
+        If selected = My.Settings.LanguageFile Then
+            Return
+        End If
+
+        My.Settings.LanguageFile = selected
+        My.Settings.Save()
+
+        Dim MessageTitle As String = LanguageManager.GetText("FORM1", "LangChangedTitle")
+        Dim MessageText As String = LanguageManager.GetText("FORM1", "LangChanged")
+        MessageBox.Show(MessageText, MessageTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' All of these lines, before "Get Language Files" section, I tried to add them into ApplicationEvents.vb
+        ' But I discovered that's not the startup file
+        ' Startup is "Form1" directly, LMAO
+        Dim langDir As String = Path.Combine(Application.StartupPath, "Languages")
+        Dim langFileName As String = Path.Combine(langDir, My.Settings.LanguageFile & ".ini")
+
+        If File.Exists(langFileName) Then
+            Dim rdr As New StreamReader(langFileName)
+            LanguageManager.Load(rdr.ReadToEnd().Split(ControlChars.Lf))
+            rdr.Close()
+        Else
+            MessageBox.Show("File " & langFileName & " could not be found.")
+        End If
+
+        ' Get Language Files
+        LanguageManager.ApplyToContainer(Me, "FORM1")
+        COMBOBOX_Theme.Items.AddRange(LanguageManager.GetList("COMBOBOX_ThemeL").ToArray())
+        COMBOBOX_Style.Items.AddRange(LanguageManager.GetList("COMBOBOX_StyleL").ToArray())
+        COMBOBOX_SemiSolid.Items.AddRange(LanguageManager.GetList("COMBOBOX_SemiSolid").ToArray())
+        COMBOBOX_Character.Items.AddRange(LanguageManager.GetList("COMBOBOX_Character").ToArray())
+        COMBOBOX_Ground.Items.AddRange(LanguageManager.GetList("COMBOBOX_Ground").ToArray())
+        COMBOBOX_Item.Items.AddRange(LanguageManager.GetList("COMBOBOX_Item").ToArray())
+
+        If Directory.Exists(langDir) Then
+            Dim files() As String = Directory.GetFiles(langDir)
+            For Each file As String In files
+                If file.EndsWith(".ini") Then
+                    Dim startPos As Integer = file.LastIndexOf(Path.DirectorySeparatorChar) + 1
+                    COMBOBOX_LanguageSettings.Items.Add(file.Substring(startPos, file.LastIndexOf("."c) - startPos))
+                End If
+            Next
+        End If
+
+        COMBOBOX_LanguageSettings.DropDownStyle = ComboBoxStyle.DropDownList
+        RemoveHandler COMBOBOX_LanguageSettings.SelectedIndexChanged, AddressOf COMBOBOX_LanguageSettings_SelectedIndexChanged
+
+        COMBOBOX_LanguageSettings.SelectedItem = My.Settings.LanguageFile
+        AddHandler COMBOBOX_LanguageSettings.SelectedIndexChanged, AddressOf COMBOBOX_LanguageSettings_SelectedIndexChanged
 
         ' Add any initialization after the InitializeComponent() call.
         pfc = New System.Drawing.Text.PrivateFontCollection()
@@ -1144,14 +1196,14 @@ Err:
         PB.Width = Me.ClientSize.Width - 353
         PB.Height = Me.ClientSize.Height - 10
 
-        ComboBox3.SelectedIndex = 0
-        ComboBox1.SelectedIndex = 0
-        ComboBox4.SelectedIndex = 1
-        ComboBox5.SelectedIndex = 1
-        ComboBox6.SelectedIndex = 0
+        COMBOBOX_Theme.SelectedIndex = 0
+        COMBOBOX_Character.SelectedIndex = 0
+        COMBOBOX_Style.SelectedIndex = 1
+        COMBOBOX_SemiSolid.SelectedIndex = 1
+        COMBOBOX_Ground.SelectedIndex = 0
 
-        CBItem.SelectedIndex = 0
-        CBJumpAcc.SelectedIndex = 0
+        COMBOBOX_Item.SelectedIndex = 0
+        COMBOBOX_JumpAcc.SelectedIndex = 0
         Tile = Image.FromFile(Application.StartupPath &
                               "\IMG\Model\M1_Field_underground.Nin_NX_NVN\M1_Field_underground.png")
 
@@ -1248,14 +1300,14 @@ Err:
         Dim i, j As Integer
         Dim B As New Bitmap(W * 16, H * 16)
         Dim G As Graphics = Graphics.FromImage(B)
-        Tile = Image.FromFile(Application.StartupPath & "\img\Model\" & ComboBox3.Text & "_Field_" &
-                              ComboBox4.Text & If(CheckBox7.Checked, "_D", "") &
-                              ".Nin_NX_NVN\" & ComboBox3.Text & "_Field_" &
-                              ComboBox4.Text & If(CheckBox7.Checked, "_D", "") & ".png")
+        Tile = Image.FromFile(Application.StartupPath & "\img\Model\" & CharPack & "_Field_" &
+                              StyleName & If(CHECK_Night.Checked, "_D", "") &
+                              ".Nin_NX_NVN\" & CharPack & "_Field_" &
+                              StyleName & If(CHECK_Night.Checked, "_D", "") & ".png")
         Dim TX, TY As Integer
-        Select Case ComboBox5.SelectedIndex
+        Select Case COMBOBOX_SemiSolid.SelectedIndex
             Case 0, 1, 2 '平台1
-                TX = 7 + ComboBox5.SelectedIndex * 3
+                TX = 7 + COMBOBOX_SemiSolid.SelectedIndex * 3
                 G.DrawImage(GetTile(TX, 3), 0, 0, 16, 16)
                 For j = 1 To H
                     G.DrawImage(GetTile(TX, 5 - (j Mod 2)), 0, j * 16, 16, 16)
@@ -1282,7 +1334,7 @@ Err:
             Case 4 '无
         End Select
 
-        Select Case ComboBox6.SelectedIndex
+        Select Case COMBOBOX_Ground.SelectedIndex
             Case 0 '地面
                 TX = 9 : TY = 7
             Case 1  '硬砖
@@ -1347,33 +1399,33 @@ Err:
                 Select Case SpikeBlk(i).type
                     Case 0 '刺
                         G.DrawImage(
-                        Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_FieldAnime_Normal\" &
-                              ComboBox3.Text & "_Field_anime_toge_N.Nin_NX_NVN\wait.0.png"), ImgZoom),
+                        Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_FieldAnime_Normal\" &
+                              CharPack & "_Field_anime_toge_N.Nin_NX_NVN\wait.0.png"), ImgZoom),
                               SpikeBlk(i).x * 8 * ImgZoom, SpikeBlk(i).y * 8 * ImgZoom, 16 * ImgZoom, 16 * ImgZoom)
                     Case 1 '绿花
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), ImgZoom),
                             SpikeBlk(i).x * 8 * ImgZoom, SpikeBlk(i).y * 8 * ImgZoom - 8 * ImgZoom, 16 * ImgZoom, 24 * ImgZoom)
                     Case 2 '倒绿花
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), ImgZoom),
                             SpikeBlk(i).x * 8 * ImgZoom, SpikeBlk(i).y * 8 * ImgZoom + 24 * ImgZoom, 16 * ImgZoom, -24 * ImgZoom)
                     Case 3 '黑花
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packunblack.Nin_NX_NVN\wait.0.png"), ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packunblack.Nin_NX_NVN\wait.0.png"), ImgZoom),
                              SpikeBlk(i).x * 8 * ImgZoom, SpikeBlk(i).y * 8 * ImgZoom, 16 * ImgZoom, 16 * ImgZoom)
                     Case 4 '大绿花
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
                             SpikeBlk(i).x * 8 * ImgZoom, SpikeBlk(i).y * 8 * ImgZoom - 32 * ImgZoom, 32 * ImgZoom, 48 * ImgZoom)
                     Case 5 '大倒绿花
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
                             SpikeBlk(i).x * 8 * ImgZoom, SpikeBlk(i).y * 8 * ImgZoom + 48 * ImgZoom, 32 * ImgZoom, -48 * ImgZoom)
                     Case 99
                         G.DrawImage(Magnifier(GetTile(SpikeBlk(i).tx, SpikeBlk(i).ty), ImgZoom),
@@ -1964,12 +2016,12 @@ Err:
             Dim C() As String = TxtAir.Text.Split("-")
             Dim R1 As Integer = C(0) * 1000
             Dim R2 As Integer = C(1) * 1000
-            Dim s() = File.ReadAllLines(Application.StartupPath & "\jump\" & CBJumpAcc.Text & ".txt")
+            Dim s() = File.ReadAllLines(Application.StartupPath & "\jump\" & COMBOBOX_JumpAcc.Text & ".txt")
             LBox.Items.Clear()
             LB1State = 1
             For i As Integer = 0 To s.Length - 1
                 If Int(s(i)) <= R2 AndAlso Int(s(i)) >= R1 Then
-                    Dim s2() = File.ReadAllLines(Application.StartupPath & "\jump\" & CBJumpAcc.Text & "\" & s(i) & ".txt")
+                    Dim s2() = File.ReadAllLines(Application.StartupPath & "\jump\" & COMBOBOX_JumpAcc.Text & "\" & s(i) & ".txt")
                     For j As Integer = 0 To s2.Length - 1
                         LBox.Items.Add(AJump2Cmd(s2(j)))
                     Next
@@ -1983,7 +2035,7 @@ Err:
     Function AJump2Cmd(A As String) As String
         Dim s() = A.Split(vbTab)
         If s.Length = 9 Then
-            Select Case CBJumpAcc.Text
+            Select Case COMBOBOX_JumpAcc.Text
                 Case "3.568", "3.748", "3.808", "3.868" '普通跳
                     If s(3) = "0" Then
                         Return "[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右跳" & s(1) & " 加速右" & s(2) & " 加速右跳30"
@@ -2009,10 +2061,10 @@ Err:
         TxtAir.SelectAll()
     End Sub
 
-    Private Sub CBStrat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBStrat.SelectedIndexChanged
-        If RefStrat AndAlso CBStrat.SelectedIndex >= 0 Then
-            Dim s() = StratData.Rows(CBStrat.SelectedIndex).Item(1).ToString.Split(" ")
-            TxtStrat.Text = StratData.Rows(CBStrat.SelectedIndex).Item(0).ToString
+    Private Sub CBStrat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles COMBOBOX_Strat.SelectedIndexChanged
+        If RefStrat AndAlso COMBOBOX_Strat.SelectedIndex >= 0 Then
+            Dim s() = StratData.Rows(COMBOBOX_Strat.SelectedIndex).Item(1).ToString.Split(" ")
+            TxtStrat.Text = StratData.Rows(COMBOBOX_Strat.SelectedIndex).Item(0).ToString
             TX1.Text = s(0)
             TS1.Text = s(1)
             TY1.Text = s(2)
@@ -2021,16 +2073,16 @@ Err:
             TB.Value = Val(s(4))
             TD.Text = s(5)
             CkBlk.Checked = s(6) = "1"
-            T2.Text = StratData.Rows(CBStrat.SelectedIndex).Item(2).ToString
-            T20.Text = StratData.Rows(CBStrat.SelectedIndex).Item(3).ToString
-            T21.Text = StratData.Rows(CBStrat.SelectedIndex).Item(4).ToString
+            T2.Text = StratData.Rows(COMBOBOX_Strat.SelectedIndex).Item(2).ToString
+            T20.Text = StratData.Rows(COMBOBOX_Strat.SelectedIndex).Item(3).ToString
+            T21.Text = StratData.Rows(COMBOBOX_Strat.SelectedIndex).Item(4).ToString
             BtnCal_Click(BtnCal, New EventArgs())
         End If
     End Sub
 
     Private Declare Function timeGetTime Lib "winmm.dll" () As Integer
     Dim MJumpF As Byte = 1
-    Dim CharAct(11, 3) As Bitmap, CharActName As String = "MarioMdl", CharPack As String = "12621"
+    Dim CharAct(11, 3) As Bitmap, CharActName As String = "MarioMdl", CharPack As String = "12621", StyleName As String = "Plain"
     Dim OFX, OFY, CHW, CHH As Integer
     Sub GetCharAct()
         '角色贴图加载，待更新
@@ -2349,7 +2401,7 @@ Err:
                     SpikeBlk(0).x = (EPoint.X - 4 * ImgZoom) \ (8 * ImgZoom)
                     SpikeBlk(0).y = (EPoint.Y - 4 * ImgZoom) \ (8 * ImgZoom)
                     If DrawTileMode = 0 Then
-                        SpikeBlk(0).type = CBItem.SelectedIndex
+                        SpikeBlk(0).type = COMBOBOX_Item.SelectedIndex
                     Else
                         SpikeBlk(0).type = 99
                         SpikeBlk(0).tx = SelBackTileLoc.X
@@ -2360,7 +2412,7 @@ Err:
                     SpikeBlk(UBound(SpikeBlk)).x = (EPoint.X - 4 * ImgZoom) \ (8 * ImgZoom)
                     SpikeBlk(UBound(SpikeBlk)).y = (EPoint.Y - 4 * ImgZoom) \ (8 * ImgZoom)
                     If DrawTileMode = 0 Then
-                        SpikeBlk(UBound(SpikeBlk)).type = CBItem.SelectedIndex
+                        SpikeBlk(UBound(SpikeBlk)).type = COMBOBOX_Item.SelectedIndex
                     Else
                         SpikeBlk(UBound(SpikeBlk)).type = 99
                         SpikeBlk(UBound(SpikeBlk)).tx = SelBackTileLoc.X
@@ -2371,8 +2423,8 @@ Err:
                 Select Case SpikeBlk(UBound(SpikeBlk)).type
                     Case 0 '刺
                         G.DrawImage(
-                        Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_FieldAnime_Normal\" &
-                              ComboBox3.Text & "_Field_anime_toge_N.Nin_NX_NVN\wait.0.png"), ImgZoom),
+                        Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_FieldAnime_Normal\" &
+                              CharPack & "_Field_anime_toge_N.Nin_NX_NVN\wait.0.png"), ImgZoom),
                               SpikeBlk(UBound(SpikeBlk)).x * 8 * ImgZoom, SpikeBlk(UBound(SpikeBlk)).y * 8 * ImgZoom,
                               16 * ImgZoom, 16 * ImgZoom)
                         If CkHitbox.Checked Then
@@ -2393,8 +2445,8 @@ Err:
                         End If
                     Case 1 '绿花
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), ImgZoom),
                             SpikeBlk(UBound(SpikeBlk)).x * 8 * ImgZoom, (SpikeBlk(UBound(SpikeBlk)).y * 8 - 8) * ImgZoom,
                             16 * ImgZoom, 24 * ImgZoom)
                         If CkHitbox.Checked Then
@@ -2404,8 +2456,8 @@ Err:
                         End If
                     Case 2 '倒绿花
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), ImgZoom),
                             SpikeBlk(UBound(SpikeBlk)).x * 8 * ImgZoom, (SpikeBlk(UBound(SpikeBlk)).y * 8 + 24) * ImgZoom,
                             16 * ImgZoom, -24 * ImgZoom)
                         If CkHitbox.Checked Then
@@ -2415,8 +2467,8 @@ Err:
                         End If
                     Case 4 '大绿花 '绿花8*21 大绿花24*42
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
                             SpikeBlk(UBound(SpikeBlk)).x * 8 * ImgZoom, (SpikeBlk(UBound(SpikeBlk)).y * 8 - 32) * ImgZoom,
                             32 * ImgZoom, 48 * ImgZoom)
                         If CkHitbox.Checked Then
@@ -2426,8 +2478,8 @@ Err:
                         End If
                     Case 5 '倒大绿花
                         G.DrawImage(
-                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                              ComboBox3.Text & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
+                            Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                              CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
                             SpikeBlk(UBound(SpikeBlk)).x * 8 * ImgZoom,
                             (SpikeBlk(UBound(SpikeBlk)).y * 8 + 48) * ImgZoom, 32 * ImgZoom, -48 * ImgZoom)
                         If CkHitbox.Checked Then
@@ -2437,8 +2489,8 @@ Err:
                         End If
                     Case 3 '黑花
                         G.DrawImage(
-                        Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & ComboBox3.Text & "_Model\" &
-                          ComboBox3.Text & "_Enemy_packunblack.Nin_NX_NVN\wait.0.png"), ImgZoom),
+                        Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                         CharPack & "_Enemy_packunblack.Nin_NX_NVN\wait.0.png"), ImgZoom),
                         SpikeBlk(UBound(SpikeBlk)).x * 8 * ImgZoom,
                         SpikeBlk(UBound(SpikeBlk)).y * 8 * ImgZoom, 16 * ImgZoom, 16 * ImgZoom)
                     Case 99
@@ -2594,17 +2646,86 @@ Err:
 
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        CharActName = ComboBox1.Text
+    Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles COMBOBOX_Theme.SelectedIndexChanged
+        If COMBOBOX_Theme.SelectedIndex = 0 Then
+            CharPack = "M1"
+        End If
+
+        If COMBOBOX_Theme.SelectedIndex = 1 Then
+            CharPack = "M3"
+        End If
+
+        If COMBOBOX_Theme.SelectedIndex = 2 Then
+            CharPack = "MW"
+        End If
+
+        GetCharAct()
+    End Sub
+
+    Private Sub COMBOBOX_Style_SelectedIndexChanged(sender As Object, e As EventArgs) Handles COMBOBOX_Style.SelectedIndexChanged
+        If COMBOBOX_Style.SelectedIndex = 0 Then
+            StyleName = "Plain"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 1 Then
+            StyleName = "Underground"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 2 Then
+            StyleName = "Castle"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 3 Then
+            StyleName = "Airship"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 4 Then
+            StyleName = "Water"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 5 Then
+            StyleName = "Hauntedhouse"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 6 Then
+            StyleName = "Snow"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 7 Then
+            StyleName = "Desert"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 8 Then
+            StyleName = "Athletic"
+        End If
+
+        If COMBOBOX_Style.SelectedIndex = 9 Then
+            StyleName = "Woods"
+        End If
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles COMBOBOX_Character.SelectedIndexChanged
+        If COMBOBOX_Character.SelectedIndex = 0 Then
+            CharActName = "MarioMdl"
+        End If
+
+        If COMBOBOX_Character.SelectedIndex = 1 Then
+            CharActName = "MarioMdl_2"
+        End If
+
+        If COMBOBOX_Character.SelectedIndex = 2 Then
+            CharActName = "MarioMdl_3"
+        End If
+
+        If COMBOBOX_Character.SelectedIndex = 3 Then
+            CharActName = "MarioMdl_4"
+        End If
+
         GetCharAct()
     End Sub
 
     Private Sub CkMario_CheckedChanged(sender As Object, e As EventArgs) Handles CkMario.CheckedChanged
-        GetCharAct()
-    End Sub
-
-    Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
-        CharPack = ComboBox3.Text
         GetCharAct()
     End Sub
 
@@ -3050,18 +3171,20 @@ Err:
     End Sub
 
     Private Sub BtnTile_Click(sender As Object, e As EventArgs) Handles BtnTile.Click
-        CBItem.BackColor = Color.White
+        COMBOBOX_Item.BackColor = Color.White
         BtnTile.BackColor = Color.LightBlue
         DrawTileMode = 1
         LoadPItem()
         PItem.Visible = Not PItem.Visible
     End Sub
 
+    ' Makes sense the name of selected index from ComboBox is literally parsed to the image path
+    ' So, I'm not going to add manually a path for every index to have translations of every Theme/Style
     Sub LoadPItem()
-        PItem.Image = Image.FromFile(Application.StartupPath & "\img\Model\" & ComboBox3.Text & "_Field_" &
-                              ComboBox4.Text & If(CheckBox7.Checked, "_D", "") &
-                              ".Nin_NX_NVN\" & ComboBox3.Text & "_Field_" &
-                              ComboBox4.Text & If(CheckBox7.Checked, "_D", "") & ".png")
+        PItem.Image = Image.FromFile(Application.StartupPath & "\img\Model\" & CharPack & "_Field_" &
+                              StyleName & If(CHECK_Night.Checked, "_D", "") &
+                              ".Nin_NX_NVN\" & CharPack & "_Field_" &
+                              StyleName & If(CHECK_Night.Checked, "_D", "") & ".png")
     End Sub
     Dim SelBackTile As Bitmap, SelBackTileLoc As Point, DrawTileMode As Integer
     Private Sub PItem_MouseClick(sender As Object, e As MouseEventArgs) Handles PItem.MouseClick
@@ -3075,18 +3198,18 @@ Err:
     End Sub
 
     Private Sub BtnTile2_Click(sender As Object, e As EventArgs) Handles BtnTile2.Click
-        CBItem.Items.Add(SelBackTile)
+        COMBOBOX_Item.Items.Add(SelBackTile)
     End Sub
 
-    Private Sub CBItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBItem.SelectedIndexChanged
-        CBItem.BackColor = Color.LightBlue
+    Private Sub CBItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles COMBOBOX_Item.SelectedIndexChanged
+        COMBOBOX_Item.BackColor = Color.LightBlue
         BtnTile.BackColor = Color.White
         DrawTileMode = 0
         PItem.Visible = False
     End Sub
 
-    Private Sub CBItem_MouseClick(sender As Object, e As MouseEventArgs) Handles CBItem.MouseClick
-        CBItem.BackColor = Color.LightBlue
+    Private Sub CBItem_MouseClick(sender As Object, e As MouseEventArgs) Handles COMBOBOX_Item.MouseClick
+        COMBOBOX_Item.BackColor = Color.LightBlue
         BtnTile.BackColor = Color.White
         DrawTileMode = 0
         PItem.Visible = False
