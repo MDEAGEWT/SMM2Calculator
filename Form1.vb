@@ -239,9 +239,20 @@ Partial Class Form1
     End Function
 
     ' Grinder (圆锯 / 쓱싹쓱싹): 48x48 sprite (3x3 blocks), round damage hitbox around its centre.
-    ' The radius is not published; 16 (one block) fits the clear of J18-0TG-33G, whose path passes
-    ' 18.3 px from a Grinder's centre with the crouching hurtbox.
-    Const GrinderRadius As Single = 16
+    ' The radius is not published and is set in the form (NumGrinderR). The default 18.6 is the largest
+    ' radius the clear of J18-0TG-33G survives: its crouch-jump hitbox passes 18.6 px from a Grinder's
+    ' centre. Searches read this field from worker threads, so it is not read from the control.
+    Dim GrinderRadius As Single = 18.6F
+    Private Sub NumGrinderR_ValueChanged(sender As Object, e As EventArgs) Handles NumGrinderR.ValueChanged
+        GrinderRadius = CSng(NumGrinderR.Value)
+        If Not Visible Then Return
+        Dim cu As Integer
+        If Txt2Cmd(T2.Text, cu).Length = 0 Then
+            DrawBG(NumW.Value, NumH.Value)
+        Else
+            ReDraw()
+        End If
+    End Sub
 
     Private Function CircleHitsRect(cx As Single, cy As Single, r As Single,
                                     x As Single, y As Single, w As Single, h As Single) As Boolean

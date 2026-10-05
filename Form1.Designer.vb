@@ -171,6 +171,8 @@ Partial Class Form1
         LABEL_MapY = New Label()
         NumMapY = New NumericUpDown()
         CkSubArea = New CheckBox()
+        LABEL_GrinderRadius = New Label()
+        NumGrinderR = New NumericUpDown()
         CType(TYH, ComponentModel.ISupportInitialize).BeginInit()
         CType(TB, ComponentModel.ISupportInitialize).BeginInit()
         CType(TYW, ComponentModel.ISupportInitialize).BeginInit()
@@ -182,6 +184,7 @@ Partial Class Form1
         CType(NIns, ComponentModel.ISupportInitialize).BeginInit()
         CType(NumMapX, ComponentModel.ISupportInitialize).BeginInit()
         CType(NumMapY, ComponentModel.ISupportInitialize).BeginInit()
+        CType(NumGrinderR, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         Panel3.SuspendLayout()
         SuspendLayout()
@@ -1428,6 +1431,8 @@ Partial Class Form1
         ' Panel1
         ' 
         Panel1.BorderStyle = BorderStyle.FixedSingle
+        Panel1.Controls.Add(NumGrinderR)
+        Panel1.Controls.Add(LABEL_GrinderRadius)
         Panel1.Controls.Add(TSPX2)
         Panel1.Controls.Add(TSPX1)
         Panel1.Controls.Add(BUTTON_En)
@@ -2006,6 +2011,30 @@ Partial Class Form1
         CkSubArea.Text = "<SubArea>"
         CkSubArea.UseVisualStyleBackColor = True
         ' 
+        ' LABEL_GrinderRadius
+        ' 
+        LABEL_GrinderRadius.AutoSize = True
+        LABEL_GrinderRadius.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_GrinderRadius.Location = New Point(288, 30)
+        LABEL_GrinderRadius.Name = "LABEL_GrinderRadius"
+        LABEL_GrinderRadius.Size = New Size(66, 13)
+        LABEL_GrinderRadius.TabIndex = 120
+        LABEL_GrinderRadius.Text = "<GrinderR>"
+        ' 
+        ' NumGrinderR
+        ' 
+        NumGrinderR.BackColor = Color.White
+        NumGrinderR.DecimalPlaces = 1
+        NumGrinderR.Font = New Font("Microsoft YaHei UI", 8.25F)
+        NumGrinderR.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        NumGrinderR.Location = New Point(288, 49)
+        NumGrinderR.Maximum = New Decimal(New Integer() {24, 0, 0, 0})
+        NumGrinderR.Name = "NumGrinderR"
+        NumGrinderR.Size = New Size(66, 21)
+        NumGrinderR.TabIndex = 121
+        NumGrinderR.TextAlign = HorizontalAlignment.Center
+        NumGrinderR.Value = New Decimal(New Integer() {186, 0, 0, 65536})
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(6F, 13F)
@@ -2037,6 +2066,7 @@ Partial Class Form1
         CType(NIns, ComponentModel.ISupportInitialize).EndInit()
         CType(NumMapX, ComponentModel.ISupportInitialize).EndInit()
         CType(NumMapY, ComponentModel.ISupportInitialize).EndInit()
+        CType(NumGrinderR, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         Panel3.ResumeLayout(False)
@@ -2191,4 +2221,6 @@ Partial Class Form1
     Friend WithEvents LABEL_MapY As Label
     Friend WithEvents NumMapY As NumericUpDown
     Friend WithEvents CkSubArea As CheckBox
+    Friend WithEvents LABEL_GrinderRadius As Label
+    Friend WithEvents NumGrinderR As NumericUpDown
 End Class

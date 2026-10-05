@@ -30,7 +30,7 @@
 
 ## Grinder
 
-Grinders are in the obstacle list. A Grinder takes 3x3 blocks, and its damage hitbox is a circle of radius 16 px around its centre. There is no official value, so this is an estimate: in a clear video of J18-0TG-33G the crouch-jump hitbox passes about 18.3 px from a Grinder's centre, so the real radius is smaller than that.
+Grinders are in the obstacle list. A Grinder takes 3x3 blocks, and its damage hitbox is a circle around its centre. Set its radius in `Grinder r` under `Crouch` (default 18.6 px). There is no official value; 18.6 is the largest radius that the clear of J18-0TG-33G still survives, since its crouch-jump hitbox passes 18.6 px from a Grinder's centre. The distance is measured from the Grinder's centre to the nearest edge of the character's hitbox.
 
 ## Importing a map
 
