@@ -62,6 +62,22 @@ Public Class LanguageManager
         Return String.Format("<ERROR {0}:{1}>", Area, Key)
     End Function
 
+    ' Like GetText, but falls back to DefaultText when the loaded language file lacks the key,
+    ' so older or partial language files keep working.
+    Public Shared Function GetTextOrDefault(ByVal Area As String, ByVal Key As String, ByVal DefaultText As String) As String
+        If Contents IsNot Nothing AndAlso Contents.ContainsKey(Area) AndAlso Contents(Area).ContainsKey(Key) Then
+            Return Contents(Area)(Key)
+        End If
+        Return DefaultText
+    End Function
+
+    Public Shared Function GetSection(ByVal Area As String) As Dictionary(Of String, String)
+        If Contents IsNot Nothing AndAlso Contents.ContainsKey(Area) Then
+            Return Contents(Area)
+        End If
+        Return New Dictionary(Of String, String)()
+    End Function
+
     Public Shared Function GetText(ByVal Area As String, ByVal Number As Integer) As String
         If Contents Is Nothing Then Return "<NOT LOADED>"
 
@@ -154,27 +170,3 @@ Public Class LanguageManager
         Next
     End Sub
 End Class
-
-'ATTEMPT TO TRY TO MAKE COMMAND TRANSLATIONS FROM .INI FILE BUT FAILED
-
-'Public Module LocalizationManager
-'    Public Sections As New Dictionary(Of String, Dictionary(Of String, String))()
-
-'    Public Function GetCommandKey(localizedCommand As String) As String
-'        If Sections.ContainsKey("LIST_Commands") Then
-'            For Each kvp In Sections("LIST_Commands")
-'                If kvp.Value = localizedCommand Then
-'                    Return kvp.Key
-'                End If
-'            Next
-'        End If
-'        Return Nothing
-'    End Function
-
-'    Public Function GetCommandText(key As String) As String
-'        If Sections.ContainsKey("LIST_Commands") AndAlso Sections("LIST_Commands").ContainsKey(key) Then
-'            Return Sections("LIST_Commands")(key)
-'        End If
-'        Return key
-'    End Function
-'End Module

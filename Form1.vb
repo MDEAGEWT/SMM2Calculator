@@ -227,9 +227,27 @@ Partial Class Form1
                                  24, 42) Then
                         Return True
                     End If
+                Case 6 '圆锯
+                    If CircleHitsRect(SpikeBlk(i).x * 8 + 24, SpikeBlk(i).y * 8 + 24, GrinderRadius,
+                                      X, (NumH.Value - 1) * 16 - Y + If(CkDuck.Checked, 9, 2),
+                                      16, If(CkDuck.Checked, 7, 14)) Then
+                        Return True
+                    End If
             End Select
         Next
         Return False
+    End Function
+
+    ' Grinder (圆锯 / 쓱싹쓱싹): 48x48 sprite (3x3 blocks), round damage hitbox around its centre.
+    ' The radius is not published; 16 (one block) fits the clear of J18-0TG-33G, whose path passes
+    ' 18.3 px from a Grinder's centre with the crouching hurtbox.
+    Const GrinderRadius As Single = 16
+
+    Private Function CircleHitsRect(cx As Single, cy As Single, r As Single,
+                                    x As Single, y As Single, w As Single, h As Single) As Boolean
+        Dim dx = cx - Math.Max(x, Math.Min(cx, x + w))
+        Dim dy = cy - Math.Max(y, Math.Min(cy, y + h))
+        Return dx * dx + dy * dy < r * r
     End Function
     Structure SpikeRect
         Dim x As Single
@@ -570,6 +588,11 @@ Partial Class Form1
         Return B
     End Function
 
+    'Text from the [FORM1] section of the language file, or the original Chinese text if it is missing
+    Private Function Msg(key As String, def As String) As String
+        Return LanguageManager.GetTextOrDefault("FORM1", key, def)
+    End Function
+
     Private Function GetStrW(s As String) As Integer
         Dim B As New Bitmap(300, 100)
         Dim G As Graphics = Graphics.FromImage(B), SZ As SizeF
@@ -658,7 +681,7 @@ Partial Class Form1
         HitBlk = CkBlk.Checked
         HitBlkLoc = Val(TB.Text)
 
-        LblCal.Text = DateTime.Now & " 开始搜索操作"
+        LblCal.Text = DateTime.Now & " " & Msg("MSG_SearchStart", "开始搜索操作")
 
         Dim i, j, k As Long, m As Single
         Dim S(), CmdT(), Re As String
@@ -682,7 +705,7 @@ Partial Class Form1
         Dim NowF As Integer = 0
         For m = Val(TX1.Text) To Val(TX1.Text) + RN Step ST
             Application.DoEvents()
-            LblCal.Text = "搜索解法 " & Format(m, "0.000") & " → 帧" & MaxF.ToString & " [" & k.ToString & "] " & Format(C(0) / UC(0), "0.00%")
+            LblCal.Text = String.Format(Msg("MSG_SearchProgress", "搜索解法 {0} → 帧{1} [{2}] {3}"), Format(m, "0.000"), MaxF, k, Format(C(0) / UC(0), "0.00%"))
 
             For i = 0 To S.Length - 1
                 C(i) = LC(i)
@@ -752,7 +775,7 @@ Partial Class Form1
                             Print(FNum, m.ToString & vbTab & Re.Replace(" ", vbTab))
                         End If
                         k += 1
-                        LblCal.Text = "搜索解法 " & Format(m, "0.000") & " → 帧" & MaxF.ToString & " [" & k.ToString & "] " & Format(C(0) / UC(0), "0.00%")
+                        LblCal.Text = String.Format(Msg("MSG_SearchProgress", "搜索解法 {0} → 帧{1} [{2}] {3}"), Format(m, "0.000"), MaxF, k, Format(C(0) / UC(0), "0.00%"))
                         '搜索下一解法
                         C(S.Length - 1) += 1
                         NowF += 1
@@ -780,7 +803,7 @@ Partial Class Form1
                                         C(j - 1) += 1
                                     End If
                                 Next
-                                LblCal.Text = "搜索解法 " & Format(m, "0.000") & " → 帧" & MaxF.ToString & " [" & k.ToString & "] " & Format(C(0) / UC(0), "0.00%")
+                                LblCal.Text = String.Format(Msg("MSG_SearchProgress", "搜索解法 {0} → 帧{1} [{2}] {3}"), Format(m, "0.000"), MaxF, k, Format(C(0) / UC(0), "0.00%"))
                                 Exit For
                             End If
                         Next
@@ -802,7 +825,7 @@ Partial Class Form1
         Next
 
         PBar.Value = PBar.Maximum
-        LblCal.Text = DateTime.Now & " 找到解法" & k.ToString & "个"
+        LblCal.Text = DateTime.Now & " " & String.Format(Msg("MSG_SolutionsFound", "找到解法{0}个"), k)
         FileClose(FNum)
 
         'Re = ""
@@ -827,7 +850,7 @@ Partial Class Form1
         RS = Val(TS3.Text)
         RSY = Val(TSY3.Text)
 
-        LblCal.Text = DateTime.Now & " 开始搜索操作"
+        LblCal.Text = DateTime.Now & " " & Msg("MSG_SearchStart", "开始搜索操作")
         FileOpen(1, Application.StartupPath & "\output\[" & DateString.Replace("/", "") & "-" & TimeString.Replace(":", "") & "]" & T2.Text & ".TXT", OpenMode.Output)
 
         Dim i, j As Long
@@ -860,7 +883,7 @@ Partial Class Form1
 
             IsJump = False
             'PBar.Value = PN
-            LblCal.Text = "搜索解法 → [" & j.ToString & "]"
+            LblCal.Text = String.Format(Msg("MSG_SearchCount", "搜索解法 → [{0}]"), j)
             WSpd = 0
             WFrame = 0
             FrameLoc = 1
@@ -900,7 +923,7 @@ Partial Class Form1
             'PN += 1
         Loop Until C(C.Length - 1) > UC(UC.Length - 1)
         'PBar.Value = PBar.Maximum
-        LblCal.Text = DateTime.Now & " 找到解法" & j.ToString & "个"
+        LblCal.Text = DateTime.Now & " " & String.Format(Msg("MSG_SolutionsFound", "找到解法{0}个"), j)
         FileClose(1)
     End Sub
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles BtnSrc.Click
@@ -1062,24 +1085,6 @@ Err:
     End Sub
 
 
-    Sub LoadCmdTrans(filePath As String)
-        If File.Exists(filePath) Then
-            Dim lines = File.ReadAllLines(filePath)
-            Dim idx As Integer = 0
-            ReDim CmdTrans(lines.Length - 1, 1)
-            For Each line In lines
-                Dim parts = line.Split("=")
-                If parts.Length < 2 Then
-                    CmdTrans(idx, 0) = ""
-                    CmdTrans(idx, 1) = ""
-                Else
-                    CmdTrans(idx, 0) = parts(0)
-                    CmdTrans(idx, 1) = parts(1)
-                End If
-                idx += 1
-            Next
-        End If
-    End Sub
     Private Sub BtnSaveTexts_Click(sender As Object, e As EventArgs) Handles BUTTON_En.Click
         'SaveControlTextsToFile("ControlTexts.txt")
         ChangeControlTexts("ControlTexts.txt")
@@ -1130,6 +1135,43 @@ Err:
         Next
     End Sub
 
+    ' List entries may be written "Full name|Short name": the open list shows the full (official)
+    ' name and the closed box shows the short one, since the boxes are too narrow for most names.
+    Private Sub AddListItems(cb As ComboBox, listName As String)
+        Dim shortNames As New List(Of String)
+        For Each entry In LanguageManager.GetList(listName)
+            Dim p = entry.Split("|"c)
+            cb.Items.Add(p(0).Trim())
+            shortNames.Add(If(p.Length > 1, p(1).Trim(), p(0).Trim()))
+        Next
+        cb.Tag = shortNames
+        cb.DrawMode = DrawMode.OwnerDrawFixed
+        AddHandler cb.DrawItem, AddressOf ListItem_DrawItem
+        AddHandler cb.DropDown, AddressOf ListItem_DropDown
+    End Sub
+
+    Private Sub ListItem_DropDown(sender As Object, e As EventArgs)
+        Dim cb = DirectCast(sender, ComboBox)
+        Dim w = cb.Width
+        For Each item In cb.Items
+            w = Math.Max(w, TextRenderer.MeasureText(item.ToString(), cb.Font).Width + SystemInformation.VerticalScrollBarWidth)
+        Next
+        cb.DropDownWidth = w
+    End Sub
+
+    Private Sub ListItem_DrawItem(sender As Object, e As DrawItemEventArgs)
+        If e.Index < 0 Then Exit Sub
+        Dim cb = DirectCast(sender, ComboBox)
+        Dim shortNames = TryCast(cb.Tag, List(Of String))
+        Dim text = cb.Items(e.Index).ToString()
+        If (e.State And DrawItemState.ComboBoxEdit) <> 0 AndAlso shortNames IsNot Nothing AndAlso e.Index < shortNames.Count Then
+            text = shortNames(e.Index)
+        End If
+        e.DrawBackground()
+        TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, e.ForeColor, TextFormatFlags.Left Or TextFormatFlags.VerticalCenter Or TextFormatFlags.NoPrefix)
+        e.DrawFocusRectangle()
+    End Sub
+
     Private Sub COMBOBOX_LanguageSettings_SelectedIndexChanged(sender As Object, e As EventArgs) Handles COMBOBOX_LanguageSettings.SelectedIndexChanged
         Dim selected As String = COMBOBOX_LanguageSettings.SelectedItem.ToString()
 
@@ -1150,6 +1192,10 @@ Err:
         ' But I discovered that's not the startup file
         ' Startup is "Form1" directly, LMAO
         Dim langDir As String = Path.Combine(Application.StartupPath, "Languages")
+        ' Search results and GIF frames are written here; Assets.zip only has them as empty folders
+        For Each folder In {"temp", "output"}
+            Directory.CreateDirectory(Path.Combine(Application.StartupPath, folder))
+        Next
         Dim langFileName As String = Path.Combine(langDir, My.Settings.LanguageFile & ".ini")
 
         If File.Exists(langFileName) Then
@@ -1162,12 +1208,12 @@ Err:
 
         ' Get Language Files
         LanguageManager.ApplyToContainer(Me, "FORM1")
-        COMBOBOX_Theme.Items.AddRange(LanguageManager.GetList("COMBOBOX_ThemeL").ToArray())
-        COMBOBOX_Style.Items.AddRange(LanguageManager.GetList("COMBOBOX_StyleL").ToArray())
-        COMBOBOX_SemiSolid.Items.AddRange(LanguageManager.GetList("COMBOBOX_SemiSolid").ToArray())
-        COMBOBOX_Character.Items.AddRange(LanguageManager.GetList("COMBOBOX_Character").ToArray())
-        COMBOBOX_Ground.Items.AddRange(LanguageManager.GetList("COMBOBOX_Ground").ToArray())
-        COMBOBOX_Item.Items.AddRange(LanguageManager.GetList("COMBOBOX_Item").ToArray())
+        AddListItems(COMBOBOX_Theme, "COMBOBOX_ThemeL")
+        AddListItems(COMBOBOX_Style, "COMBOBOX_StyleL")
+        AddListItems(COMBOBOX_SemiSolid, "COMBOBOX_SemiSolid")
+        AddListItems(COMBOBOX_Character, "COMBOBOX_Character")
+        AddListItems(COMBOBOX_Ground, "COMBOBOX_Ground")
+        AddListItems(COMBOBOX_Item, "COMBOBOX_Item")
 
         If Directory.Exists(langDir) Then
             Dim files() As String = Directory.GetFiles(langDir)
@@ -1190,7 +1236,7 @@ Err:
         LoadPrivateFonts({My.Resources.Resource1.fusion_pixel_12px_proportional})
         SetCtrlFont()
 
-        LoadCmdTrans("CommandTexts.txt")
+        LoadCommandNames(langDir, My.Settings.LanguageFile, Path.Combine(Application.StartupPath, "CommandTexts.txt"))
 
         Dim i As Integer
         PB.Width = Me.ClientSize.Width - 353
@@ -1263,7 +1309,7 @@ Err:
 
     Dim GG As Graphics
     Dim GB As Bitmap
-    Dim Tile As Image
+    Dim Tile As Image, TilePath As String = ""
     Public Function GetTile(x As Integer, y As Integer) As Bitmap
         GB = New Bitmap(16, 16)
         GG = Graphics.FromImage(GB)
@@ -1300,10 +1346,11 @@ Err:
         Dim i, j As Integer
         Dim B As New Bitmap(W * 16, H * 16)
         Dim G As Graphics = Graphics.FromImage(B)
-        Tile = Image.FromFile(Application.StartupPath & "\img\Model\" & CharPack & "_Field_" &
+        TilePath = Application.StartupPath & "\img\Model\" & CharPack & "_Field_" &
                               StyleName & If(CHECK_Night.Checked, "_D", "") &
                               ".Nin_NX_NVN\" & CharPack & "_Field_" &
-                              StyleName & If(CHECK_Night.Checked, "_D", "") & ".png")
+                              StyleName & If(CHECK_Night.Checked, "_D", "") & ".png"
+        Tile = Image.FromFile(TilePath)
         Dim TX, TY As Integer
         Select Case COMBOBOX_SemiSolid.SelectedIndex
             Case 0, 1, 2 '平台1
@@ -1427,8 +1474,10 @@ Err:
                             Magnifier(Image.FromFile(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
                               CharPack & "_Enemy_packun.Nin_NX_NVN\wait.0.png"), 2 * ImgZoom),
                             SpikeBlk(i).x * 8 * ImgZoom, SpikeBlk(i).y * 8 * ImgZoom + 48 * ImgZoom, 32 * ImgZoom, -48 * ImgZoom)
+                    Case 6 '圆锯
+                        DrawGrinder(G, SpikeBlk(i), False)
                     Case 99
-                        G.DrawImage(Magnifier(GetTile(SpikeBlk(i).tx, SpikeBlk(i).ty), ImgZoom),
+                        G.DrawImage(ZoomedTile(SpikeBlk(i).tx, SpikeBlk(i).ty),
                                     SpikeBlk(i).x * 8 * ImgZoom, SpikeBlk(i).y * 8 * ImgZoom, 16 * ImgZoom, 16 * ImgZoom)
                 End Select
             Next
@@ -1467,6 +1516,8 @@ Err:
                     Case 5 '倒大绿花
                         G.DrawRectangle(Pens.Red, (SpikeBlk(i).x * 8 + 4) * ImgZoom,
                                         SpikeBlk(i).y * 8 * ImgZoom, 24 * ImgZoom - 1, 42 * ImgZoom - 1)
+                    Case 6 '圆锯
+                        DrawGrinderHitbox(G, SpikeBlk(i))
                     Case 99
 
                 End Select
@@ -1474,6 +1525,44 @@ Err:
         End If
         PB.Image = B
     End Sub
+    Private Sub DrawGrinder(G As Graphics, blk As Blocks, withHitbox As Boolean)
+        G.DrawImage(ZoomedImage(Application.StartupPath & "\img\Pack\" & CharPack & "_Model\" &
+                                CharPack & "_Object_saw.Nin_NX_NVN\wait.0.png"),
+                    blk.x * 8 * ImgZoom, blk.y * 8 * ImgZoom, 48 * ImgZoom, 48 * ImgZoom)
+        If withHitbox Then DrawGrinderHitbox(G, blk)
+    End Sub
+
+    Private Sub DrawGrinderHitbox(G As Graphics, blk As Blocks)
+        G.DrawEllipse(Pens.Red, (blk.x * 8 + 24 - GrinderRadius) * ImgZoom, (blk.y * 8 + 24 - GrinderRadius) * ImgZoom,
+                      2 * GrinderRadius * ImgZoom - 1, 2 * GrinderRadius * ImgZoom - 1)
+    End Sub
+
+    ' Magnified tiles and sprites are kept, so redrawing an imported map does not create
+    ' hundreds of new bitmaps every time
+    Dim ZoomCache As New Dictionary(Of String, Bitmap)
+
+    Private Function ZoomedTile(tx As Integer, ty As Integer) As Bitmap
+        Dim key = TilePath & "|" & tx & "," & ty & "|" & ImgZoom
+        Dim b As Bitmap = Nothing
+        If Not ZoomCache.TryGetValue(key, b) Then
+            b = Magnifier(GetTile(tx, ty), ImgZoom)
+            ZoomCache(key) = b
+        End If
+        Return b
+    End Function
+
+    Private Function ZoomedImage(path As String) As Bitmap
+        Dim key = path & "|" & ImgZoom
+        Dim b As Bitmap = Nothing
+        If Not ZoomCache.TryGetValue(key, b) Then
+            Using src As New Bitmap(path)
+                b = Magnifier(New Bitmap(src), ImgZoom)
+            End Using
+            ZoomCache(key) = b
+        End If
+        Return b
+    End Function
+
     Private Function GetInsert(s As String, s0 As String, s1 As String) As List(Of String)
         Dim f, tf As New List(Of String)
         'Dim c As Integer '= GetNum(s)
@@ -1609,7 +1698,7 @@ Err:
             If CmdT.Length > 0 Then
                 GetNum(S(i), TF, TP)
                 If ShowRst Then
-                    RE += CmdT & TP.ToString & "▶"
+                    RE += GetCnCmd(CmdT, False) & TP.ToString & "▶"
                 End If
 
 
@@ -1668,7 +1757,7 @@ Err:
     End Sub
     Private Sub SaveGif(n As String, delayMs As Integer, endRe As Integer, Fr As Integer)
         '保存GIF
-        LblCal.Text = DateTime.Now.ToString & " 正在保存Gif..."
+        LblCal.Text = DateTime.Now.ToString & " " & Msg("MSG_SavingGif", "正在保存Gif...")
         Application.DoEvents()
         Dim fileList() As String = System.IO.Directory.GetFiles(Application.StartupPath & "\temp")
         Dim c As Integer = fileList.Length
@@ -1681,7 +1770,7 @@ Err:
             gif.AddFrame(Image.FromFile(Application.StartupPath & "\temp\" & Fr.ToString & ".png"), -1, AnimatedGif.GifQuality.Bit8)
         Next
         gif.Dispose()
-        LblCal.Text = DateTime.Now.ToString & " 已保存Gif"
+        LblCal.Text = DateTime.Now.ToString & " " & Msg("MSG_GifSaved", "已保存Gif")
     End Sub
 
     Private Sub Button10_Click(sender As Object, e As EventArgs)
@@ -1702,6 +1791,7 @@ Err:
     Dim SpikeBlk() As Blocks
     Private Sub Button12_Click(sender As Object, e As EventArgs) Handles BtnCls.Click
         Erase SpikeBlk
+        ImportedLevel = Nothing
         DrawBG(NumW.Value, NumH.Value)
     End Sub
 
@@ -1743,9 +1833,9 @@ Err:
         MIsJump = False
         Timer2.Enabled = Not Timer2.Enabled
         If Timer2.Enabled Then
-            BtnEmu.Text = "停止"
+            BtnEmu.Text = Msg("MSG_Stop", "停止")
         Else
-            BtnEmu.Text = "模拟"
+            BtnEmu.Text = Msg("BtnEmu", "模拟")
         End If
     End Sub
 
@@ -1952,7 +2042,7 @@ Err:
         R = R.Replace("S", "站停")
         R = R.Replace("F", "正停")
         R = R.Replace("B", "反停")
-        Return R
+        Return CmdTextToDisplay(R)
     End Function
     Private Sub TxtStep_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtStep.KeyPress
         If e.KeyChar = vbCr Then
@@ -1988,24 +2078,16 @@ Err:
                     If R IsNot Nothing Then
                         AddStepSplit(C, R, IsLeft)
                     End If
-                    LblState.Text = "步幅 -> " & TxtStep.Text & " 解法 +" & LBox.Items.Count + R.Count
+                    LblState.Text = String.Format(Msg("MSG_StepResult", "步幅 -> {0} 解法 +{1}"), TxtStep.Text, LBox.Items.Count + R.Count)
                 Else
-                    LblState.Text = "步幅 -> " & TxtStep.Text & " 解法 +" & LBox.Items.Count
+                    LblState.Text = String.Format(Msg("MSG_StepResult", "步幅 -> {0} 解法 +{1}"), TxtStep.Text, LBox.Items.Count)
                 End If
 
             End If
         End If
     End Sub
     Function RCmd(S As String) As String '操作镜像
-        Dim R = S.Replace("右", "||")
-        R = R.Replace("左", "{}")
-        R = R.Replace("{}", "右")
-        R = R.Replace("||", "左")
-        R = S.Replace("Right", "||")
-        R = R.Replace("Left", "{}")
-        R = R.Replace("{}", "Right")
-        R = R.Replace("||", "Left")
-        Return R
+        Return MirrorCmdText(S)
     End Function
     Dim LB1State As Integer = 0
 
@@ -2038,15 +2120,15 @@ Err:
             Select Case COMBOBOX_JumpAcc.Text
                 Case "3.568", "3.748", "3.808", "3.868" '普通跳
                     If s(3) = "0" Then
-                        Return "[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右跳" & s(1) & " 加速右" & s(2) & " 加速右跳30"
+                        Return CmdTextToDisplay("[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右跳" & s(1) & " 加速右" & s(2) & " 加速右跳30")
                     Else
-                        Return "[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右跳" & s(1) & " 加速右" & s(2) & " 加速右跳" & s(3) & " 加速右" & s(4) & " 加速右跳30"
+                        Return CmdTextToDisplay("[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右跳" & s(1) & " 加速右" & s(2) & " 加速右跳" & s(3) & " 加速右" & s(4) & " 加速右跳30")
                     End If
                 Case Else '缓冲跳
                     If s(3) = "0" Then
-                        Return "[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右缓冲跳" & s(1) & " 加速右" & s(2) & " 加速右跳30"
+                        Return CmdTextToDisplay("[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右缓冲跳" & s(1) & " 加速右" & s(2) & " 加速右跳30")
                     Else
-                        Return "[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右缓冲跳" & s(1) & " 加速右" & s(2) & " 加速右跳" & s(3) & " 加速右" & s(4) & " 加速右跳30"
+                        Return CmdTextToDisplay("[" & s(5) & "/" & s(6) & "/" & s(7) & "/" & s(8) & "]" & " 加速右缓冲跳" & s(1) & " 加速右" & s(2) & " 加速右跳" & s(3) & " 加速右" & s(4) & " 加速右跳30")
                     End If
             End Select
         Else
@@ -2362,7 +2444,7 @@ Err:
 
     Private Sub BtnPlay_Click(sender As Object, e As EventArgs) Handles BtnPlay.Click
         If Timer1.Enabled Then
-            BtnPlay.Text = "播放"
+            BtnPlay.Text = Msg("BtnPlay", "播放")
             Timer1.Enabled = False
         Else
             If Not IsSaveFrame Then
@@ -2374,7 +2456,7 @@ Err:
             If NowFrame > AniFrame Then NowFrame = 0
             Timer1.Interval = Int(TDL.Text)
             Timer1.Enabled = True
-            BtnPlay.Text = "停止"
+            BtnPlay.Text = Msg("MSG_Stop", "停止")
         End If
     End Sub
 
@@ -2418,6 +2500,12 @@ Err:
                         SpikeBlk(UBound(SpikeBlk)).tx = SelBackTileLoc.X
                         SpikeBlk(UBound(SpikeBlk)).ty = SelBackTileLoc.Y
                     End If
+                End If
+
+                If SpikeBlk(UBound(SpikeBlk)).type = 6 Then
+                    '圆锯 3x3: centre it on the cursor
+                    SpikeBlk(UBound(SpikeBlk)).x -= 2
+                    SpikeBlk(UBound(SpikeBlk)).y -= 2
                 End If
 
                 Select Case SpikeBlk(UBound(SpikeBlk)).type
@@ -2493,8 +2581,10 @@ Err:
                          CharPack & "_Enemy_packunblack.Nin_NX_NVN\wait.0.png"), ImgZoom),
                         SpikeBlk(UBound(SpikeBlk)).x * 8 * ImgZoom,
                         SpikeBlk(UBound(SpikeBlk)).y * 8 * ImgZoom, 16 * ImgZoom, 16 * ImgZoom)
+                    Case 6 '圆锯
+                        DrawGrinder(G, SpikeBlk(UBound(SpikeBlk)), CkHitbox.Checked)
                     Case 99
-                        G.DrawImage(Magnifier(GetTile(SpikeBlk(UBound(SpikeBlk)).tx, SpikeBlk(UBound(SpikeBlk)).ty), ImgZoom),
+                        G.DrawImage(ZoomedTile(SpikeBlk(UBound(SpikeBlk)).tx, SpikeBlk(UBound(SpikeBlk)).ty),
                          SpikeBlk(UBound(SpikeBlk)).x * 8 * ImgZoom,
                          SpikeBlk(UBound(SpikeBlk)).y * 8 * ImgZoom, 16 * ImgZoom, 16 * ImgZoom)
                 End Select
@@ -2621,11 +2711,11 @@ Err:
     End Sub
 
     Private Sub NumW_ValueChanged(sender As Object, e As EventArgs) Handles NumW.ValueChanged
-        ReDraw()
+        If ImportedLevel IsNot Nothing AndAlso Not ApplyingMap Then ApplyImportedMap() Else ReDraw()
     End Sub
 
     Private Sub NumH_ValueChanged(sender As Object, e As EventArgs) Handles NumH.ValueChanged
-        ReDraw()
+        If ImportedLevel IsNot Nothing AndAlso Not ApplyingMap Then ApplyImportedMap() Else ReDraw()
     End Sub
 
     Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs)
@@ -2738,7 +2828,7 @@ Err:
         Dim i, j, z As Integer
         Dim CL, CU, CF As Integer
         Dim t As String, LastOri As String = ""
-        t = T20.Text & " " & T2.Text & " " & T21.Text
+        t = CmdTextToCn(T20.Text & " " & T2.Text & " " & T21.Text)
         t = t.Replace("停0", "停0 站立10")
         Dim s() = t.Split(" ")
         ReDim TasData(s.Length - 1)
@@ -2843,7 +2933,7 @@ Err:
 
         File.WriteAllLines(Application.StartupPath & "Tas\Script0-1.txt", TasData)
 
-        LblCal.Text = DateTime.Now & " 已保存Script0-1"
+        LblCal.Text = DateTime.Now & " " & Msg("MSG_TasSaved", "已保存Script0-1")
     End Sub
 
     Dim YuzuM As MemoryScanner, isFind As Boolean = False
@@ -2852,7 +2942,7 @@ Err:
         BReadMem.Enabled = False
         If TimerEmu.Enabled Then
             TimerEmu.Enabled = False
-            LblCal.Text = Date.Now & " 已关闭Emu"
+            LblCal.Text = Date.Now & " " & Msg("MSG_EmuOff", "已关闭Emu")
             T1.Text = "[X ]" & XAddr & vbCrLf & "[Y ]" & YAddr & vbCrLf &
                 "[Sx]" & SxAddr & vbCrLf & "[Sy]" & SyAddr & vbCrLf &
                 "[Ax]" & AxAddr & vbCrLf & "[Ay]" & AyAddr
@@ -2888,9 +2978,9 @@ Err:
             '    "[Ax]" & AxAddr & vbCrLf & "[Ay]" & AyAddr
             Debug.Print("X = {0} , Y = {1} , Sx = {2} , Sy = {3}", XAddr, YAddr, SxAddr, SyAddr)
             TimerEmu.Enabled = True
-            LblCal.Text = Date.Now & " 已开启Emu"
+            LblCal.Text = Date.Now & " " & Msg("MSG_EmuOn", "已开启Emu")
         Else
-            LblCal.Text = Date.Now & " 未找到基址"
+            LblCal.Text = Date.Now & " " & Msg("MSG_AddrNotFound", "未找到基址")
         End If
         BReadMem.Enabled = True
     End Sub
@@ -2940,7 +3030,7 @@ Err:
 
 
     Sub FindIns(D As Integer) '找插入
-        LblState.Text = Date.Now & " 开始搜索"
+        LblState.Text = Date.Now & " " & Msg("MSG_InsSearchStart", "开始搜索")
         LBox.Items.Clear()
         Dim i, j, k, LF, NF, UF, F, A, CL, CU As Integer
         Dim X, CX, CA, EX As Single
@@ -3045,7 +3135,7 @@ Err:
             Loop Until CF(0) > A
         Next
 
-        LblState.Text = Date.Now & " 搜索完成 -> " & LBox.Items.Count.ToString
+        LblState.Text = Date.Now & " " & String.Format(Msg("MSG_InsSearchDone", "搜索完成 -> {0}"), LBox.Items.Count)
         Debug.Print(Date.Now & " 搜索完成")
     End Sub
     Function OutputInsCmd(Cmd As String, InsR() As Integer, CF() As Integer) As String
@@ -3057,7 +3147,7 @@ Err:
             If ZR = InsR.Length Then
                 R &= S(i) & " "
             ElseIf i = InsR(ZR) Then
-                R &= "跳" & CF(ZR).ToString & " "
+                R &= GetCnCmd("跳", False) & CF(ZR).ToString & " "
                 R &= S(i) & " "
                 ZR += 1
             Else
@@ -3090,7 +3180,7 @@ Err:
             GetNum(S(i), CL, CU)
             TU = CU
             For j As Integer = i + 1 To S.Length - 1
-                If GetCmd(S(i)) = GetCmd(S(j)) Then
+                If GetCnCmd(GetCmd(S(i)), True) = GetCnCmd(GetCmd(S(j)), True) Then
                     GetNum(S(j), CL2, CU2)
                     TU += CU2
                     i += 1
@@ -3107,7 +3197,7 @@ Err:
         Dim CL, CU As Integer
         Dim F As Integer = 0
         For i As Integer = 0 To T.Length - 1
-            If InStr(T(i), "跳") > 0 Then
+            If InStr(GetCnCmd(GetCmd(T(i)), True), "跳") > 0 Then
                 Return F
             Else
                 GetNum(T(i), CL, CU)
@@ -3122,7 +3212,7 @@ Err:
     End Sub
 
     Private Sub BtnUndo_Click(sender As Object, e As EventArgs) Handles BtnUndo.Click
-        If SpikeBlk.Length > 0 Then
+        If SpikeBlk IsNot Nothing AndAlso SpikeBlk.Length > 0 Then
             ReDim Preserve SpikeBlk(SpikeBlk.Length - 2)
         End If
         DrawBG(NumW.Value, NumH.Value)
@@ -3168,6 +3258,167 @@ Err:
         '    TimerEmu.Enabled = Not TimerEmu.Enabled
         '    Me.Text = If(TimerEmu.Enabled, "ON", "OFF")
         'End If
+    End Sub
+
+    ' ---- map import (CourseImport.vb): mm2list course ID / URL, .bcd course file or a toost render
+
+    Dim ImportedLevel As ImportedMap
+    Dim ApplyingMap As Boolean
+
+    Private Async Sub BtnImportMap_Click(sender As Object, e As EventArgs) Handles BtnImportMap.Click
+        Dim input = TxtCourseId.Text.Trim()
+        If input = "" Then
+            Using dlg As New OpenFileDialog With {.Filter = Msg("MSG_ImportFileFilter", "关卡文件 (*.bcd)|*.bcd|图片 (*.png)|*.png|所有文件|*.*")}
+                If dlg.ShowDialog() <> DialogResult.OK Then Exit Sub
+                input = dlg.FileName
+                TxtCourseId.Text = input
+            End Using
+        End If
+        Dim subArea = CkSubArea.Checked
+        BtnImportMap.Enabled = False
+        LblCal.Text = Msg("MSG_ImportLoading", "正在读取地图...")
+        Try
+            ShowImportedMap(Await Task.Run(Function() LoadMap(input, subArea)))
+        Catch ex As Exception
+            LblCal.Text = String.Format(Msg("MSG_ImportFailed", "读取地图失败: {0}"), ex.Message)
+        Finally
+            BtnImportMap.Enabled = True
+        End Try
+    End Sub
+
+    ' Runs off the UI thread
+    Private Function LoadMap(input As String, subArea As Boolean) As ImportedMap
+        Dim imgDir = Path.Combine(Application.StartupPath, "img")
+        TextureLoader = AddressOf LoadTexture
+        Dim map As ImportedMap
+        If File.Exists(input) Then
+            Dim bytes = File.ReadAllBytes(input)
+            If bytes.Length = EncryptedCourseSize OrElse bytes.Length = CourseSize Then
+                map = ReadCourse(bytes, subArea)
+            Else
+                map = ReadRender(ToPixels(bytes), imgDir, "", 0, False)
+            End If
+            map.Source = Path.GetFileName(input)
+            Return map
+        End If
+
+        Dim code = NormalizeCourseCode(input)
+        If code = "" Then Throw New ArgumentException(Msg("MSG_ImportBadCode", "关卡ID格式不正确"))
+        Dim view = DownloadCachedView(code)
+        Dim area = If(subArea, 1, 0)
+        If view.ImageUrl(area) Is Nothing Then Throw New InvalidOperationException(Msg("MSG_ImportNoImage", "mm2list没有这个关卡的缓存图片"))
+        Dim style = StyleFromPage(view.GameStyle)
+        If style = "" Then
+            Throw New NotSupportedException(String.Format(Msg("MSG_ImportStyle", "不支持{0}风格的地图"), view.GameStyle))
+        End If
+        map = ReadRender(ToPixels(DownloadImage(view.ImageUrl(area))), imgDir, style, view.Theme(area), view.Night(area))
+        map.Title = view.Title
+        map.Source = code
+        Return map
+    End Function
+
+    Private Shared Function LoadTexture(path As String) As PixelImage
+        If Not File.Exists(path) Then Return Nothing
+        Return ToPixels(File.ReadAllBytes(path))
+    End Function
+
+    Private Shared Function ToPixels(bytes() As Byte) As PixelImage
+        Using ms As New MemoryStream(bytes), src As New Bitmap(ms), bmp As New Bitmap(src.Width, src.Height, PixelFormat.Format32bppArgb)
+            Using g = Graphics.FromImage(bmp)
+                g.DrawImage(src, 0, 0, src.Width, src.Height)
+            End Using
+            Dim data = bmp.LockBits(New Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb)
+            Dim px(bmp.Width * bmp.Height - 1) As Integer
+            For y = 0 To bmp.Height - 1
+                Marshal.Copy(data.Scan0 + y * data.Stride, px, y * bmp.Width, bmp.Width)
+            Next
+            bmp.UnlockBits(data)
+            Return New PixelImage(bmp.Width, bmp.Height, px)
+        End Using
+    End Function
+
+    Private Sub ShowImportedMap(map As ImportedMap)
+        ImportedLevel = map
+        ApplyingMap = True
+        Try
+            Dim style = Array.IndexOf({"M1", "M3", "MW"}, map.Style)
+            If style >= 0 Then
+                COMBOBOX_Theme.SelectedIndex = style
+                CkWU.Checked = map.Style = "MW"
+            End If
+            COMBOBOX_Style.SelectedIndex = map.Theme
+            CHECK_Night.Checked = map.Night
+            COMBOBOX_SemiSolid.SelectedIndex = 4 '无
+            NumW.Value = Math.Min(map.Width, 32)
+            NumH.Value = Math.Min(map.Height, 27)
+            NumMapX.Value = 0
+            NumMapY.Value = 0
+        Finally
+            ApplyingMap = False
+        End Try
+        ApplyImportedMap()
+
+        Dim names = LanguageManager.GetList("COMBOBOX_Item")
+        Dim found As New List(Of String)
+        For t = 0 To Math.Min(6, names.Count - 1)
+            Dim n = map.Count(t)
+            If n > 0 Then found.Add(names(t).Split("|"c).Last() & " " & n)
+        Next
+        LblCal.Text = String.Format(Msg("MSG_ImportDone", "已导入: {0} ({1}x{2})"),
+                                    If(map.Title <> "", map.Title, map.Source), map.Width, map.Height) &
+                      If(found.Count > 0, " · " & String.Join(", ", found), "") &
+                      If(map.Unrecognized > 0, " · " & String.Format(Msg("MSG_ImportUnknown", "未识别 {0}格"), map.Unrecognized), "")
+    End Sub
+
+    ' Shows the part of the imported map that starts at block (Map X, Map Y) from the bottom left
+    Private Sub ApplyImportedMap()
+        Dim map = ImportedLevel
+        Dim w = CInt(NumW.Value), h = CInt(NumH.Value)
+        Dim left = CInt(NumMapX.Value), bottom = CInt(NumMapY.Value)
+        Dim top = map.Height - bottom - h ' map row at the top of the canvas
+
+        Dim list As New List(Of Blocks)
+        For c = 0 To w - 1
+            For r = 0 To h - 1
+                Dim mx = left + c, my = top + r
+                If mx >= map.Width OrElse my < 0 OrElse my >= map.Height OrElse map.TileX(mx, my) < 0 Then Continue For
+                list.Add(New Blocks With {.type = 99, .x = c * 2, .y = r * 2, .tx = map.TileX(mx, my), .ty = map.TileY(mx, my)})
+            Next
+        Next
+        For Each o In map.Objects
+            Dim x = o.X - left * 16, y = o.Y - top * 16
+            If x > -48 AndAlso y > -48 AndAlso x < w * 16 AndAlso y < h * 16 Then
+                list.Add(New Blocks With {.type = o.Type, .x = x \ 8, .y = y \ 8})
+            End If
+        Next
+        SpikeBlk = If(list.Count > 0, list.ToArray(), Nothing)
+
+        ' The calculator's ground: the solid column at the left edge of the canvas, as far right
+        ' as the floor keeps at least that height
+        ApplyingMap = True
+        Dim floor = ColumnHeight(map, left, bottom)
+        If floor = 0 Then
+            TYW.Value = 0
+        ElseIf floor < h Then
+            Dim width = 1
+            Do While left + width < map.Width AndAlso width < w AndAlso ColumnHeight(map, left + width, bottom) >= floor
+                width += 1
+            Loop
+            TYW.Value = width * 16
+            TYH.Value = floor * 16
+        End If
+        ApplyingMap = False
+
+        Dim cu As Integer
+        If Txt2Cmd(T2.Text, cu).Length = 0 Then
+            DrawBG(NumW.Value, NumH.Value)
+        Else
+            ReDraw()
+        End If
+    End Sub
+
+    Private Sub NumMap_ValueChanged(sender As Object, e As EventArgs) Handles NumMapX.ValueChanged, NumMapY.ValueChanged
+        If ImportedLevel IsNot Nothing AndAlso Not ApplyingMap Then ApplyImportedMap()
     End Sub
 
     Private Sub BtnTile_Click(sender As Object, e As EventArgs) Handles BtnTile.Click

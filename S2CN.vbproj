@@ -102,6 +102,9 @@
     <None Update="Languages\English.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Languages\Korean.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Lyt_Edit_PaletteSound--Lyt_E_P_SE_Boo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

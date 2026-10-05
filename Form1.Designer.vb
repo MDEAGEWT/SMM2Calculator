@@ -163,6 +163,14 @@ Partial Class Form1
         TimerEmu = New Timer(components)
         PItem = New Cyotek.Windows.Forms.ImageBox()
         COMBOBOX_LanguageSettings = New ComboBox()
+        LABEL_CourseId = New Label()
+        TxtCourseId = New TextBox()
+        BtnImportMap = New Button()
+        LABEL_MapX = New Label()
+        NumMapX = New NumericUpDown()
+        LABEL_MapY = New Label()
+        NumMapY = New NumericUpDown()
+        CkSubArea = New CheckBox()
         CType(TYH, ComponentModel.ISupportInitialize).BeginInit()
         CType(TB, ComponentModel.ISupportInitialize).BeginInit()
         CType(TYW, ComponentModel.ISupportInitialize).BeginInit()
@@ -172,6 +180,8 @@ Partial Class Form1
         Panel1.SuspendLayout()
         CType(NumZoom, ComponentModel.ISupportInitialize).BeginInit()
         CType(NIns, ComponentModel.ISupportInitialize).BeginInit()
+        CType(NumMapX, ComponentModel.ISupportInitialize).BeginInit()
+        CType(NumMapY, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         Panel3.SuspendLayout()
         SuspendLayout()
@@ -184,7 +194,7 @@ Partial Class Form1
         BtnPng.Font = New Font("Microsoft Sans Serif", 8.25F)
         BtnPng.Location = New Point(264, 45)
         BtnPng.Name = "BtnPng"
-        BtnPng.Size = New Size(43, 19)
+        BtnPng.Size = New Size(43, 25)
         BtnPng.TabIndex = 82
         BtnPng.Text = "<BtnPng>"
         BtnPng.UseVisualStyleBackColor = False
@@ -327,7 +337,7 @@ Partial Class Form1
         BUTTON_Operate.Font = New Font("Microsoft Sans Serif", 8.25F)
         BUTTON_Operate.Location = New Point(310, 45)
         BUTTON_Operate.Name = "BUTTON_Operate"
-        BUTTON_Operate.Size = New Size(43, 19)
+        BUTTON_Operate.Size = New Size(43, 25)
         BUTTON_Operate.TabIndex = 83
         BUTTON_Operate.Text = "<Operate>"
         BUTTON_Operate.UseVisualStyleBackColor = False
@@ -422,7 +432,7 @@ Partial Class Form1
         TSP.Checked = True
         TSP.CheckState = CheckState.Checked
         TSP.Font = New Font("Microsoft YaHei UI", 8.25F)
-        TSP.Location = New Point(129, 264)
+        TSP.Location = New Point(136, 264)
         TSP.Name = "TSP"
         TSP.Size = New Size(78, 20)
         TSP.TabIndex = 43
@@ -594,7 +604,7 @@ Partial Class Form1
         ' 
         TxtStep.BorderStyle = BorderStyle.FixedSingle
         TxtStep.Font = New Font("Microsoft YaHei UI", 8.25F)
-        TxtStep.Location = New Point(146, 286)
+        TxtStep.Location = New Point(146, 284)
         TxtStep.Name = "TxtStep"
         TxtStep.Size = New Size(45, 21)
         TxtStep.TabIndex = 47
@@ -661,11 +671,11 @@ Partial Class Form1
         ' 
         ' LblCal
         ' 
-        LblCal.AutoSize = True
+        LblCal.AutoEllipsis = True
         LblCal.Font = New Font("Microsoft YaHei UI", 8.25F)
         LblCal.Location = New Point(4, 391)
         LblCal.Name = "LblCal"
-        LblCal.Size = New Size(55, 16)
+        LblCal.Size = New Size(352, 16)
         LblCal.TabIndex = 34
         LblCal.Text = "<LblCal>"
         ' 
@@ -879,7 +889,7 @@ Partial Class Form1
         ' 
         CHECK_Night.AutoSize = True
         CHECK_Night.Font = New Font("Microsoft Sans Serif", 8.25F)
-        CHECK_Night.Location = New Point(4, 111)
+        CHECK_Night.Location = New Point(311, 4)
         CHECK_Night.Name = "CHECK_Night"
         CHECK_Night.Size = New Size(63, 17)
         CHECK_Night.TabIndex = 72
@@ -1723,7 +1733,7 @@ Partial Class Form1
         TSY4.AutoSize = True
         TSY4.BackColor = Color.White
         TSY4.Font = New Font("Microsoft YaHei UI", 8.25F)
-        TSY4.Location = New Point(96, 264)
+        TSY4.Location = New Point(101, 264)
         TSY4.Name = "TSY4"
         TSY4.Size = New Size(38, 20)
         TSY4.TabIndex = 42
@@ -1771,7 +1781,7 @@ Partial Class Form1
         BEmu.Enabled = False
         BEmu.FlatStyle = FlatStyle.Flat
         BEmu.Font = New Font("Microsoft Sans Serif", 8.25F)
-        BEmu.Location = New Point(259, 93)
+        BEmu.Location = New Point(218, 46)
         BEmu.Name = "BEmu"
         BEmu.Size = New Size(43, 23)
         BEmu.TabIndex = 87
@@ -1820,6 +1830,14 @@ Partial Class Form1
         ' Panel3
         ' 
         Panel3.BorderStyle = BorderStyle.FixedSingle
+        Panel3.Controls.Add(CkSubArea)
+        Panel3.Controls.Add(NumMapY)
+        Panel3.Controls.Add(LABEL_MapY)
+        Panel3.Controls.Add(NumMapX)
+        Panel3.Controls.Add(LABEL_MapX)
+        Panel3.Controls.Add(BtnImportMap)
+        Panel3.Controls.Add(TxtCourseId)
+        Panel3.Controls.Add(LABEL_CourseId)
         Panel3.Controls.Add(BtnTile2)
         Panel3.Controls.Add(BtnGenJump)
         Panel3.Controls.Add(BEmu)
@@ -1904,6 +1922,90 @@ Partial Class Form1
         COMBOBOX_LanguageSettings.Size = New Size(120, 24)
         COMBOBOX_LanguageSettings.TabIndex = 90
         ' 
+        ' LABEL_CourseId
+        ' 
+        LABEL_CourseId.AutoSize = True
+        LABEL_CourseId.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_CourseId.Location = New Point(87, 76)
+        LABEL_CourseId.Name = "LABEL_CourseId"
+        LABEL_CourseId.Size = New Size(50, 13)
+        LABEL_CourseId.TabIndex = 112
+        LABEL_CourseId.Text = "<CourseId>"
+        ' 
+        ' TxtCourseId
+        ' 
+        TxtCourseId.BorderStyle = BorderStyle.FixedSingle
+        TxtCourseId.Font = New Font("Microsoft Sans Serif", 8.25F)
+        TxtCourseId.Location = New Point(139, 73)
+        TxtCourseId.Name = "TxtCourseId"
+        TxtCourseId.Size = New Size(116, 20)
+        TxtCourseId.TabIndex = 113
+        ' 
+        ' BtnImportMap
+        ' 
+        BtnImportMap.BackColor = SystemColors.Control
+        BtnImportMap.FlatStyle = FlatStyle.Flat
+        BtnImportMap.Font = New Font("Microsoft Sans Serif", 8.25F)
+        BtnImportMap.Location = New Point(259, 71)
+        BtnImportMap.Name = "BtnImportMap"
+        BtnImportMap.Size = New Size(94, 24)
+        BtnImportMap.TabIndex = 114
+        BtnImportMap.Text = "<ImportMap>"
+        BtnImportMap.UseVisualStyleBackColor = False
+        ' 
+        ' LABEL_MapX
+        ' 
+        LABEL_MapX.AutoSize = True
+        LABEL_MapX.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_MapX.Location = New Point(87, 102)
+        LABEL_MapX.Name = "LABEL_MapX"
+        LABEL_MapX.Size = New Size(34, 13)
+        LABEL_MapX.TabIndex = 115
+        LABEL_MapX.Text = "<MapX>"
+        ' 
+        ' NumMapX
+        ' 
+        NumMapX.BackColor = Color.White
+        NumMapX.Font = New Font("Microsoft YaHei UI", 8.25F)
+        NumMapX.Location = New Point(123, 99)
+        NumMapX.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
+        NumMapX.Name = "NumMapX"
+        NumMapX.Size = New Size(50, 21)
+        NumMapX.TabIndex = 116
+        NumMapX.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' LABEL_MapY
+        ' 
+        LABEL_MapY.AutoSize = True
+        LABEL_MapY.Font = New Font("Microsoft Sans Serif", 8.25F)
+        LABEL_MapY.Location = New Point(176, 102)
+        LABEL_MapY.Name = "LABEL_MapY"
+        LABEL_MapY.Size = New Size(34, 13)
+        LABEL_MapY.TabIndex = 117
+        LABEL_MapY.Text = "<MapY>"
+        ' 
+        ' NumMapY
+        ' 
+        NumMapY.BackColor = Color.White
+        NumMapY.Font = New Font("Microsoft YaHei UI", 8.25F)
+        NumMapY.Location = New Point(212, 99)
+        NumMapY.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
+        NumMapY.Name = "NumMapY"
+        NumMapY.Size = New Size(43, 21)
+        NumMapY.TabIndex = 118
+        NumMapY.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' CkSubArea
+        ' 
+        CkSubArea.AutoSize = True
+        CkSubArea.Font = New Font("Microsoft Sans Serif", 8.25F)
+        CkSubArea.Location = New Point(260, 101)
+        CkSubArea.Name = "CkSubArea"
+        CkSubArea.Size = New Size(90, 17)
+        CkSubArea.TabIndex = 119
+        CkSubArea.Text = "<SubArea>"
+        CkSubArea.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(6F, 13F)
@@ -1933,6 +2035,8 @@ Partial Class Form1
         Panel1.PerformLayout()
         CType(NumZoom, ComponentModel.ISupportInitialize).EndInit()
         CType(NIns, ComponentModel.ISupportInitialize).EndInit()
+        CType(NumMapX, ComponentModel.ISupportInitialize).EndInit()
+        CType(NumMapY, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         Panel3.ResumeLayout(False)
@@ -2079,4 +2183,12 @@ Partial Class Form1
     Friend WithEvents BUTTON_En As Button
     Friend WithEvents COMBOBOX_LanguageSettings As ComboBox
     Friend WithEvents LABEL_Strat As Label
+    Friend WithEvents LABEL_CourseId As Label
+    Friend WithEvents TxtCourseId As TextBox
+    Friend WithEvents BtnImportMap As Button
+    Friend WithEvents LABEL_MapX As Label
+    Friend WithEvents NumMapX As NumericUpDown
+    Friend WithEvents LABEL_MapY As Label
+    Friend WithEvents NumMapY As NumericUpDown
+    Friend WithEvents CkSubArea As CheckBox
 End Class
