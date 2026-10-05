@@ -194,7 +194,7 @@ Partial Class Form1
         BtnPng.Font = New Font("Microsoft Sans Serif", 8.25F)
         BtnPng.Location = New Point(264, 45)
         BtnPng.Name = "BtnPng"
-        BtnPng.Size = New Size(43, 19)
+        BtnPng.Size = New Size(43, 25)
         BtnPng.TabIndex = 82
         BtnPng.Text = "<BtnPng>"
         BtnPng.UseVisualStyleBackColor = False
@@ -337,7 +337,7 @@ Partial Class Form1
         BUTTON_Operate.Font = New Font("Microsoft Sans Serif", 8.25F)
         BUTTON_Operate.Location = New Point(310, 45)
         BUTTON_Operate.Name = "BUTTON_Operate"
-        BUTTON_Operate.Size = New Size(43, 19)
+        BUTTON_Operate.Size = New Size(43, 25)
         BUTTON_Operate.TabIndex = 83
         BUTTON_Operate.Text = "<Operate>"
         BUTTON_Operate.UseVisualStyleBackColor = False
@@ -432,7 +432,7 @@ Partial Class Form1
         TSP.Checked = True
         TSP.CheckState = CheckState.Checked
         TSP.Font = New Font("Microsoft YaHei UI", 8.25F)
-        TSP.Location = New Point(129, 264)
+        TSP.Location = New Point(136, 264)
         TSP.Name = "TSP"
         TSP.Size = New Size(78, 20)
         TSP.TabIndex = 43
@@ -604,7 +604,7 @@ Partial Class Form1
         ' 
         TxtStep.BorderStyle = BorderStyle.FixedSingle
         TxtStep.Font = New Font("Microsoft YaHei UI", 8.25F)
-        TxtStep.Location = New Point(146, 286)
+        TxtStep.Location = New Point(146, 284)
         TxtStep.Name = "TxtStep"
         TxtStep.Size = New Size(45, 21)
         TxtStep.TabIndex = 47
@@ -671,11 +671,11 @@ Partial Class Form1
         ' 
         ' LblCal
         ' 
-        LblCal.AutoSize = True
+        LblCal.AutoEllipsis = True
         LblCal.Font = New Font("Microsoft YaHei UI", 8.25F)
         LblCal.Location = New Point(4, 391)
         LblCal.Name = "LblCal"
-        LblCal.Size = New Size(55, 16)
+        LblCal.Size = New Size(352, 16)
         LblCal.TabIndex = 34
         LblCal.Text = "<LblCal>"
         ' 
@@ -889,7 +889,7 @@ Partial Class Form1
         ' 
         CHECK_Night.AutoSize = True
         CHECK_Night.Font = New Font("Microsoft Sans Serif", 8.25F)
-        CHECK_Night.Location = New Point(4, 111)
+        CHECK_Night.Location = New Point(311, 4)
         CHECK_Night.Name = "CHECK_Night"
         CHECK_Night.Size = New Size(63, 17)
         CHECK_Night.TabIndex = 72
@@ -1733,7 +1733,7 @@ Partial Class Form1
         TSY4.AutoSize = True
         TSY4.BackColor = Color.White
         TSY4.Font = New Font("Microsoft YaHei UI", 8.25F)
-        TSY4.Location = New Point(96, 264)
+        TSY4.Location = New Point(101, 264)
         TSY4.Name = "TSY4"
         TSY4.Size = New Size(38, 20)
         TSY4.TabIndex = 42

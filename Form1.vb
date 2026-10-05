@@ -1192,6 +1192,10 @@ Err:
         ' But I discovered that's not the startup file
         ' Startup is "Form1" directly, LMAO
         Dim langDir As String = Path.Combine(Application.StartupPath, "Languages")
+        ' Search results and GIF frames are written here; Assets.zip only has them as empty folders
+        For Each folder In {"temp", "output"}
+            Directory.CreateDirectory(Path.Combine(Application.StartupPath, folder))
+        Next
         Dim langFileName As String = Path.Combine(langDir, My.Settings.LanguageFile & ".ini")
 
         If File.Exists(langFileName) Then
@@ -3358,9 +3362,9 @@ Err:
         Dim found As New List(Of String)
         For t = 0 To Math.Min(6, names.Count - 1)
             Dim n = map.Count(t)
-            If n > 0 Then found.Add(names(t).Split("|"c)(0) & " " & n)
+            If n > 0 Then found.Add(names(t).Split("|"c).Last() & " " & n)
         Next
-        LblCal.Text = String.Format(Msg("MSG_ImportDone", "已读取地图: {0} ({1}x{2})"),
+        LblCal.Text = String.Format(Msg("MSG_ImportDone", "已导入: {0} ({1}x{2})"),
                                     If(map.Title <> "", map.Title, map.Source), map.Width, map.Height) &
                       If(found.Count > 0, " · " & String.Join(", ", found), "") &
                       If(map.Unrecognized > 0, " · " & String.Format(Msg("MSG_ImportUnknown", "未识别 {0}格"), map.Unrecognized), "")
