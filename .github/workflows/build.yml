@@ -1,0 +1,53 @@
+name: Build
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Build
+        run: dotnet build S2CN.vbproj -c Release
+
+      # The program reads img, jump, temp, output... from the exe's folder; Assets.zip holds them.
+      - name: Package
+        shell: pwsh
+        run: |
+          $out = 'bin/Release/net8.0-windows7.0'
+          Expand-Archive "$out/Assets.zip" -DestinationPath $out -Force
+          Remove-Item "$out/Assets.zip"
+          7z a SMM2Calculator.zip "./$out/*"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SMM2Calculator
+          path: bin/Release/net8.0-windows7.0/
+
+      # Pushing a v* tag, or publishing a release on GitHub, attaches SMM2Calculator.zip to that release.
+      - name: Attach to release
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.event.release.tag_name || github.ref_name }}
+        run: |
+          gh release view $env:TAG *> $null
+          if ($LASTEXITCODE -ne 0) { gh release create $env:TAG --title $env:TAG --generate-notes }
+          gh release upload $env:TAG SMM2Calculator.zip --clobber
