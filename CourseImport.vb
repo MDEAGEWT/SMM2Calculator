@@ -156,13 +156,13 @@ Module CourseImport
 
     Private ReadOnly Http As New HttpClient() With {.Timeout = TimeSpan.FromSeconds(30)}
 
-    Private Function GetBytes(url As String) As Byte()
+    Private Function GetBytes(url As String, Optional cancel As Threading.CancellationToken = Nothing) As Byte()
         Using req As New HttpRequestMessage(HttpMethod.Get, url)
             req.Headers.UserAgent.ParseAdd("SMM2Calculator")
-            Using res = Http.Send(req)
+            Using res = Http.Send(req, cancel)
                 res.EnsureSuccessStatusCode()
                 Using ms As New MemoryStream()
-                    res.Content.ReadAsStream().CopyTo(ms)
+                    res.Content.ReadAsStream(cancel).CopyTo(ms)
                     Return ms.ToArray()
                 End Using
             End Using
@@ -176,6 +176,21 @@ Module CourseImport
 
     Public Function DownloadImage(url As String) As Byte()
         Return GetBytes(url)
+    End Function
+
+    Public Const TgrCodeBase As String = "https://tgrcode.com/mm2"
+
+    ' The course file itself (encrypted, like a save's .bcd) from TheGreatRambler's server, which gets
+    ' courses from Nintendo. Nothing if that server is down or slow, so mm2list can be tried instead.
+    Public Function DownloadCourseData(code As String) As Byte()
+        Try
+            Using cts As New Threading.CancellationTokenSource(TimeSpan.FromSeconds(10))
+                Dim data = GetBytes(TgrCodeBase & "/level_data/" & code, cts.Token)
+                If data.Length = EncryptedCourseSize OrElse data.Length = CourseSize Then Return data
+            End Using
+        Catch ex As Exception When TypeOf ex Is HttpRequestException OrElse TypeOf ex Is OperationCanceledException
+        End Try
+        Return Nothing
     End Function
 
     Public Function StyleFromPage(gameStyle As String) As String

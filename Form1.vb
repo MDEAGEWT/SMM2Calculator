@@ -3271,7 +3271,8 @@ Err:
         'End If
     End Sub
 
-    ' ---- map import (CourseImport.vb): mm2list course ID / URL, .bcd course file or a toost render
+    ' ---- map import (CourseImport.vb): course ID / mm2list URL (course file from tgrcode.com, else the
+    ' mm2list picture), .bcd course file or a toost render
 
     Dim ImportedLevel As ImportedMap
     Dim ApplyingMap As Boolean
@@ -3315,6 +3316,12 @@ Err:
 
         Dim code = NormalizeCourseCode(input)
         If code = "" Then Throw New ArgumentException(Msg("MSG_ImportBadCode", "关卡ID格式不正确"))
+        Dim data = DownloadCourseData(code)
+        If data IsNot Nothing Then
+            map = ReadCourse(data, subArea)
+            map.Source = code
+            Return map
+        End If
         Dim view = DownloadCachedView(code)
         Dim area = If(subArea, 1, 0)
         If view.ImageUrl(area) Is Nothing Then Throw New InvalidOperationException(Msg("MSG_ImportNoImage", "mm2list没有这个关卡的缓存图片"))

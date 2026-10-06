@@ -36,8 +36,9 @@ Grinders are in the obstacle list. A Grinder takes 3x3 blocks, and its damage hi
 
 Type a course ID (`J18-0TG-33G`) or an mm2list URL into `Course ID` and press `Import map`.
 
-- mm2list (`https://mm2list.cyzon.us/cached-view/<course ID>`) has no course data, only maps drawn by toost. The importer compares those images pixel by pixel with the game textures to find ground, blocks, pipes, Spike Traps, Piranha Plants, Munchers and Grinders.
+- The course file is downloaded from TheGreatRambler's server (`tgrcode.com`), which gets courses from Nintendo, and read exactly.
+- If that server does not answer within 10 seconds, the map picture from mm2list (`https://mm2list.cyzon.us/cached-view/<course ID>`, drawn by toost) is used instead. The importer compares it pixel by pixel with the game textures to find ground, blocks, pipes, Spike Traps, Piranha Plants, Munchers and Grinders.
 - With the box empty, the button opens a course file from a save (`course_data_XXX.bcd`, still encrypted) or a map PNG instead.
 - `Map X`/`Map Y` set the block at the bottom left of the canvas. Check `Sub Area` to import the sub area.
 - The calculator's ground (`Ground W`/`Ground H`) is set from the height of the leftmost column of the canvas. Terrain is only drawn as a background; hits are checked against obstacles only.
-- Only SMB1, SMB3 and SMW courses can be imported; there are no textures for NSMBU and 3D World.
+- Terrain is drawn with SMB1, SMB3 and SMW textures only; there are none for NSMBU and 3D World. Courses in those two styles can only be imported from course files, and their terrain is drawn in the selected style.
